@@ -95,7 +95,7 @@
 
 -- EOF --
 
-### Te ❌ t
+### Text
 *To look into*
 * Accessibility Prioritized
 * Timeout Default
@@ -114,7 +114,7 @@
 * Salesforce Lightning Design
 * Notyf
 * react-toastify
-* ng ❌ -toastr
+* ngx-toastr
 * SweetAlert2
 
 
