@@ -3,7 +3,11 @@
 This document compares the capabilities of various popular toast libraries.
 
 ## Background
-A toast is a UI element that provides valuable feedback to a user about the actions they perform on the web or their mobile device. This feedback can be core to the user experience of many applications, and many accomplished developers have written many libraries to address this need. The aim of this study is to assess which needs the existing solutions meet, which services they provide in common with each other, and what the levels of granularity are available in toast APIs.
+A toast is a UI element that provides valuable feedback to a user about the actions they perform on the web or their mobile device.
+This feedback can be core to the user experience of many applications, 
+and many accomplished developers have written many libraries to address this need. 
+The aim of this study is to assess which needs the existing solutions meet, 
+which services they provide in common with each other, and what the levels of granularity are available in toast APIs.
 
 ## In Depth Studies
 TODO: Update with links when the in-depth studies are written up
@@ -44,10 +48,13 @@ This table showcases the features that various popular toast libraries support. 
 
 
 ## Features
-The list of features used in the [Table of Comparison](#table-of-comparison) comes from the major recurring patterns and ideas that showed up in my research of existing toast implementations. This list is by no means exhaustive, but it covers many of the core elements built into popular toast libraries. They approximately break down into three categories: Properties, Built-In Support, and Policies.
+The list of features used in the [Table of Comparison](#table-of-comparison) comes from the major recurring patterns and ideas that showed up in my research of existing toast implementations.
+This list is by no means exhaustive, but it covers many of the core elements built into popular toast libraries. 
+They approximately break down into three categories: Properties, Built-In Support, and Policies.
 
 ### Properties
-Properties of a toast are specific, tangible parts of the object that a developer can set, toggle, or access. These are often the user-facing elements of the toast, and the general consensus of popular libraries regarding these properties is typically what sets toasts apart from other solutions like alerts and dialogs.
+Properties of a toast are specific, tangible parts of the object that a developer can set, toggle, or access.
+These are often the user-facing elements of the toast, and the general consensus of popular libraries regarding these properties is typically what sets toasts apart from other solutions like alerts and dialogs.
 
 - `title`: header text to be displayed above the main message of the toast. 
 
@@ -68,7 +75,8 @@ Properties of a toast are specific, tangible parts of the object that a develope
 - Progress Bar: element on toast displaying time remaining before timeout.
 
 ### Built-In Support
-The Built-In Support establishes how a toast is defined and used, as well as what it's allowed to be used with. It consists of a collection of implementation details, patterns, and technologies that are supported by popular libraries.
+The Built-In Support establishes how a toast is defined and used, as well as what it's allowed to be used with.
+It consists of a collection of implementation details, patterns, and technologies that are supported by popular libraries.
 
 - Theme Support: offers built-in theming options, such as `success`, `info`, or `error`.
 
@@ -93,7 +101,8 @@ The Built-In Support establishes how a toast is defined and used, as well as wha
 - User Interaction Trigger: tracks when user has moused over the toast, and allows the developer to change behavior when they do.
 
 ### Policies
-The Policies of a toast library are what it chooses to allow, forbid, and prioritize. It's the list of opinions about what a toast should be able to do.
+The Policies of a toast library are what it chooses to allow, forbid, and prioritize. 
+It's the list of opinions about what a toast should be able to do.
 
 - Mentions Accessibility: library specifically mentions A11y, uses `aria`, or makes note of accessibility concerns (i.e. focus).
     - **Note**: This was difficult to track, not tested comprehensively, and I could have made mistakes. Please create an issue if you notice an error.
