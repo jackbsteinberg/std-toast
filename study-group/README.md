@@ -41,7 +41,7 @@ This table showcases the features that various popular toast libraries support. 
 | [Default Times Out](#policies)                        | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ |
 | [Allows Multiple](#policies)                          | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
 | [Allows Duplicates](#policies)                        | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ |
-| [Newest on Top](#policies)                            | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| [Configurable Stacking](#policies)                    | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | [Close Button Default](#policies)                     | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | [Translucent](#policies)                              | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |                                                                           
 
@@ -115,7 +115,7 @@ It's the list of opinions about what a toast should be able to do.
 
 - Allows Duplicates: the same toast can be called and displayed multiple times simultaneously.
 
-- Newest on Top: an option to toggle if the newest toast will show up above or below the previous toasts.
+- Configurable Stacking: option to control if a new toast displays above or below the current stack of toasts, for libraries that permit stacking.
 
 - Close Button Default: the toast creates and displays with a close button by default, unless otherwise specified.
 
