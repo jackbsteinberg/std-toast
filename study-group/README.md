@@ -3,7 +3,7 @@
 This document compares the capabilities of various popular toast libraries.
 
 ## Background
-A toast is a UI element that provides valuable feedback to a user about the actions they perform on the web or their mobile device.
+A toast is a UI element that provides valuable feedback to a user about the actions they perform while using an app.
 This feedback can be core to the user experience of many applications, 
 and many accomplished developers have written many libraries to address this need. 
 The aim of this study is to assess which needs the existing solutions meet, 
