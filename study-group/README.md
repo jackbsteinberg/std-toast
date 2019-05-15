@@ -96,7 +96,7 @@ It consists of a collection of implementation details, patterns, and technologie
 
 - Explicit Animation Support: library offers an `animation` or `transition` field which abstracts away writing animations.
 
-- Swipe / Drag: the toast can be swiped or dragged to be dismissed, an important cross-platform consideration.
+- Swipe / Drag: the toast can be swiped or dragged to be dismissed.
 
 - Intuitive Positioning: the library provides built in values to place your toast on the `top/middle/bottom` of the `left/center/right`.
 
