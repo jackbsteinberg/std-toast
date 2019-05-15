@@ -27,8 +27,8 @@ This table showcases the features that various popular toast libraries support. 
 | [Icon](#properties)                                 | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ |
 | [Progress Bar](#properties)                         | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | [Theme Support](#built-in-support)                  | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
-| [Triggered in JS](#built-in-support)                | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ |
-| [Component Pattern](#built-in-support)              | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
+| [Configured / Created in JS](#built-in-support)                | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ |
+| [Explicit Component Pattern](#built-in-support)              | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | [Permits Custom HTML](#built-in-support)            | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ |
 | [Display in Container](#built-in-support)           | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | [Global Configuration](#built-in-support)           | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ |
@@ -80,9 +80,11 @@ It consists of a collection of implementation details, patterns, and technologie
 
 - Theme Support: offers built-in theming options, such as `success`, `info`, or `error`.
 
-- Triggered in JS: a toast object is created in JavaScript, then invoked to trigger display to the DOM.
+- Configured / Created in JS: the toast object is set up and called to display using JavaScript.
+    - Upon display this creates a new DOM element or injects the settings into an existing HTML element.
 
-- Component Pattern: a toast HTML component sits in the DOM to be used in the JavaScript.
+- Explicit Component Pattern: uses an element explicitly written into the HTML to display the toast when triggered.
+    - This element can be configured, or left as a dummy element to inject configuration into.
 
 - Permits Custom HTML: allows developers to write custom HTML templates, loaded in as children or passed as views.
 
