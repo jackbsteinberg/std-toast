@@ -98,7 +98,7 @@ It consists of a collection of implementation details, patterns, and technologie
 
 - Swipe / Drag: the toast can be swiped or dragged to be dismissed.
 
-- Intuitive Positioning: the library provides built in values to place your toast on the `top/middle/bottom` of the `left/center/right`.
+- Intuitive Positioning: the library provides built in values to place your toast on the `top/middle/bottom` and the `left/center/right`.
 
 - User Interaction Trigger: tracks when user has moused over the toast, and allows the developer to change behavior when they do.
 
