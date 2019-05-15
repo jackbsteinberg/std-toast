@@ -1,2 +1,2 @@
 # std-toast
-This document scopes out a new HTML element for a 'toast' pop-up notification.
+This document scopes out a web platform API for a 'toast' pop-up notification.
