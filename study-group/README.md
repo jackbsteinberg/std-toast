@@ -23,7 +23,7 @@ This table showcases the features that various popular toast libraries support. 
 | [Close Button](#properties)                           | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | [Call To Action](#properties)                         | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ |
 | [Callbacks](#properties)                              | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ |
-| [Events](#properties)                                 | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| [Events](#properties)                                 | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ |
 | [Icon](#properties)                                   | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ |
 | [Progress Bar](#properties)                           | ✅ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | [Theme Support](#built-in-support)                    | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
@@ -35,7 +35,7 @@ This table showcases the features that various popular toast libraries support. 
 | [CSS Classes Field](#built-in-support)                | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
 | [Explicit Animation Support](#built-in-support)       | ✅ | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ |
 | [Swipe / Drag](#built-in-support)                     | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ |
-| [Intuitive Positioning](#built-in-support)            | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ |
+| [Intuitive Positioning](#built-in-support)            | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ✅ |
 | [User Interaction Trigger](#built-in-support)         | ✅ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | [Mentions Accessibility](#policies)                   | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ |
 | [Default Times Out](#policies)                        | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ |
@@ -100,7 +100,7 @@ It consists of a collection of implementation details, patterns, and technologie
 
 - Intuitive Positioning: the library provides built in values to place your toast on the `top/middle/bottom` and the `left/center/right`.
 
-- User Interaction Trigger: tracks when user has moused over the toast, and allows the developer to change behavior when they do.
+- User Interaction Trigger: tracks when user has interacted with the toast, and allows the developer to change behavior when they do.
 
 ### Policies
 The Policies of a toast library are what it chooses to allow, forbid, and prioritize. 
