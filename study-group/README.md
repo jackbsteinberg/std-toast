@@ -106,7 +106,7 @@ It consists of a collection of implementation details, patterns, and technologie
 The Policies of a toast library are what it chooses to allow, forbid, and prioritize. 
 It's the list of opinions about what a toast should be able to do.
 
-- Mentions Accessibility: library specifically mentions A11y, uses `aria`, or makes note of accessibility concerns (i.e. focus).
+- Mentions Accessibility: library specifically mentions A11y, uses `aria`, or makes note of accessibility concerns (e.g. focus).
     - **Note**: This was difficult to track, not tested comprehensively, and I could have made mistakes. Please create an issue if you notice an error.
 
 - Default Times Out: the toast dismisses by default, unless otherwise specified.
