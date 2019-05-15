@@ -3,7 +3,7 @@
 This document compares the capabilities of various popular toast libraries.
 
 ## Background
-A toast is a UI element that provides valuable feedback to a user about the actions they perform on the web or their mobile device.
+A toast is a UI element that provides valuable feedback to a user about the actions they perform while using an app.
 This feedback can be core to the user experience of many applications, 
 and many accomplished developers have written many libraries to address this need. 
 The aim of this study is to assess which needs the existing solutions meet, 
@@ -96,7 +96,7 @@ It consists of a collection of implementation details, patterns, and technologie
 
 - Explicit Animation Support: library offers an `animation` or `transition` field which abstracts away writing animations.
 
-- Swipe / Drag: the toast can be swiped or dragged to be dismissed, an important cross-platform consideration.
+- Swipe / Drag: the toast can be swiped or dragged to be dismissed.
 
 - Intuitive Positioning: the library provides built in values to place your toast on the `top/middle/bottom` of the `left/center/right`.
 
@@ -106,7 +106,7 @@ It consists of a collection of implementation details, patterns, and technologie
 The Policies of a toast library are what it chooses to allow, forbid, and prioritize. 
 It's the list of opinions about what a toast should be able to do.
 
-- Mentions Accessibility: library specifically mentions A11y, uses `aria`, or makes note of accessibility concerns (i.e. focus).
+- Mentions Accessibility: library specifically mentions A11y, uses `aria`, or makes note of accessibility concerns (e.g. focus).
     - **Note**: This was difficult to track, not tested comprehensively, and I could have made mistakes. Please create an issue if you notice an error.
 
 - Default Times Out: the toast dismisses by default, unless otherwise specified.
