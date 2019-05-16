@@ -13,7 +13,7 @@ The company offers:
 Interestingly, Google is the only library provider I could find who uses the term `snackbar` to refer to an actionable, dismissable toast.
 The implementations have internal consistency in design and implementation, and demonstrate popular patterns for toast APIs, which make them good candidates to examine.
 
-This study covers the details and trade-offs of the various toast-like feedback pop-ups Google libraries provide, by taking an in-depth look at each implementation.
+This study covers the details and trade-offs of the various toast-like feedback pop-ups Google libraries provide, by taking an in-depth look at each implementation, then extracting some key takeaways.
 
 ## [Polymer `<paper-toast>`](https://github.com/PolymerElements/paper-toast)
 Polymer `<paper-toast>` is a library released by Google's Polymer team to provide a simple Material Design toast notification.
