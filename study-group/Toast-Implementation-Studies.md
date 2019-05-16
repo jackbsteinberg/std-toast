@@ -1,22 +1,22 @@
-# Google Toast Implementations
-This document studies the various ways Google implements toasts, in Polymer, Material UI, and Android.
+# Toast Implementations
+This document studies the various ways existing libraries implements toasts.
 
 ## Background
-Google has a range of different component library solutions which cover a variety of usages, many of which implement some toast-like element.
-The company offers:
+In order to make distinctions between existing toast implementations clearer, this study compiles more detailed information about individual libraries.
+These libraries have differences in design and implementation that are useful to study to get a general consensus of what a toasts like and how they act.
+The libraries studied are:
 
 - [Polymer `<paper-toast>`](#polymer-paper-toast)
-- [Material UI Snackbar](#material-ui-snackbar)
+- [Material-UI Snackbar](#material-ui-snackbar)
 - [Android Toast](#android-toast)
-- [Android Snackbar](#android-snackbar)
+- [react-toastify](#react-toastify)
+- [ngx-toastr](#ngx-toast)
+- [Bootstrap](#bootstrap)
 
-Interestingly, Google is the only library provider I could find who uses the term `snackbar` to refer to an actionable, dismissable toast.
-The implementations have internal consistency in design and implementation, and demonstrate popular patterns for toast APIs, which make them good candidates to examine.
-
-This study covers the details and trade-offs of the various toast-like feedback pop-ups Google libraries provide, by taking an in-depth look at each implementation, then extracting some key takeaways.
+Each study covers the details and trade-offs of the toast library, by taking an in-depth look at the API, then extracting key takeaways.
 
 ## [Polymer `<paper-toast>`](https://github.com/PolymerElements/paper-toast)
-Polymer `<paper-toast>` is a library released by Google's Polymer team to provide a simple Material Design toast notification.
+Polymer `<paper-toast>` is a library from Google's Polymer team to provide a subtle toast notification.
 
 ### Design & Sample Code
 To use `<paper-toast>`, use something like this in HTML:
@@ -53,13 +53,12 @@ To put a `<paper-toast>` into a specific container, set the `fitInto` attribute 
 <paper-toast id="toast2" fitInto="container0" text="This fits perfectly!"></paper-toast>
 ```
 
-Finally, to style the toast set the CSS properties `--paper-toast-background-color` and `--paper-toast-color` on the `id` of the toast in the stylesheet.
+Finally, to color the toast the library provides the two CSS properties, `--paper-toast-background-color` and `--paper-toast-color`.
 
 ### Notable Features & Details
-The Polymer `<paper-toast>` library comes built with a lot attributes for granular control, and I explore some of these attributes and design choices in this section.
 
 #### Permits Custom HTML
-`<paper-toast>` allso the developer to customize the contents of the toast with custom HTML passed in as children.
+`<paper-toast>` also the developer to customize the contents of the toast with custom HTML passed in as children.
 
 #### Intuitive Positioning
 `horizontalAlign` and `verticalAlign` provide attributes to position the toast intuitively.
@@ -72,19 +71,14 @@ A few of the minute controls concern focus. The `noAutoFocus` attribute, which d
 The `restoreFocusOnClear` attribute restores page's focus once the toast is cleared from the screen.
 
 #### Notes
+- Purpose-built well for pure HTML.
 - There are many granular controls, concerning things like parent elements and sizing and alignment inheritance.
 - The component comes with events, for when the toast opens and the alignment changes (*not for when it closes though*).
 - Only one `<paper-toast>` will be visible on the screen at a time. If you trigger a second it will replace the first.
 - **Warning**: `<paper-toast>` is affected by the stacking context of its container, so to guarantee it shows up on the top layer it must be placed at the top level (`<body>`) element.
     - How to properly handle top layer is an ongoing debate (see [here](https://github.com/whatwg/html/issues/897#issuecomment-198512778))
 
-### Key Takeaways
-The Polymer `<paper-toast>` library is a good example of an extensible toast implementation built for pure HTML. 
-It uses the attributes of the element to control things like when it displays, when it closes, timeout, position, and many more granular settings. 
-It is nicely very unopinionated on certain tradeoffs, allowing the developer to fine tune the `<paper-toast>`'s behavior. 
-It is not, however, strictly agnostic, as it disallows displaying multiple toasts and does not provide events or callbacks for when the toast closes.
-
-## Material UI Snackbar
+## Material-UI Snackbar
 
 *TODO: Fill in study for this library*
 
@@ -92,10 +86,18 @@ It is not, however, strictly agnostic, as it disallows displaying multiple toast
 
 *TODO: Fill in study for this library*
 
-## Android Snackbar
+## react-toastify
+
+*TODO: Fill in study for this library*
+
+## ngx-toastr
+
+*TODO: Fill in study for this library*
+
+## Bootstrap
 
 *TODO: Fill in study for this library*
 
 ## Findings
 
-*TODO: Fill in overall findings for this group of implementations*
+*TODO: Fill in overall findings for these implementations*
