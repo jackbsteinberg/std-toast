@@ -90,9 +90,132 @@ The `restoreFocusOnClear` attribute restores page's focus once the toast is clea
 
 *TODO: Fill in study for this library*
 
-## ngx-toastr
+## [ngx-toastr](https://github.com/scttcper/ngx-toastr)
+ngx-toastr is a library from author [@scttcper](https://github.com/scttcper) to create a toast notification built for Angular.
 
-*TODO: Fill in study for this library*
+
+### Design & Sample Code
+Before using ngx-toastr, setup is required. First, add the CSS:
+
+```js
+// regular style toast
+@import '~ngx-toastr/toastr';
+
+// bootstrap style toast
+@import '~ngx-toastr/toastr-bs4-alert';
+```
+
+Next, add ToastrModule and BrowserAnimationsModule to app NgModule:
+
+```js
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot() // ToastrModule added
+  ],
+  ...
+})
+...
+```
+
+Once the modules are set up, this code will display a toast:
+
+```js
+import { ToastrService } from 'ngx-toastr';
+
+@Component({...})
+export class SomeComponent {
+  constructor(private toastr: ToastrService) {}
+
+  showSuccess() {
+    this.toastr.success('Hello title!', 'Hello message!', { timeOut: 3000 });
+  }
+}
+```
+
+To show the toast with an instance of ToastrService, use `toastr.success/error/warning/info/show()`, depending on the context and intent.
+The third parameter configures the toast with a variety of specialized options, for example:
+
+```js
+this.toastrService.error('Uh Oh...', '<b>Something is Wrong<b>', {
+  timeOut: 20000,
+  tapToDismiss: false,
+  enableHtml: true,
+  closeButton: true,
+  progressBar: true
+});
+```
+
+All these options can be configured globally like so:
+
+```js
+// root app NgModule
+imports: [
+  ToastrModule.forRoot({
+    timeOut: 10000,
+    positionClass: 'toast-bottom-right',
+    preventDuplicates: true,
+  }),
+],
+```
+
+These global options will be overriden by the individual toast configurations.
+For finer control, ngx-toaster allows both custom toast components and display in container, used like this:
+
+```js
+// root app NgModule
+import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+
+@NgModule({
+  imports: [
+    ToastrModule.forRoot({
+      toastComponent: YourToastComponent // added custom toast!
+    })
+  ],
+  entryComponents: [YourToastComponent], // add!
+  bootstrap: [App],
+  declarations: [App, YourToastComponent] // add!
+})
+...
+// App
+@Component({
+  template: `
+  <h1><a (click)="onClick()">Click</a></h1>
+  <div toastContainer></div>`
+})
+export class AppComponent implements OnInit {
+  @ViewChild(ToastContainerDirective) toastContainer: ToastContainerDirective;
+
+  constructor(private toastrService: ToastrService) {}
+  ngOnInit() {
+    this.toastrService.overlayContainer = this.toastContainer;
+  }
+  onClick() {
+    this.toastrService.success('Custom in a container!');
+  }
+}
+```
+
+### Notable Features and Details
+
+#### Animation
+Uses Angular [Web Animations API](https://angular.io/guide/animations) by default.
+
+#### Captures User Hover
+User hover pauses the toast timeout, and removing hover replaces timeout with an optional different timeout.
+
+#### Multiple Configuration
+The library allows showing multiple toasts, and gives the developer specific control of maximum capacity and behavior at maximum capacity.
+
+### Takeaways
+
+- Low opinion high configuration library.
+- Callbacks available for show, hide, tap, and action.
+- Comes with default icons, can change by modifying CSS.ß
 
 ## Bootstrap
 
