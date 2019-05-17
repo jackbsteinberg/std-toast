@@ -430,7 +430,7 @@ The Toast component, like many others in the Bootstrap library, is put directly 
 
 Bootstrap uses classes to denote special elements of the components it constructs, like the classes `toast`, `toast-header`, and `toast-body`.
 The example uses many `aria` attributes, indicating a deliberate effort for accessibility.
-The Toasts can be configured with other attributes, and will stack intuitively when multiple are wrapped together in a `div`.
+Multiple Toasts can be wrarpped together in a `div` to stack intuitively.
 
 ```html
 <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
@@ -462,34 +462,53 @@ The Toasts can be configured with other attributes, and will stack intuitively w
         </button>
       </div>
       <div class="toast-body">
-        Heads up, toasts will stack automatically
+        Heads up, Toasts will stack automatically
       </div>
     </div>
   </div>
 </div>
 ```
 
-Using native styling with the `position: absolute;` attribute on, the toasts can be intuitively placed on the screen.
-Note that the order the toasts display is determined by their DOM order, not the order in which they're displayed.
+Using native styling with the `position: absolute;` attribute on, the Toasts can be intuitively positioned on the screen.
+Note that the order the Toasts display is determined by their DOM order, not the order in which they're displayed.
 
-To initialize and display the toast, simply use this JavaScript:
+To display, select all with the `.toast` class and initialize, then select one by its element ID to display:
 
 ```js
-// initialize all toasts with options
+// Initializes all Toast elements
 $('.toast').toast({
   animation: true, // adds a CSS fade
-  autohide: true, // automatically closes the toast
-  delay: 5000 // time to wait before closing the toast
+  autohide: true, // automatically closes the Toast
+  delay: 5000 // sets time to wait before closing the Toast
 })
 
-// show
 $('#single-toast-id').toast('show')
 ```
 
 ### Notable Features & Details
 
+#### Pure HTML View
+Bootstrap Toasts are purely HTML elements highly styled with CSS, and are easily customizable.
+
+#### Events
+The library offers events for `show`, `shown`, `hide`, and `hidden`, to represent the moments before and after the Toast is shown / hidden.
+
+#### Accessibility
+The documentation is explicit about suggesting wrapping the toasts in `aria-live`, to announce the content via screen reader without moving focus.
+It also recommends including `aria-atomic="true"` to ensure the Toast is read as a single atomic element, 
+and live changes don't disrupt the screen-reader user.
+
+#### Z-Index
+Bootstrap components that are meant to be overlayed use an arbitrary z-index value, in the range of ~1000.
 
 ### Takeaways
+
+- Low JavaScript configuration, high HTML customization.
+- Uses the same `.toast(options)` method for `show`, `hide`, and `dispose`, by passing in any of those strings as `options`.
+- The developer needs to be cognizant of DOM order for multiple toasts.
+  -  Calling `show` out order would still display Toasts in DOM order, a potentially unexpected behavior.
+- Requires `util.js` if building the JavaScript from source.
+- When disabling `autohide` the developer must provide a close button, it will not be added by default.
 
 ## Findings
 
