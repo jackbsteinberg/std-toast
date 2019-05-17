@@ -175,7 +175,7 @@ class App extends Component {
   render(){
     return (
       <div>
-        <button onClick={this.tenSecondToast}>Close after 10000ms seconds</button>
+        <button onClick={this.tenSecondToast}>Close after 10000ms</button>
         <button onClick={this.normalToast}>Close after 5000ms (default)</button>
         <ToastContainer autoClose={5000} />
       </div>
@@ -191,7 +191,7 @@ class App extends Component {
   topRightWarning = () => toast('Warning!', {
     type: toast.TYPE.WARNING,
     position: toast.POSITION.TOP_RIGHT,
-    onClose: ({ props }) => window.alert('I warned you') // props: all props passed to rendered toast component
+    onClose: ({ props }) => window.alert(`You just closed the ${props.type} message`) // props: all props passed to rendered toast component
   });
 
   render() {
@@ -233,7 +233,7 @@ As in this example, the `toastId` gives the developer control over the toast bey
 ### Notable Features & Details
 
 #### Toast ID
-the `toast()` function returns an ID of the toast it creates, which can be used to act upon that toast.
+The `toast()` function returns an ID of the toast it creates, which can be used to act upon that toast.
 For instance, with the toast ID the toast can be used with `dismiss()`, `update()`, and `isActive()`.
 
 #### Mobile
