@@ -154,7 +154,7 @@ class App extends Component {
 ```
 
 `react-toastify` uses the explicit component pattern, by having the developer render a React `ToastContainer` component (the recommendation is to put this in the application root).
-This single component will render all toasts called from JavaScript, and can be configured with global options.
+This single component will render all toasts called from JavaScript and can be configured with global options.
 However, the library allows the developer a lot of freedom, supporting multiple `ToastContainer`s as well as no `ToastContainer`, though one is recommended.
 When the `toast()` is called with a message and a props object, it is displayed in the toast container, with the toast props overriding the `ToastContainer` props, like so:
 
