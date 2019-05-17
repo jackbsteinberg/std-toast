@@ -141,6 +141,10 @@ The library comes with baked in constants for displaying the toast for long and 
 Using a `react-toastify` toast requires some React code:
 
 ```jsx
+import React, { Component } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 class App extends Component {
   notify = () => toast("Very simple toast!");
 
@@ -161,7 +165,7 @@ However, the library allows the developer a lot of freedom, supporting multiple 
 
 When the `toast()` is called with a message and a props object, it is displayed in the toast container, with the toast props overriding the `ToastContainer` props, like so:
 
-```js
+```jsx
 class App extends Component {
   // Creating a toast that will close in 10000ms.
   tenSecondToast = () => toast("This toast will self destruct in 10...", { autoClose: 10000 });
@@ -182,7 +186,7 @@ class App extends Component {
 
 For some of the common controls, the toast can be configured like so:
 
-```js
+```jsx
 class App extends Component {
   topRightWarning = () => toast('Warning!', {
     type: toast.TYPE.WARNING,
@@ -205,7 +209,7 @@ Additionally, callbacks like `onClose` and `onOpen` allow the toast to have inte
 
 Another extensible behavior `react-toastify` supports is updating a toast:
 
-```js
+```jsx
 class Update extends Component {
   toastId = null;
 
