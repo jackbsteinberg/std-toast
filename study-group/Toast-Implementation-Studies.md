@@ -166,7 +166,7 @@ class App extends Component {
   render(){
     return (
       <div>
-        <button onClick={this.tenSecondToast}>Close after 10 seconds</button>
+        <button onClick={this.tenSecondToast}>Close after 10000ms seconds</button>
         <button onClick={this.normalToast}>Close after 5000ms (default)</button>
         <ToastContainer autoClose={5000} />
       </div>
