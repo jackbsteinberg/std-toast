@@ -206,7 +206,7 @@ export class AppComponent implements OnInit {
 Uses Angular [Web Animations API](https://angular.io/guide/animations) by default.
 
 #### Reacts to Hover
-User hover pauses the toast timeout, and removing hover replaces timeout with an optional different timeout.
+User hover pauses the toast timeout, and when the mouse leaves the timeout resumes, or optionally begins an author-specified post-hover timeout duration.
 
 #### Multiple Configuration
 The library allows showing multiple toasts, and gives the developer specific control of maximum capacity and behavior at maximum capacity.
