@@ -223,8 +223,8 @@ export class App implements OnInit {
 #### Animation
 Uses Angular [Web Animations API](https://angular.io/guide/animations) by default.
 
-#### Captures User Hover
-User hover pauses the toast timeout, and removing hover replaces timeout with an different timeout.
+#### Reacts to Hover
+User hover pauses the toast timeout, and when the mouse leaves the timeout resumes, or optionally begins an author-specified post-hover timeout.
 
 #### Multiple Configuration
 The library allows showing multiple toasts, and gives the developer specific control of maximum capacity and behavior at maximum capacity.
