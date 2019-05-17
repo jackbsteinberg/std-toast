@@ -167,7 +167,7 @@ class App extends Component {
     return (
       <div>
         <button onClick={this.tenSecondToast}>Close after 10 seconds</button>
-        <button onClick={this.normalToast}>Close after default amount of time</button>
+        <button onClick={this.normalToast}>Close after 5000ms (default)</button>
         <ToastContainer autoClose={5000} />
       </div>
     );
