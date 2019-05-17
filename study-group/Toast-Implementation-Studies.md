@@ -158,7 +158,20 @@ The Toasts can be configured with other attributes, and will stack intuitively w
 
 Using native styling with the `position: absolute;` attribute on, the toasts can be intuitively placed on the screen.
 Note that the order the toasts display is determined by their DOM order, not the order in which they're displayed.
-With regards to displaying, the 
+
+To initialize and display the toast, simply use this JavaScript:
+
+```js
+// initialize all toasts with options
+$('.toast').toast({
+  animation: true, // adds a CSS fade
+  autohide: true, // automatically closes the toast
+  delay: 5000 // time to wait before closing the toast
+})
+
+// show
+$('#single-toast-id').toast('show')
+```
 
 ### Notable Features & Details
 
