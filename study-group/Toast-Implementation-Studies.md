@@ -187,7 +187,7 @@ class App extends Component {
   topRightWarning = () => toast('Warning!', {
     type: toast.TYPE.WARNING,
     position: toast.POSITION.TOP_RIGHT,
-    onClose: ({ props }) => window.alert('I warned you') // props: all props passed to rendered toast component
+    onClose: ({ props }) => window.alert(`You just closed the ${props.type} message`) // props: all props passed to rendered toast component
   });
 
   render() {
