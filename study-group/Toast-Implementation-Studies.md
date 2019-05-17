@@ -164,7 +164,21 @@ imports: [
 ```
 
 These global options will be overriden by the individual toast configurations.
-For finer control, ngx-toaster allows both custom toast components and display in container, used like this:
+For finer control, ngx-toaster allows the developer to create Angular components to use as custom views for the toast:
+
+```js
+// YourToastComponent
+@Component({
+  template: `
+    <h1>Custom Toast Header!</h1>
+    <p>Custom Toast <b>body</b>
+    <input type="text" value="Endless Possibilities!">
+  `
+})
+export class YourToastComponent {
+  ...
+}
+```
 
 ```js
 // root app NgModule
@@ -180,14 +194,18 @@ import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
   bootstrap: [App],
   declarations: [App, YourToastComponent] // add!
 })
-...
+```
+
+The developer can also decide to display the toast within an existing container:
+
+```js
 // App
 @Component({
   template: `
   <h1><a (click)="onClick()">Click</a></h1>
   <div toastContainer></div>`
 })
-export class AppComponent implements OnInit {
+export class App implements OnInit {
   @ViewChild(ToastContainerDirective) toastContainer: ToastContainerDirective;
 
   constructor(private toastrService: ToastrService) {}
@@ -206,7 +224,7 @@ export class AppComponent implements OnInit {
 Uses Angular [Web Animations API](https://angular.io/guide/animations) by default.
 
 #### Captures User Hover
-User hover pauses the toast timeout, and removing hover replaces timeout with an optional different timeout.
+User hover pauses the toast timeout, and removing hover replaces timeout with an different timeout.
 
 #### Multiple Configuration
 The library allows showing multiple toasts, and gives the developer specific control of maximum capacity and behavior at maximum capacity.
@@ -215,7 +233,8 @@ The library allows showing multiple toasts, and gives the developer specific con
 
 - Low opinion high configuration library.
 - Callbacks available for show, hide, tap, and action.
-- Comes with default icons, can change by modifying CSS.ß
+- Comes with default icons, can change by modifying CSS.
+- **Note**: On mobile there's currently no simple way to stop the timeout, accomplished by hover on desktop.
 
 ## Bootstrap
 
