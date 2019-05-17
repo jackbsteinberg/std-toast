@@ -138,7 +138,7 @@ The library comes with baked in constants for displaying the toast for long and 
 
 ### Design & Sample Code
 
-To use a `react-toastify` toast requires some simple JavaScript:
+Using a `react-toastify` toast requires some JavaScript:
 
 ```js
 class App extends Component {
