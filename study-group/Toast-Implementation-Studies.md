@@ -229,7 +229,7 @@ As in this example, the `toastId` gives the developer control over the toast bey
 ### Notable Features & Details
 
 #### Toast ID
-the `toast()` function returns an ID of the toast it creates, which can be used to act upon that toast.
+The `toast()` function returns an ID of the toast it creates, which can be used to act upon that toast.
 For instance, with the toast ID the toast can be used with `dismiss()`, `update()`, and `isActive()`.
 
 #### Mobile
