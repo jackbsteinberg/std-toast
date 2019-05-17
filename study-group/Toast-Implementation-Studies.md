@@ -121,7 +121,7 @@ The `text`, `view`, `gravity`, and `duration` of the toast are all the elements 
 ### Notable Features & Details
 
 #### Gravity
-The library takes an interesting approach to positioning, by defining letting the user define the "center of gravity" of the element, along with offset values for the axes of gravity.
+The library takes an interesting approach to positioning, by letting the user define the "center of gravity" of the element, along with offset values for the axes of gravity.
 
 #### Duration Constants
 The library comes with baked in constants for displaying the toast for long and short periods of time.
