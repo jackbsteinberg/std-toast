@@ -261,9 +261,151 @@ The helper allows the dev to set classes and durations for `enter` and `exit`, a
 - Passing null into a property resets it to default (useful for `update()`).
 - RTL is supported, can be toggled by setting a flag.
 
-## ngx-toastr
+## [ngx-toastr](https://github.com/scttcper/ngx-toastr)
+ngx-toastr is a library from author [@scttcper](https://github.com/scttcper) to create a toast notification built for Angular.
 
-*TODO: Fill in study for this library*
+
+### Design & Sample Code
+Before using ngx-toastr, setup is required. First, add the CSS:
+
+```css
+/* regular style toast */
+@import '~ngx-toastr/toastr';
+
+/* bootstrap style toast */
+@import '~ngx-toastr/toastr-bs4-alert';
+```
+
+Next, add ToastrModule and BrowserAnimationsModule to app NgModule:
+
+```ts
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot() // ToastrModule added
+  ],
+  ...
+})
+...
+```
+
+Once the modules are set up, this code will display a toast:
+
+```ts
+import { ToastrService } from 'ngx-toastr';
+
+@Component({...})
+export class SomeComponent {
+  constructor(private toastr: ToastrService) {}
+
+  showSuccess() {
+    this.toastr.success('Hello title!', 'Hello message!', { timeOut: 3000 });
+  }
+}
+```
+
+To show the toast with an instance of ToastrService, use `toastr.success/error/warning/info/show()`, depending on the context and intent.
+The third parameter configures the toast with a variety of specialized options, for example:
+
+```ts
+this.toastrService.error('Uh Oh...', '<b>Something is Wrong<b>', {
+  timeOut: 20000,
+  tapToDismiss: false,
+  enableHtml: true,
+  closeButton: true,
+  progressBar: true
+});
+```
+
+All these options can be configured globally like so:
+
+```ts
+// root app NgModule
+imports: [
+  ToastrModule.forRoot({
+    timeOut: 10000,
+    positionClass: 'toast-bottom-right',
+    preventDuplicates: true,
+  }),
+],
+```
+
+These global options will be overriden by the individual toast configurations.
+For finer control, ngx-toaster allows the developer to create Angular components to use as custom views for the toast:
+
+```ts
+// YourToastComponent
+@Component({
+  template: `
+    <h1>Custom Toast Header!</h1>
+    <p>Custom Toast <b>body</b>
+    <input type="text" value="Endless Possibilities!">
+  `
+})
+export class YourToastComponent {
+  ...
+}
+```
+
+```ts
+// root app NgModule
+import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+
+@NgModule({
+  imports: [
+    ToastrModule.forRoot({
+      toastComponent: YourToastComponent // added custom toast!
+    })
+  ],
+  entryComponents: [YourToastComponent], // add!
+  bootstrap: [App],
+  declarations: [App, YourToastComponent] // add!
+})
+```
+
+The developer can also decide to display the toast within an existing container:
+
+```ts
+// App
+@Component({
+  template: `
+  <h1><a (click)="onClick()">Click</a></h1>
+  <div toastContainer></div>`
+})
+export class App implements OnInit {
+  @ViewChild(ToastContainerDirective) toastContainer: ToastContainerDirective;
+
+  constructor(private toastrService: ToastrService) {}
+  ngOnInit() {
+    this.toastrService.overlayContainer = this.toastContainer;
+  }
+  onClick() {
+    this.toastrService.success('Custom in a container!');
+  }
+}
+```
+
+### Notable Features and Details
+
+#### Animation
+Uses Angular [Web Animations API](https://angular.io/guide/animations) by default.
+
+#### Reacts to Hover
+User hover pauses the toast timeout, and when the mouse leaves the timeout resumes, or optionally begins an author-specified post-hover timeout.
+
+#### Multiple Configuration
+The library allows showing multiple toasts, and gives the developer specific control of maximum capacity and behavior at maximum capacity.
+
+### Takeaways
+
+- Low opinion high configuration library.
+- Callbacks available for show, hide, tap, and action.
+- Comes with default icons, can change by modifying CSS.
+- **Note**: On mobile there's currently no simple way to stop the timeout, accomplished by hover on desktop.
 
 ## Bootstrap
 
