@@ -131,7 +131,7 @@ The library comes with baked in constants for displaying the toast for long and 
 ### Takeaways
 - High opinion, low control.
 - The API for the `Toast` object provides getters and setters for each of `text`, `view`, `gravity`, `offset` and `duration`.
-- Beyond getters and setters, the only control the object allows is `.makeText()`, `.show()` and `.cancel()`.
+- Beyond getters and setters, the only controls the object allows are `.show()` and `.cancel()`.
 
 ## [react-toastify](https://github.com/fkhadra/react-toastify)
 `react-toastify` is a React component library by author [@fkhadra](https://github.com/fkhadra) for rich, extensible notification toasts.
