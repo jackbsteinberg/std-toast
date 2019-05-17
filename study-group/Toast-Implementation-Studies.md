@@ -97,17 +97,17 @@ ngx-toastr is a library from author [@scttcper](https://github.com/scttcper) to 
 ### Design & Sample Code
 Before using ngx-toastr, setup is required. First, add the CSS:
 
-```js
-// regular style toast
+```css
+/* regular style toast */
 @import '~ngx-toastr/toastr';
 
-// bootstrap style toast
+/* bootstrap style toast */
 @import '~ngx-toastr/toastr-bs4-alert';
 ```
 
 Next, add ToastrModule and BrowserAnimationsModule to app NgModule:
 
-```js
+```ts
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -124,7 +124,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 Once the modules are set up, this code will display a toast:
 
-```js
+```ts
 import { ToastrService } from 'ngx-toastr';
 
 @Component({...})
@@ -140,7 +140,7 @@ export class SomeComponent {
 To show the toast with an instance of ToastrService, use `toastr.success/error/warning/info/show()`, depending on the context and intent.
 The third parameter configures the toast with a variety of specialized options, for example:
 
-```js
+```ts
 this.toastrService.error('Uh Oh...', '<b>Something is Wrong<b>', {
   timeOut: 20000,
   tapToDismiss: false,
@@ -152,7 +152,7 @@ this.toastrService.error('Uh Oh...', '<b>Something is Wrong<b>', {
 
 All these options can be configured globally like so:
 
-```js
+```ts
 // root app NgModule
 imports: [
   ToastrModule.forRoot({
@@ -166,7 +166,7 @@ imports: [
 These global options will be overriden by the individual toast configurations.
 For finer control, ngx-toaster allows the developer to create Angular components to use as custom views for the toast:
 
-```js
+```ts
 // YourToastComponent
 @Component({
   template: `
@@ -180,7 +180,7 @@ export class YourToastComponent {
 }
 ```
 
-```js
+```ts
 // root app NgModule
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
@@ -198,7 +198,7 @@ import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
 The developer can also decide to display the toast within an existing container:
 
-```js
+```ts
 // App
 @Component({
   template: `
