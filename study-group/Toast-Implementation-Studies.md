@@ -10,8 +10,8 @@ The libraries studied are:
 - [Material-UI Snackbar](#material-ui-snackbar)
 - [Android `Toast`](#android-toast)
 - [react-toastify](#react-toastify)
-- [ngx-toastr](#ngx-toastr)
-- [Bootstrap](#bootstrap)
+- [ngx-toastr](#ngx-toast)
+- [Bootstrap Toast](#bootstrap)
 
 Each study covers the details and trade-offs of the toast library, by taking an in-depth look at the API, then extracting key takeaways.
 
@@ -407,9 +407,76 @@ The library allows showing multiple toasts, and gives the developer specific con
 - Comes with default icons, can change by modifying CSS.
 - **Note**: On mobile there's currently no simple way to stop the timeout, accomplished by hover on desktop.
 
-## Bootstrap
+## [Bootstrap Toast](https://getbootstrap.com/docs/4.2/components/toasts/)
+The Bootstrap Toast is a component from the Bootstrap library to provide a lightweight, customizable notification in the library's distinct style.
 
-*TODO: Fill in study for this library*
+### Design & Code Samples
+The Toast component, like many others in the Bootstrap library, is put directly into HTML:
+
+```html
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <img src="..." class="rounded mr-2" alt="...">
+    <strong class="mr-auto">A Bootstrap Toast</strong>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    Hello, world! This is a Bootstrap Toast!
+  </div>
+</div>
+```
+
+Bootstrap uses classes to denote special elements of the components it constructs, like the classes `toast`, `toast-header`, and `toast-body`.
+The example uses many `aria` attributes, indicating a deliberate effort for accessibility.
+The Toasts can be configured with other attributes, and will stack intuitively when multiple are wrapped together in a `div`.
+
+```html
+<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+  <!-- Position it -->
+  <div style="position: absolute; top: 0; right: 0;">
+
+    <!-- Then put toasts within -->
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="..." class="rounded mr-2" alt="...">
+        <strong class="mr-auto">Bootstrap</strong>
+        <small class="text-muted">just now</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        See? Just like this.
+      </div>
+    </div>
+
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="..." class="rounded mr-2" alt="...">
+        <strong class="mr-auto">Bootstrap</strong>
+        <small class="text-muted">2 seconds ago</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        Heads up, toasts will stack automatically
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+Using native styling with the `position: absolute;` attribute on, the toasts can be intuitively placed on the screen.
+Note that the order the toasts display is determined by their DOM order, not the order in which they're displayed.
+With regards to displaying, the 
+
+### Notable Features & Details
+
+
+### Takeaways
 
 ## Findings
 
