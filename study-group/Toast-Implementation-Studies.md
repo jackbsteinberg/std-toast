@@ -121,7 +121,9 @@ The `text`, `view`, `gravity`, and `duration` of the toast are all the elements 
 ### Notable Features & Details
 
 #### Gravity
-The library takes the Android approach to positioning, by letting the user define the Gravity of the element, along with offset values for the axes.
+The library takes the Android approach to positioning,
+by letting the user define the Gravity of the element,
+along with offset values for the axes.
 
 #### Duration Constants
 The library comes with baked in constants for displaying the toast for long and short periods of time.
@@ -161,7 +163,9 @@ When the `toast()` is called with a message and a props object, it is displayed 
 
 ```js
 class App extends Component {
+  // Creating a toast that will close in 10000ms.
   tenSecondToast = () => toast("This toast will self destruct in 10...", { autoClose: 10000 });
+  // Creating a toast that will close in 5000ms (the default).
   normalToast = () => toast("This is a normal toast");
 
   render(){
@@ -176,10 +180,7 @@ class App extends Component {
 }
 ```
 
-The first button creates a toast that dismisses in 10 seconds, overriding the `ToastContainer` default.
-The second provides no `autoClose` value, so it dismisses in the default 5 seconds.
-
-For some of the more common controls, the toast can be configured like so:
+For some of the common controls, the toast can be configured like so:
 
 ```js
 class App extends Component {
@@ -202,11 +203,34 @@ class App extends Component {
 It also provides intuitive positioning, that can be set from the toast or configured on the `ToastContainer`.
 Additionally, callbacks like `onClose` and `onOpen` allow the toast to have intelligent effects when the user interacts with it.
 
+Another extensible behavior `react-toastify` supports is updating a toast:
+
+```js
+class Update extends Component {
+  toastId = null;
+
+  notify = () => this.toastId = toast("Hello", { autoClose: false });
+
+  update = () => toast.update(this.toastId, { type: toast.TYPE.INFO, autoClose: 5000 });
+
+  render(){
+      return (
+        <div>
+          <button onClick={this.notify}>Notify</button>
+          <button onClick={this.update}>Update</button>
+        </div>
+      )
+  }
+}
+```
+
+As in this example, the `toastId` gives the developer control over the toast beyond configuration and display.
+
 ### Notable Features & Details
 
 #### Toast ID
 the `toast()` function returns an ID of the toast it creates, which can be used to act upon that toast.
-For instance, with the toast ID the toast can be dismissed, updated, and checked to see if it's active.
+For instance, with the toast ID the toast can be used with `dismiss()`, `update()`, and `isActive()`.
 
 #### Mobile
 On mobile toasts will automatically take all available width, and all toasts are swipeable / draggable to dismiss.
@@ -215,7 +239,7 @@ On mobile toasts will automatically take all available width, and all toasts are
 Library provides fields `className`, `toastClassName`, and, `progressClassName` for the developer to pass in CSS classes.
 
 #### Render Custom Component
-To customize the view the `toast` function can take in a React component, which will receive the function required to close the toast as props (though it won't get the toast ID).
+To customize the view the toast can receive a React component in the `render` field of the options.
 
 #### cssTransitionHelper
 The library provides a `cssTransitionHelper` helper function to customize animations without having to work directly with `react-transition-group`.
