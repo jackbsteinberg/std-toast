@@ -121,7 +121,7 @@ The `text`, `view`, `gravity`, and `duration` of the toast are all the elements 
 ### Notable Features & Details
 
 #### Gravity
-The library takes an interesting approach to positioning, by letting the user define the "center of gravity" of the element, along with offset values for the axes of gravity.
+The library takes the Android approach to positioning, by letting the user define the Gravity of the element, along with offset values for the axes.
 
 #### Duration Constants
 The library comes with baked in constants for displaying the toast for long and short periods of time.
@@ -156,6 +156,7 @@ class App extends Component {
 `react-toastify` uses the explicit component pattern, by having the developer render a React `ToastContainer` component (the recommendation is to put this in the application root).
 This single component will render all toasts called from JavaScript, and can be configured with global options.
 However, the library allows the developer a lot of freedom, supporting multiple `ToastContainer`s as well as no `ToastContainer`, though one is recommended.
+
 When the `toast()` is called with a message and a props object, it is displayed in the toast container, with the toast props overriding the `ToastContainer` props, like so:
 
 ```js
@@ -177,6 +178,7 @@ class App extends Component {
 
 The first button creates a toast that dismisses in 10 seconds, overriding the `ToastContainer` default.
 The second provides no `autoClose` value, so it dismisses in the default 5 seconds.
+
 For some of the more common controls, the toast can be configured like so:
 
 ```js
