@@ -131,6 +131,7 @@ The library comes with baked in constants for displaying the toast for long and 
 ### Takeaways
 - High opinion, low control.
 - The API for the `Toast` object provides getters and setters for each of `text`, `view`, `gravity`, `offset` and `duration`.
+  - **Note**: It is likely these are unable to set the properties of a toast mid-display.
 - Beyond getters and setters, the only controls the object allows are `.show()` and `.cancel()`.
 
 ## [react-toastify](https://github.com/fkhadra/react-toastify)
@@ -251,6 +252,7 @@ The helper allows the dev to set classes and durations for `enter` and `exit`, a
 
 ### Takeaways
 - Extremely unopinionated and configurable; the developer has near total control.
+- Returns a `toastId` to keep track of the toast, as opposed to using a JavaScript object.
 - Component pattern is optional, only needs one component, but allows multiple.
 - Close button is default, but can be replaced with a custom close button.
   - Separate from passing in a custom React Component.
