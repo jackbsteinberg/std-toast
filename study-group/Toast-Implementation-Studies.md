@@ -86,7 +86,7 @@ Material-UI Snackbar is a component from Google's Material-UI React library that
 Unlike Google *Toasts*, the Snackbar can have a call to action and a close button,
 alongside other differentiating properties.
 
-A Material-UI Snackbar is defined like so:
+A Material-UI Snackbar is used like so:
 
 ```jsx
 import { Component } from 'react';
