@@ -177,7 +177,7 @@ import Fade from '@material-ui/core/Fade';
 Material-UI provides both `<Snackbar>` and `<SnackbarContent>` components.
 The SnackbarContent lets the developer style the `root`, `message`, and `action` via the `classes` property,
 and the component is used as a child of Snackbar to display when style is needed.
-The `classes` property of Snackbar lets the developer add style the `root`,
+The `classes` property of Snackbar lets the developer style the `root`,
 and each of the possible positions the toast can be in (`anchorOriginTopCenter`, `anchorOriginBottomCenter`, etc.).
 This is likely to allow finer control over the exact placement in each position.
 
