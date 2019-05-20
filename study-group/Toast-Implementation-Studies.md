@@ -430,7 +430,7 @@ The Toast component, like many others in the Bootstrap library, is put directly 
 
 Bootstrap uses classes to denote special elements of the components it constructs, like the classes `toast`, `toast-header`, and `toast-body`.
 The example uses many `aria` attributes, indicating a deliberate effort for accessibility.
-Multiple Toasts can be wrarpped together in a `div` to stack intuitively.
+Multiple Toasts can be wrapped together in a `div` to stack intuitively.
 
 ```html
 <div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
