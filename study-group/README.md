@@ -10,7 +10,7 @@ The aim of this study is to assess which needs the existing solutions meet,
 which services they provide in common with each other, 
 and what the levels of granularity are available in toast APIs.
 
-## [In Depth Studies](toast-implementation-studies.md)
+## [In Depth Studies](Toast-Implementation-Studies.md)
 
 ## Table of Comparison
 This table showcases the features that various popular toast libraries support.
