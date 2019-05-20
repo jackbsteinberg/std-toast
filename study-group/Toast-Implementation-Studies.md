@@ -182,7 +182,7 @@ and each of the possible positions the toast can be in (`anchorOriginTopCenter`,
 This is likely to allow finer control over the exact placement in each position.
 
 #### resumeHideDuration
-The Snackbar component has property that allows you to reset the timeout to a specified number of milliseconds after user interaction.
+The Snackbar component has a property that allows you to reset the timeout to a specified number of milliseconds after user interaction.
 
 #### notistack
 It is not natively supported to display multiple Snackbars at a time, 
