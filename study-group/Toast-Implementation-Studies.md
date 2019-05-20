@@ -477,7 +477,7 @@ Multiple Toasts can be wrapped together in a `div` to stack on top of each other
 ```
 
 Using native styling with the `position: absolute;` attribute on, the Toasts can be intuitively positioned on the screen.
-Note that the order the Toasts display is determined by their DOM order, not the order in which they're displayed.
+Note that the order the Toasts display in is determined by their DOM order, _not_ the order in which they are triggered.
 
 To display, select all with the `.toast` class and initialize, then select one by its element ID to display:
 
