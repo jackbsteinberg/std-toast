@@ -515,7 +515,7 @@ Bootstrap components that are meant to be overlayed use an arbitrary z-index val
 - The developer needs to be cognizant of DOM order for multiple toasts.
   -  Calling `show` out order would still display Toasts in DOM order, a potentially unexpected behavior.
 - Requires `util.js` if building the JavaScript from source.
-- When disabling `autohide` the developer must provide a close button, it will not be added by default.
+- When disabling `autohide` the developer must provide a close button; it will not be added by default.
 
 ## Findings
 
