@@ -74,13 +74,128 @@ The `restoreFocusOnClear` attribute restores page's focus once the toast is clea
 - Purpose-built well for pure HTML.
 - There are many granular controls, concerning things like parent elements and sizing and alignment inheritance.
 - The component comes with events, for when the toast opens and the alignment changes (*not for when it closes though*).
-- Only one `<paper-toast>` will be visible on the screen at a time. If you trigger a second it will replace the first.
+- Only one `<paper-toast>` will be visible on the screen at a time. If a second is triggered it will replace the first.
 - **Warning**: `<paper-toast>` is affected by the stacking context of its container, so to guarantee it shows up on the top layer it must be placed at the top level (`<body>`) element.
     - How to properly handle top layer is an ongoing debate (see [here](https://github.com/whatwg/html/issues/897#issuecomment-198512778))
 
 ## [Material-UI Snackbar](https://material-ui.com/api/snackbar/)
+Material-UI Snackbar is a component from Google's Material-UI React library that provides an interactive toast notification.
 
-*TODO: Fill in study for this library*
+### Design & Sample Code
+"Snackbar" is the name used in many Google component libraries for an extensible, interactable toast component.
+Unlike Google *Toasts*, the Snackbar can have a call to action and a close button,
+alongside other differentiating properties.
+
+A Material-UI Snackbar is used like so:
+
+```jsx
+import { Component } from 'react';
+import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
+
+class SimpleSnackbar extends Component {
+  state = {
+    open: false,
+  };
+
+  handleClick = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = (event, reason) => {
+    this.setState({ open: false });
+  };
+
+  render() {
+    return (
+      <div>
+        <Button onClick={this.handleClick}>Open simple snackbar</Button>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          open={this.state.open}
+          autoHideDuration={6000}
+          onClose={this.handleClose}
+          message={<span id="message-id">Note archived</span>}
+          action={[
+            <Button key="undo" color="secondary" size="small" onClick={this.handleClose}>
+              UNDO
+            </Button>,
+            <Button key="close" color="secondary" size="small" onClick={this.handleClose}>
+              CLOSE
+            </Button>
+            ...
+          ]}
+        />
+      </div>
+    );
+  }
+}
+```
+
+The Snackbar is a React component, with the options passed to it as props.
+Styling the component can be done by passing to the `classes` property of a [SnackbarContent](#snackbarcontent) component (see link):
+
+```jsx
+<SnackbarContent
+  classes={{
+    root: {
+      'background-color': 'green'
+    },
+    message: {
+      color: 'blue',
+      'font-size': '24px'
+    },
+    action: {
+      border: '5px'
+    }
+  }}
+  ...
+/>
+```
+
+Per the [Material-UI overriding classes spec](https://material-ui.com/customization/overrides/#overriding-with-classes),
+the developer can provide styling on predefined parts of the component.
+
+Finally, the Material-UI library comes with helpful built-ins for creating components,
+including transitions like Fade:
+
+```jsx
+import Fade from '@material-ui/core/Fade';
+
+...
+
+<Snackbar
+  TransitionComponent={Fade}
+  ...
+/>
+```
+
+### Notable Features & Details
+
+#### SnackbarContent
+Material-UI provides both `<Snackbar>` and `<SnackbarContent>` components.
+The SnackbarContent component lets the developer style the `root`, `message`, and `action` via the `classes` property.
+The customized `<SnackbarContent>` view can then be used by adding it as a child of a regular `<Snackbar>`.
+The `classes` property of Snackbar lets the developer style the `root`,
+and each of the possible positions the toast can be in (`anchorOriginTopCenter`, `anchorOriginBottomCenter`, etc.).
+This is likely to allow finer control over the exact placement in each position.
+
+#### resumeHideDuration
+The Snackbar component has a property that allows the developer to reset the timeout to a specified number of milliseconds after user interaction.
+
+#### notistack
+It is not natively supported to display multiple Snackbars at a time, 
+but the documentation recommends using the [notistack](https://github.com/iamhosseindhv/notistack) library to make it possible.
+
+### Takeaways
+- Material-UI Snackbar ships with a many properties allowing for high control.
+- Customization is supported, but sometimes complicated (e.g. custom styles and [theme support using SnackbarContent](https://material-ui.com/demos/snackbars/#customized-snackbars))
+- The library supports callbacks for `close`, `enter`, and `exit`, for before, during, and after.
+- Allows control of the transition direction.
+
 
 ## [Android `Toast`](https://developer.android.com/guide/topics/ui/notifiers/toasts)
 Android `Toast` is a simple toast implementation built by the Android team for usage in Android apps.
@@ -88,7 +203,8 @@ Android `Toast` is a simple toast implementation built by the Android team for u
 ### Design & Sample Code
 **Note**: Since Android development is done in Kotlin all code samples will be Kotlin.
 
-To trigger displaying a simple Android `Toast`, put this in your Kotlin:
+To trigger displaying a simple Android `Toast`,
+this code is all that's needed:
 
 ```kotlin
 val text = "Hello toast!"
@@ -389,7 +505,7 @@ export class App implements OnInit {
 }
 ```
 
-### Notable Features and Details
+### Notable Features & Details
 
 #### Animation
 Uses Angular [Web Animations API](https://angular.io/guide/animations) by default.
