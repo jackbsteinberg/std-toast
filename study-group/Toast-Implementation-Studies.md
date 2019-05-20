@@ -74,7 +74,7 @@ The `restoreFocusOnClear` attribute restores page's focus once the toast is clea
 - Purpose-built well for pure HTML.
 - There are many granular controls, concerning things like parent elements and sizing and alignment inheritance.
 - The component comes with events, for when the toast opens and the alignment changes (*not for when it closes though*).
-- Only one `<paper-toast>` will be visible on the screen at a time. If you trigger a second it will replace the first.
+- Only one `<paper-toast>` will be visible on the screen at a time. If a second is triggered it will replace the first.
 - **Warning**: `<paper-toast>` is affected by the stacking context of its container, so to guarantee it shows up on the top layer it must be placed at the top level (`<body>`) element.
     - How to properly handle top layer is an ongoing debate (see [here](https://github.com/whatwg/html/issues/897#issuecomment-198512778))
 
@@ -83,7 +83,8 @@ Material-UI Snackbar is a component from Google's Material-UI React library that
 
 ### Design & Sample Code
 "Snackbar" is the name used in many Google component libraries for an extensible, interactable toast component.
-Unlike Google *Toasts*, the Snackbar can have a call to action and a close button, alongside other differentiating properties.
+Unlike Google *Toasts*, the Snackbar can have a call to action and a close button,
+alongside other differentiating properties.
 
 A Material-UI Snackbar is defined like so:
 
@@ -158,7 +159,8 @@ Styling the component can be done by passing to the `classes` property of a [Sna
 Per the [Material-UI overriding classes spec](https://material-ui.com/customization/overrides/#overriding-with-classes),
 the developer can provide styling on predefined parts of the component.
 
-Finally, the Material-UI library comes with helpful built-ins for creating components, including transitions like Fade:
+Finally, the Material-UI library comes with helpful built-ins for creating components,
+including transitions like Fade:
 
 ```jsx
 import Fade from '@material-ui/core/Fade';
@@ -175,14 +177,14 @@ import Fade from '@material-ui/core/Fade';
 
 #### SnackbarContent
 Material-UI provides both `<Snackbar>` and `<SnackbarContent>` components.
-The SnackbarContent lets the developer style the `root`, `message`, and `action` via the `classes` property,
-and the component is used as a child of Snackbar to display when style is needed.
+The SnackbarContent component lets the developer style the `root`, `message`, and `action` via the `classes` property.
+The customized `<SnackbarContent>` view can then be used by adding it as a child of a regular `<Snackbar>`.
 The `classes` property of Snackbar lets the developer style the `root`,
 and each of the possible positions the toast can be in (`anchorOriginTopCenter`, `anchorOriginBottomCenter`, etc.).
 This is likely to allow finer control over the exact placement in each position.
 
 #### resumeHideDuration
-The Snackbar component has a property that allows you to reset the timeout to a specified number of milliseconds after user interaction.
+The Snackbar component has a property that allows the developer to reset the timeout to a specified number of milliseconds after user interaction.
 
 #### notistack
 It is not natively supported to display multiple Snackbars at a time, 
@@ -201,7 +203,8 @@ Android `Toast` is a simple toast implementation built by the Android team for u
 ### Design & Sample Code
 **Note**: Since Android development is done in Kotlin all code samples will be Kotlin.
 
-To trigger displaying a simple Android `Toast`, put this in your Kotlin:
+To trigger displaying a simple Android `Toast`,
+this code is all that's needed:
 
 ```kotlin
 val text = "Hello toast!"
