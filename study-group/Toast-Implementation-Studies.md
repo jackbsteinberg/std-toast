@@ -10,7 +10,7 @@ The libraries studied are:
 - [Material-UI Snackbar](#material-ui-snackbar)
 - [Android `Toast`](#android-toast)
 - [react-toastify](#react-toastify)
-- [ngx-toastr](#ngx-toast)
+- [ngx-toastr](#ngx-toastr)
 - [Bootstrap Toast](#bootstrap)
 
 Each study covers the details and trade-offs of the toast library, by taking an in-depth look at the API, then extracting key takeaways.
