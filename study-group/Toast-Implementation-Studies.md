@@ -188,7 +188,7 @@ The Snackbar component has a property that allows the developer to reset the tim
 
 #### notistack
 It is not natively supported to display multiple Snackbars at a time, 
-but the spec recommends using the [notistack](https://github.com/iamhosseindhv/notistack) library to make it possible.
+but the documentation recommends using the [notistack](https://github.com/iamhosseindhv/notistack) library to make it possible.
 
 ### Takeaways
 - Material-UI Snackbar ships with a many properties allowing for high control.
