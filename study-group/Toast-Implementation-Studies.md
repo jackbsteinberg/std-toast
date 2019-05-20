@@ -11,7 +11,7 @@ The libraries studied are:
 - [Android `Toast`](#android-toast)
 - [react-toastify](#react-toastify)
 - [ngx-toastr](#ngx-toastr)
-- [Bootstrap](#bootstrap)
+- [Bootstrap Toast](#bootstrap)
 
 Each study covers the details and trade-offs of the toast library, by taking an in-depth look at the API, then extracting key takeaways.
 
@@ -67,8 +67,10 @@ Finally, to color the toast the library provides the two CSS properties, `--pape
 The `<paper-toast>` holds onto information about how it was dismissed the last time it was shown, in attributes called `canceled` and `closingReason`.
 
 #### Focus
-A few of the minute controls concern focus. The `noAutoFocus` attribute, which defaults to true (preventing autofocus), allows the user to decide if the `<paper-toast>` or its children will disable autofocus. 
-The `restoreFocusOnClear` attribute restores page's focus once the toast is cleared from the screen.
+A few of the minute controls concern focus.
+The `noAutoFocus` attribute, which defaults to true,
+gives the user the choice to enable autofocus. 
+The `restoreFocusOnClear` attribute restores page's focus to its previous location once the toast is removed from the screen.
 
 #### Takeaways
 - Purpose-built well for pure HTML.
@@ -230,8 +232,9 @@ toast.setGravity(Gravity.TOP or Gravity.LEFT, 10, 10)
 ```
 
 Will show the toast further down and further right.
-The toast can also be injected with a custom layout, which requires more complex Kotlin, explained [here](https://developer.android.com/guide/topics/ui/notifiers/toasts#CustomToastView).
-The `text`, `view`, `gravity`, and `duration` of the toast are all the elements the developer can control when working with this very straightforward component.
+The toast can also be injected with a custom layout, 
+which requires more complex Kotlin, explained [here](https://developer.android.com/guide/topics/ui/notifiers/toasts#CustomToastView).
+The `text`, `view`, `gravity`, and `duration` of the toast are all the elements the developer can control when working with this relatively straightforward API.
 
 
 ### Notable Features & Details
@@ -276,11 +279,14 @@ class App extends Component {
 }
 ```
 
-`react-toastify` uses the explicit component pattern, by having the developer render a React `ToastContainer` component (the recommendation is to put this in the application root).
+`react-toastify` uses the explicit component pattern, 
+by having the developer render a React `ToastContainer` component (the recommendation is to put this in the application root).
 This single component will render all toasts called from JavaScript and can be configured with global options.
-However, the library allows the developer a lot of freedom, supporting multiple `ToastContainer`s as well as no `ToastContainer`, though one is recommended.
+However, the library allows the developer a lot of freedom, 
+supporting multiple `ToastContainer`s as well as no `ToastContainer`, though one is recommended.
 
-When the `toast()` is called with a message and a props object, it is displayed in the toast container, with the toast props overriding the `ToastContainer` props, like so:
+When the `toast()` is called with a message and a props object, it is displayed in the toast container, 
+with the toast props overriding the `ToastContainer` props, like so:
 
 ```jsx
 class App extends Component {
@@ -511,7 +517,7 @@ export class App implements OnInit {
 Uses Angular [Web Animations API](https://angular.io/guide/animations) by default.
 
 #### Reacts to Hover
-User hover pauses the toast timeout, and when the mouse leaves the timeout resumes, or optionally begins an author-specified post-hover timeout.
+User hover pauses the toast timeout, and when the mouse leaves the timeout resumes - or optionally begins an author-specified post-hover timeout.
 
 #### Multiple Configuration
 The library allows showing multiple toasts, and gives the developer specific control of maximum capacity and behavior at maximum capacity.
@@ -523,9 +529,109 @@ The library allows showing multiple toasts, and gives the developer specific con
 - Comes with default icons, can change by modifying CSS.
 - **Note**: On mobile there's currently no simple way to stop the timeout, accomplished by hover on desktop.
 
-## Bootstrap
+## [Bootstrap Toast](https://getbootstrap.com/docs/4.2/components/toasts/)
+The Bootstrap Toast is a component from the Bootstrap library to provide a lightweight, customizable notification in the library's distinct style.
 
-*TODO: Fill in study for this library*
+### Design & Code Samples
+The Toast component, like many others in the Bootstrap library, is put directly into HTML:
+
+```html
+<div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <img src="..." class="rounded mr-2" alt="...">
+    <strong class="mr-auto">A Bootstrap Toast</strong>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    Hello, world! This is a Bootstrap Toast!
+  </div>
+</div>
+```
+
+Bootstrap uses classes to denote special elements of the components it constructs, 
+like the classes `toast`, `toast-header`, and `toast-body`.
+The example uses many `aria` attributes, indicating a deliberate effort for accessibility.
+Multiple Toasts can be wrapped together in a `div` to stack on top of each other.
+
+```html
+<div aria-live="polite" aria-atomic="true" style="position: relative; min-height: 200px;">
+  <!-- Position it -->
+  <div style="position: absolute; top: 0; right: 0;">
+
+    <!-- Then put toasts within -->
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="..." class="rounded mr-2" alt="...">
+        <strong class="mr-auto">Bootstrap</strong>
+        <small class="text-muted">just now</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        See? Just like this.
+      </div>
+    </div>
+
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <img src="..." class="rounded mr-2" alt="...">
+        <strong class="mr-auto">Bootstrap</strong>
+        <small class="text-muted">2 seconds ago</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body">
+        Heads up, Toasts will stack automatically
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+Using native styling with the `position: absolute;` attribute on, the Toasts can be intuitively positioned on the screen.
+Note that the order the Toasts display in is determined by their DOM order, _not_ the order in which they are triggered.
+
+To display, select all with the `.toast` class and initialize, then select one by its element ID to display:
+
+```js
+// Initializes all Toast elements
+$('.toast').toast({
+  animation: true, // adds a CSS fade
+  autohide: true, // automatically closes the Toast
+  delay: 5000 // sets time to wait before closing the Toast
+})
+
+$('#single-toast-id').toast('show')
+```
+
+### Notable Features & Details
+
+#### Pure HTML View
+Bootstrap Toasts are purely HTML elements highly styled with CSS, and are easily customizable.
+
+#### Events
+The library offers events for `show`, `shown`, `hide`, and `hidden`, to represent the moments before and after the Toast is shown / hidden.
+
+#### Accessibility
+The documentation is explicit about suggesting wrapping the toasts in `aria-live`, to announce the content via screen reader without moving focus.
+It also recommends including `aria-atomic="true"` to ensure the Toast is read as a single atomic element, 
+and live changes don't disrupt the screen-reader user.
+
+#### Z-Index
+Bootstrap components that are meant to be overlayed use an arbitrary z-index value, in the range of ~1000.
+
+### Takeaways
+
+- Low JavaScript configuration, high HTML customization.
+- Uses the same `.toast(options)` method for `show`, `hide`, and `dispose`, by passing in any of those strings as `options`.
+- The developer needs to be cognizant of DOM order for multiple toasts.
+  -  Calling `show` out order would still display Toasts in DOM order, a potentially unexpected behavior.
+- Requires `util.js` if building the JavaScript from source.
+- When disabling `autohide` the developer must provide a close button; it will not be added by default.
 
 ## Findings
 
