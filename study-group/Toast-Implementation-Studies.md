@@ -67,8 +67,10 @@ Finally, to color the toast the library provides the two CSS properties, `--pape
 The `<paper-toast>` holds onto information about how it was dismissed the last time it was shown, in attributes called `canceled` and `closingReason`.
 
 #### Focus
-A few of the minute controls concern focus. The `noAutoFocus` attribute, which defaults to true (preventing autofocus), allows the user to decide if the `<paper-toast>` or its children will disable autofocus. 
-The `restoreFocusOnClear` attribute restores page's focus once the toast is cleared from the screen.
+A few of the minute controls concern focus.
+The `noAutoFocus` attribute, which defaults to true,
+gives the user the choice to enable autofocus. 
+The `restoreFocusOnClear` attribute restores page's focus to its previous location once the toast is removed from the screen.
 
 #### Takeaways
 - Purpose-built well for pure HTML.
@@ -114,8 +116,9 @@ toast.setGravity(Gravity.TOP or Gravity.LEFT, 10, 10)
 ```
 
 Will show the toast further down and further right.
-The toast can also be injected with a custom layout, which requires more complex Kotlin, explained [here](https://developer.android.com/guide/topics/ui/notifiers/toasts#CustomToastView).
-The `text`, `view`, `gravity`, and `duration` of the toast are all the elements the developer can control when working with this very straightforward component.
+The toast can also be injected with a custom layout, 
+which requires more complex Kotlin, explained [here](https://developer.android.com/guide/topics/ui/notifiers/toasts#CustomToastView).
+The `text`, `view`, `gravity`, and `duration` of the toast are all the elements the developer can control when working with this relatively straightforward API.
 
 
 ### Notable Features & Details
@@ -160,11 +163,14 @@ class App extends Component {
 }
 ```
 
-`react-toastify` uses the explicit component pattern, by having the developer render a React `ToastContainer` component (the recommendation is to put this in the application root).
+`react-toastify` uses the explicit component pattern, 
+by having the developer render a React `ToastContainer` component (the recommendation is to put this in the application root).
 This single component will render all toasts called from JavaScript and can be configured with global options.
-However, the library allows the developer a lot of freedom, supporting multiple `ToastContainer`s as well as no `ToastContainer`, though one is recommended.
+However, the library allows the developer a lot of freedom, 
+supporting multiple `ToastContainer`s as well as no `ToastContainer`, though one is recommended.
 
-When the `toast()` is called with a message and a props object, it is displayed in the toast container, with the toast props overriding the `ToastContainer` props, like so:
+When the `toast()` is called with a message and a props object, it is displayed in the toast container, 
+with the toast props overriding the `ToastContainer` props, like so:
 
 ```jsx
 class App extends Component {
@@ -395,7 +401,7 @@ export class App implements OnInit {
 Uses Angular [Web Animations API](https://angular.io/guide/animations) by default.
 
 #### Reacts to Hover
-User hover pauses the toast timeout, and when the mouse leaves the timeout resumes, or optionally begins an author-specified post-hover timeout.
+User hover pauses the toast timeout, and when the mouse leaves the timeout resumes - or optionally begins an author-specified post-hover timeout.
 
 #### Multiple Configuration
 The library allows showing multiple toasts, and gives the developer specific control of maximum capacity and behavior at maximum capacity.
@@ -428,7 +434,8 @@ The Toast component, like many others in the Bootstrap library, is put directly 
 </div>
 ```
 
-Bootstrap uses classes to denote special elements of the components it constructs, like the classes `toast`, `toast-header`, and `toast-body`.
+Bootstrap uses classes to denote special elements of the components it constructs,
+ like the classes `toast`, `toast-header`, and `toast-body`.
 The example uses many `aria` attributes, indicating a deliberate effort for accessibility.
 Multiple Toasts can be wrapped together in a `div` to stack intuitively.
 
