@@ -19,7 +19,6 @@ then shows it with configurations via a method on the element.
 This can be used to declaratively predefine toasts the application will need,
 and then show them inside the application logic.
 
-
 ```html
 <script type="module">
 import 'std:elements/toast';
@@ -66,7 +65,7 @@ which the standard toast aims to accomplish natively.
 
     - Toasts almost always support a message, action, and close button.
 
-    - Toasts often support icons and titles.
+    - Toasts often support an icon and a title.
 
 - The positioning of the toast must be intuitive,
   so the standard toast will come with built-in support for common positions,
@@ -83,7 +82,8 @@ which the standard toast aims to accomplish natively.
 
 ## Proposed API
 
-The element is provided as a [built-in module](https://github.com/tc39/proposal-javascript-standard-library/blob/master/README.md), named `"std:elements/toast"`.
+The element is provided as a [built-in module](https://github.com/tc39/proposal-javascript-standard-library/blob/master/README.md),
+named `"std:elements/toast"`.
 
 ### The `<std-toast>` element
 
@@ -92,10 +92,11 @@ The element is provided as a [built-in module](https://github.com/tc39/proposal-
 - [Global attributes](https://html.spec.whatwg.org/multipage/dom.html#global-attributes)
 - `open`: a boolean attribute, determining whether the toast is visible or not (according to the default styles). By default toasts are not shown.
 - `theme`: one of `"default"`, ???, or ???, conveying the semantic priority of the toast, and influencing its styling (both default and user-provided)
+    - TODO: decide on list of themes to natively support and create and style them.
 - `position`: one of `"top-left"`, `"top-center"`, `"top-right"`, `"middle-left"`, `"middle-center"`, `"middle-right"`, `"bottom-left"`, `"bottom-center"`, or `"bottom-right"`. The default (if the attribute is omitted or set to an invalid value) is `"bottom-right"`.
     - TODO: this seems stylistic; should it be controlled via CSS instead?
     - TODO: these are physical positions; should we use [logical ones](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties/Basic_concepts) instead?
-- `closebutton`: a boolean attribute, determining whether an explicit close button is shown. By default toasts do not have a close button.
+- `closebutton`: a boolean attribute, determining whether an explicit close button is shown. By default toasts do not have a close button. TODO
 
 All attributes will be reflected as properties on the element's JavaScript interface.
 For example:
@@ -173,8 +174,8 @@ by toggling its `open=""` attribute to true.
 The `options` include:
 
 - `duration`: how long to show the toast, in milliseconds. Defaults to ???
-- `multiple`: ???
-- `newestOnTop`: ???
+- `multiple`: TODO
+- `newestOnTop`: TODO
 
 TODO: how do `multiple` and `newestOnTop` work?
 Should those be a global setting?
@@ -190,7 +191,7 @@ A `<std-toast>` element can fire the following events:
   (Note: if animations were applied, the toast may not be entirely invisible at the time this event fires)
     - TODO: should we consider separate events for the start and end of any close animation?
       This seems hard to do correctly if the user customizes the animation, though.
-- `"actionclick"`: the toast's call-to-action button or link was clicked, if one exists
+- `"actionclick"`: the toast's call-to-action button or link was clicked, if one exists TODO
 
 ### `showToast(message, options)`
 
@@ -206,6 +207,9 @@ to make the toast visible.
 Finally,
 it returns the created `<std-toast>` element,
 allowing further manipulation by script.
+
+TODO: will `showToast()` support putting the toast into a specified container,
+or only into `body`?
 
 `message` is a string that will be inserted as a text node
 (TODO: or as a `<p>` element?) into the created `<std-toast>`.
@@ -231,6 +235,7 @@ TODO: how do we deal with actions with this API? Ideas:
 ### Default styles
 
 TODO: figure out some default styles, and state them here.
+Additionally figure out default styles for themes.
 
 ### Appearance customization
 
