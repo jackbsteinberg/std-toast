@@ -85,29 +85,54 @@ The element is provided as a [JavaScript Standard Library](https://github.com/tc
 ### Attributes
 
 *Note @me: view related goes in attributes*
-*Note @me: how to structure `<std-toast>` info vs `showToast` info?*
+
+*TODO(me): how to structure `<std-toast>` info vs `showToast` info?*
+
+These attributes and default values will be attached to the `<std-toast>` HTML element.
 
 - [Global attributes](https://html.spec.whatwg.org/multipage/dom.html#global-attributes)
-- `open`
-- `theme`
+- `open`: `Boolean` - default: false
+- `theme`: `String` - default: 'default' (??)
+- `postition`: `String` - default: 'bottom-right' (??)
+
+*TODO(me): how to explain things that can be both attributes and properties (elt + js patterns)*
+
+*TODO(me): where to put action and how to format it?*
 
 
 ### Properties & Functions
 
+The std-toast library will come with a `showToast` function,
+which will handle the case of opening a toast
+and optionally creating it as well in Javascript.
+
+#### `showToast(message, options)`
+
+Creates a toast object displaying the `message`
+with an object of the `options`.
+
+The options the developers can configure are:
+
 - `duration`
+- `closeButton`
+- `multiple` (??)
+- `newestOnTop` (??)
 
 ### Pseudo classes
 
+- `:hover`
+- `:focus`
 
 ### Events
 
-
-### Relationship with other elements
-
+The `<std-switch>` will emit events when it is opened and when it is closed.
+*TODO(me): should it emit an event when the action is taken?*
+*TODO(me): event for onFocus?*
 
 ### Appearance customization
 
-
+*TODO(me): a flag for platform-dependent appearance (like std-switch question 
+[here](https://github.com/tkent-google/std-switch#appearance-customization))*
 
 ## Common Patterns
 
@@ -168,4 +193,3 @@ const configs = {
 const toast1 = showToast("number 1", configs);
 const toast2 = showToast("number 2", configs);
 ```
-
