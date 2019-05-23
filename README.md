@@ -20,7 +20,7 @@ They require special accessibility considerations,
 and scenarios involving multiple toasts need special handling.
 [Not all libraries account for these subtleties](./study-group/).
 By providing a built-in toast control that fully handles these aspects,
-we can level up the typical toast experience for users of the web.
+we can level up the typical toast experience for both developers and users of the web.
 
 Finally,
 the ecosystem can benefit from a shared understanding of how to create and style toasts.
