@@ -6,9 +6,35 @@ This document scopes out a web platform API for a 'toast' pop-up notification.
 Modern web applications allow users to complete lots of actions per page,
 which necessitates providing clear feedback for each action.
 Toast notifications are commonly used to unobtrusively provide this feedback.
-Many libraries in a variety of frameworks implement a version of toast,
+
+Many libraries in a variety of frameworks implement a version of toast
+(see [research](./study-group/)),
 but the web has no built-in API to address the use case.
-*TODO: why should it? What difference does it make?*
+By providing a toast API as part of the web platform's standard library,
+the web becomes more competitive with other app development platforms,
+and web application developers can spend less of their time and bytes
+on implementing this pattern.
+
+Toasts are also a deceptively-tricky pattern to get right.
+They require special accessibility considerations,
+and scenarios involving multiple toasts need special handling.
+[Not all libraries account for these subtleties](./study-group/).
+By providing a built-in toast control that fully handles these aspects,
+we can level up the typical toast experience for users of the web.
+
+Finally,
+the ecosystem can benefit from a shared understanding of how to create and style toasts.
+If the platform provides a toast,
+then all libraries and components can freely use toasts to communicate to their users.
+Whereas,
+if toasts can only be found in libraries,
+then importing a toast-using component also means importing their opinion on what the best toast library is.
+In the worst case,
+this can lead to multiple uncoordinated toast libraries acting on a single page,
+each of which needs its own styling and tweaks to fit in to the application.
+If instead libraries and components all use the standard toast,
+the application developer can centrally style and coordinate them.
+
 
 ## Sample code
 
