@@ -12,7 +12,13 @@ but the web has no built-in API to address the use case.
 
 ## Sample code
 
-The standard toast can be used according to two different patterns:
+The standard toast can be used according to two different patterns.
+
+The first defines a `<std-toast>` HTML element,
+then shows it with configurations via a method on the element.
+This can be used to declaratively predefine toasts the application will need,
+and then show them inside the application logic.
+
 
 ```html
 <script type="module">
@@ -30,8 +36,11 @@ document.querySelector('#sample-toast').show({
 });
 ```
 
-The first defines a `<std-toast>` HTML element,
-then shows it with configurations via a method on the element.
+The second imports the `showToast()` function from the `"std:elements/toast"` module,
+which takes in a message and some configurations and creates and shows a toast in the DOM.
+This is more convenient for one-off toasts,
+or for JavaScript-driven situations,
+similar to how `alert()` is currently used.
 
 ```js
 import { showToast } from 'std:elements/toast';
@@ -41,9 +50,6 @@ const toast = showToast("Hello World!", {
     duration: 3000
 });
 ```
-
-The second imports the `showToast` function from the standard toast,
-which takes in a message and some configurations and creates and shows a toast in the DOM.
 
 ## Goals
 
@@ -75,64 +81,164 @@ which the standard toast aims to accomplish natively.
   either by stacking them in the view,
   or queueing them and displaying sequentially.
 
-These goals will be prioritized during implementation,
-by ensuring the application and styling for each case is simple and east to understand.
-
 ## Proposed API
 
-The element is provided as a [JavaScript Standard Library](https://github.com/tc39/proposal-javascript-standard-library/blob/master/README.md).
+The element is provided as a [built-in module](https://github.com/tc39/proposal-javascript-standard-library/blob/master/README.md), named `"std:elements/toast"`.
 
-### Attributes
+### The `<std-toast>` element
 
-*Note @me: view related goes in attributes*
-
-*TODO(me): how to structure `<std-toast>` info vs `showToast` info?*
-
-These attributes and default values will be attached to the `<std-toast>` HTML element.
+#### Attributes
 
 - [Global attributes](https://html.spec.whatwg.org/multipage/dom.html#global-attributes)
-- `open`: `Boolean` - default: false
-- `theme`: `String` - default: 'default' (??)
-- `postition`: `String` - default: 'bottom-right' (??)
+- `open`: a boolean attribute, determining whether the toast is visible or not (according to the default styles). By default toasts are not shown.
+- `theme`: one of `"default"`, ???, or ???, conveying the semantic priority of the toast, and influencing its styling (both default and user-provided)
+- `position`: one of `"top-left"`, `"top-center"`, `"top-right"`, `"middle-left"`, `"middle-center"`, `"middle-right"`, `"bottom-left"`, `"bottom-center"`, or `"bottom-right"`. The default (if the attribute is omitted or set to an invalid value) is `"bottom-right"`.
+    - TODO: this seems stylistic; should it be controlled via CSS instead?
+    - TODO: these are physical positions; should we use [logical ones](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties/Basic_concepts) instead?
+- `closebutton`: a boolean attribute, determining whether an explicit close button is shown. By default toasts do not have a close button.
 
-*TODO(me): how to explain things that can be both attributes and properties (elt + js patterns)*
+All attributes will be reflected as properties on the element's JavaScript interface.
+For example:
 
-*TODO(me): where to put action and how to format it?*
+```js
+const toast = document.createElement('std-toast');
+console.log(toast.open); // false
+```
 
+#### Contents
 
-### Properties & Functions
+The `<std-toast>` element can be used as a generic container,
+but will work best (in terms of default styling and events) if the developer conforms to the following content model:
 
-The std-toast library will come with a `showToast` function,
-which will handle the case of opening a toast
-and optionally creating it as well in Javascript.
+- The first child node,
+  typically either a text node or a container like `<p>`,
+  provides a message.
+- If more than one child node is present,
+  then the last child element,
+  which can be either an `<a>` or a `<button>`,
+  provides a call to action.
 
-#### `showToast(message, options)`
+TODO: what about title or icon? They should potentially also be accomodated, in a similar fashion.
 
-Creates a toast object displaying the `message`
-with an object of the `options`.
+Thus, the following would all work well out of the box:
 
-The options the developers can configure are:
+```html
+<std-toast>Hello world!</std-toast>
 
-- `duration`
-- `closeButton`
-- `multiple` (??)
-- `newestOnTop` (??)
+<std-toast><p>Hello world!</p></std-toast>
 
-### Pseudo classes
+<std-toast>
+  <p>Hello world!</p>
+  <button>Click me!</button>
+</std-toast>
 
-- `:hover`
-- `:focus`
+<std-toast>
+  <p>Hello world!</p>
+  <a href="https://example.com/" target="_blank">Click me!</button>
+</std-toast>
+```
 
-### Events
+These can equivalently be created via JavaScript:
 
-The `<std-switch>` will emit events when it is opened and when it is closed.
-*TODO(me): should it emit an event when the action is taken?*
-*TODO(me): event for onFocus?*
+```js
+// TODO: write this once we figure out the JS API for supplying HTML messages,
+// and for supplying customizable actions
+```
+
+More complex toasts,
+that don't fit the above content model,
+would require more custom handling on the part of the developer:
+
+```html
+<std-toast>
+  <p>Hello world!</p>
+  <p>A second paragraph?!</p>
+
+  <button>Action 1</button>
+  <button>Action 2</button>
+</std-toast>
+```
+
+Such an unusual toast would still integrate with other toasts in terms of stacking and positioning behavior,
+and some of the default styles that are inherited may be useful.
+But the page author will need to handle the action clicks themselves (instead of using the `"actionclick"` event),
+and will need to add additional styling to handle the extra contents.
+
+TODO: when we have a prototype, link to/show an example of this in action.
+
+#### Methods
+
+The `.show(options)` function shows a toast element,
+by toggling its `open=""` attribute to true.
+The `options` include:
+
+- `duration`: how long to show the toast, in milliseconds. Defaults to ???
+- `multiple`: ???
+- `newestOnTop`: ???
+
+TODO: how do `multiple` and `newestOnTop` work?
+Should those be a global setting?
+Per container?
+How do we deal with different toasts having different values?
+
+#### Events
+
+A `<std-toast>` element can fire the following events:
+
+- `"open"`: the toast was shown
+- `"close"`: the toast was closed, either explicitly by the user, or via the timeout.
+  (Note: if animations were applied, the toast may not be entirely invisible at the time this event fires)
+    - TODO: should we consider separate events for the start and end of any close animation?
+      This seems hard to do correctly if the user customizes the animation, though.
+- `"actionclick"`: the toast's call-to-action button or link was clicked, if one exists
+
+### `showToast(message, options)`
+
+The `"std:elements/toast"` module also exports a convenience function,
+`showToast()`,
+which allows creating and showing toasts entirely from JavaScript.
+Behind the scenes,
+`showToast()` creates a `<std-toast>`,
+sets it up using the given message and options,
+inserts it as the last child of `<body>`,
+and then adds the `open=""` attribute,
+to make the toast visible.
+Finally,
+it returns the created `<std-toast>` element,
+allowing further manipulation by script.
+
+`message` is a string that will be inserted as a text node
+(TODO: or as a `<p>` element?) into the created `<std-toast>`.
+
+TODO: can `message` contain HTML?
+
+`options` allows configuring both the attributes of the `<std-toast>`,
+and the options for this particular showing of the toast.
+Thus, the possible options are:
+
+- `theme`, like the attribute
+- `position`, like the attribute
+- `closeButton`, like the attribute
+- `duration`, like the `show()` option
+- `multiple`, like the `show()` option
+- `newestOnTop`, like the `show()` option
+
+TODO: how do we deal with actions with this API? Ideas:
+- Provide an element
+- Provide a HTML string
+- Provide a URL (to create a link) or a function (to create a button)
+
+### Default styles
+
+TODO: figure out some default styles, and state them here.
 
 ### Appearance customization
 
-*TODO(me): a flag for platform-dependent appearance (like std-switch question 
-[here](https://github.com/tkent-google/std-switch#appearance-customization))*
+TODO: explain any API for appearance customization,
+beyond just normal CSS.
+For example,
+a CSS shadow part for the close button,
+or some CSS variables.
 
 ## Common Patterns
 
@@ -144,7 +250,7 @@ The `<std-switch>` will emit events when it is opened and when it is closed.
 ```
 
 ```js
-document.querySelector('#sample-toast').showToast();
+document.querySelector('#sample-toast').show();
 ```
 
 ### Create and show new toast with options
@@ -165,24 +271,7 @@ const toast = showToast("Hello World!");
 document.querySelector("#container").append(toast);
 ```
 
-### Duplicate existing toast
-```html
-<std-toast id="#sample-toast">
-    Hello World!
-</std-toast>
-```
-
-```js
-const toast = document.querySelector('#sample-toast');
-toast.showToast();
-
-const duplicateToast = toast.cloneNode(true);
-duplicateToast.showToast();
-
-// TODO: The duplicates made like this must be cleaned up from the DOM.
-```
-
-### Define config object
+### Reusable config object
 
 ```js
 const configs = {
@@ -193,3 +282,7 @@ const configs = {
 const toast1 = showToast("number 1", configs);
 const toast2 = showToast("number 2", configs);
 ```
+
+### Styling the toast
+
+TODO
