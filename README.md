@@ -118,6 +118,8 @@ but will work best (in terms of default styling and events) if the developer con
   which can be either an `<a>` or a `<button>`,
   provides a call to action.
 
+TODO: what about title or icon? They should potentially also be accomodated, in a similar fashion.
+
 Thus, the following would all work well out of the box:
 
 ```html
@@ -186,6 +188,8 @@ A `<std-toast>` element can fire the following events:
 - `"open"`: the toast was shown
 - `"close"`: the toast was closed, either explicitly by the user, or via the timeout.
   (Note: if animations were applied, the toast may not be entirely invisible at the time this event fires)
+    - TODO: should we consider separate events for the start and end of any close animation?
+      This seems hard to do correctly if the user customizes the animation, though.
 - `"actionclick"`: the toast's call-to-action button or link was clicked, if one exists
 
 ### `showToast(message, options)`
@@ -246,7 +250,7 @@ or some CSS variables.
 ```
 
 ```js
-document.querySelector('#sample-toast').showToast();
+document.querySelector('#sample-toast').show();
 ```
 
 ### Create and show new toast with options
