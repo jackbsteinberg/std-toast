@@ -5,7 +5,7 @@ This document scopes out a web platform API for a 'toast' pop-up notification.
 
 Modern web applications allow users to complete lots of actions per page,
 which necessitates providing clear feedback for each action.
-Toast notifications are commonly to unobtrusively provide this feedback.
+Toast notifications are commonly used to unobtrusively provide this feedback.
 Many libraries in a variety of frameworks implement a version of toast,
 but the web has no built-in API to address the use case.
 *TODO: why should it? What difference does it make?*
@@ -19,22 +19,22 @@ The standard toast can be used according to two different patterns:
 import 'std:elements/toast';
 </script>
 
-<std-toast id="sample-toast">
+<std-toast id="sample-toast" theme="info">
     Hello World!
 </std-toast>
 ```
 
 ```js
-import { showToast } from 'std:elements/toast';
-
-document.querySelector('#sample-toast').showToast();
+document.querySelector('#sample-toast').show({
+    duration: 3000
+});
 ```
 
-The first allows the developer to define a `<std-toast>` HTML element,
-then show it via a method in JavaScript.
+The first defines a `<std-toast>` HTML element,
+then shows it with configurations via a method on the element.
 
 ```js
-import {showToast } from 'std:elements/toast';
+import { showToast } from 'std:elements/toast';
 
 const toast = showToast("Hello World!", {
     theme: "info",
@@ -42,9 +42,72 @@ const toast = showToast("Hello World!", {
 });
 ```
 
+The second imports the `showToast` function from the standard toast,
+which takes in a message and some configurations and creates and shows a toast in the DOM.
+
 ## Goals
 
+Across popular toast implementations there are recurring patterns,
+which the standard toast aims to accomplish natively.
+
+- The component will be accessible by default;
+  native accessibility is is a strong priority for toasts,
+  as they can be difficult to make properly accessible.
+
+- Toast implementations are often shaped similarly,
+  and a goal of the standard toast is to make it as easy as possible for developers
+  to build and style toasts that conform to those common shapes.
+
+    - Toasts almost always support a message, action, and close button.
+
+    - Toasts often support icons and titles.
+
+- The positioning of the toast must be intuitive,
+  so the standard toast will come with built-in support for common positions,
+  as well as a sensible default.
+
+- To balance ease of use with customization,
+  the standard toast will support creating and showing with one JavaScript function,
+  as well as writing a custom view with a `<std-toast>` element
+  and showing that with a method.
+
+- The standard toast will come with support for showing multiple toasts,
+  either by stacking them in the view,
+  or queueing them and displaying sequentially.
+
+These goals will be prioritized during implementation,
+by ensuring the application and styling for each case is simple and east to understand.
+
 ## Proposed API
+
+The element is provided as a [JavaScript Standard Library](https://github.com/tc39/proposal-javascript-standard-library/blob/master/README.md).
+
+### Attributes
+
+*Note @me: view related goes in attributes*
+*Note @me: how to structure `<std-toast>` info vs `showToast` info?*
+
+- [Global attributes](https://html.spec.whatwg.org/multipage/dom.html#global-attributes)
+- `open`
+- `theme`
+
+
+### Properties & Functions
+
+- `duration`
+
+### Pseudo classes
+
+
+### Events
+
+
+### Relationship with other elements
+
+
+### Appearance customization
+
+
 
 ## Common Patterns
 
@@ -94,6 +157,15 @@ duplicateToast.showToast();
 // TODO: The duplicates made like this must be cleaned up from the DOM.
 ```
 
-## References
+### Define config object
 
-## Acknowledgements
+```js
+const configs = {
+    theme: 'info',
+    duration: 3000
+}
+
+const toast1 = showToast("number 1", configs);
+const toast2 = showToast("number 2", configs);
+```
+
