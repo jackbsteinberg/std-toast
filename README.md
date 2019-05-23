@@ -92,7 +92,7 @@ The element is provided as a [built-in module](https://github.com/tc39/proposal-
 - [Global attributes](https://html.spec.whatwg.org/multipage/dom.html#global-attributes)
 - `open`: a boolean attribute, determining whether the toast is visible or not (according to the default styles). By default toasts are not shown.
 - `theme`: one of `"default"`, ???, or ???, conveying the semantic priority of the toast, and influencing its styling (both default and user-provided)
-- `position`: one of `"top-left"`, `"top-center"`, `"top-right"`, `"middle-left"`, `"middle-center"`, `"middle-right"`, `"bottom-left"`, `"bottom-center"`, or `"bottom-right"`. The default is (if the attribute is omitted or set to an invalid value) is `"bottom-right"`.
+- `position`: one of `"top-left"`, `"top-center"`, `"top-right"`, `"middle-left"`, `"middle-center"`, `"middle-right"`, `"bottom-left"`, `"bottom-center"`, or `"bottom-right"`. The default (if the attribute is omitted or set to an invalid value) is `"bottom-right"`.
     - TODO: this seems stylistic; should it be controlled via CSS instead?
     - TODO: these are physical positions; should we use [logical ones](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties/Basic_concepts) instead?
 - `closebutton`: a boolean attribute, determining whether an explicit close button is shown. By default toasts do not have a close button.
