@@ -82,7 +82,7 @@ Across popular toast implementations there are recurring patterns,
 which the standard toast aims to accomplish natively.
 
 - The component will be accessible by default;
-  native accessibility is is a strong priority for toasts,
+  native accessibility is a strong priority for toasts,
   as they can be difficult to make properly accessible.
 
 - Toast implementations are often shaped similarly,
