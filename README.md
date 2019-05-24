@@ -106,6 +106,14 @@ which the standard toast aims to accomplish natively.
   either by stacking them in the view,
   or queueing them and displaying sequentially.
 
+A broader goal of the standard toast is to provide a base for more opinionated or featureful toast libraries to layer on top of.
+It will be designed and built highly extensible, 
+so library implementations can focus on providing more specific styling, better framework support, or more opinionated default.
+The intent is that any developer looking to use a toast in their work will use a standard toast,
+or a library which provides a wrapper on top of standard toast.
+
+TODO: create an example of this layering and link to it here.
+
 ## Proposed API
 
 The element is provided as a [built-in module](https://github.com/tc39/proposal-javascript-standard-library/blob/master/README.md),
@@ -120,11 +128,15 @@ named `"std:elements/toast"`.
 - `theme`: one of `"default"`, ???, or ???, conveying the semantic priority of the toast, and influencing its styling (both default and user-provided)
     - TODO: decide on list of themes to natively support and create and style them.
 - `position`: one of `"top-left"`, `"top-center"`, `"top-right"`, `"middle-left"`, `"middle-center"`, `"middle-right"`, `"bottom-left"`, `"bottom-center"`, or `"bottom-right"`.
-The default (if the attribute is omitted or set to an invalid value) is `"bottom-right"`.
+The default (if the attribute is omitted or set to an invalid value) is ???.
     - TODO: this seems stylistic; should it be controlled via CSS instead?
-    - TODO: these are physical positions; should we use [logical ones](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties/Basic_concepts) instead?
+    - TODO: these are physical positions; 
+      should we use [logical ones](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties/Basic_concepts) instead?
+    - TODO: should there be a system default for positions 
+      (e.g. should Android toasts show up in a different location from macOS toasts)?
 - `closebutton`: a boolean attribute, determining whether an explicit close button is shown. 
-By default toasts do not have a close button. TODO
+By default toasts do not have a close button.
+TODO: where should the `closebutton` show up relative to toast content and how customizable should that be?
 
 All attributes will be reflected as properties on the element's JavaScript interface.
 For example:
@@ -202,8 +214,8 @@ by toggling its `open=""` attribute to true.
 The `options` include:
 
 - `duration`: how long to show the toast, in milliseconds. Defaults to ???
-- `multiple`: TODO
-- `newestOnTop`: TODO
+- `multiple`: ???
+- `newestOnTop`: ???
 
 TODO: how do `multiple` and `newestOnTop` work?
 Should those be a global setting?
@@ -219,7 +231,8 @@ A `<std-toast>` element can fire the following events:
   (Note: if animations were applied, the toast may not be entirely invisible at the time this event fires)
     - TODO: should we consider separate events for the start and end of any close animation?
       This seems hard to do correctly if the user customizes the animation, though.
-- `"actionclick"`: the toast's call-to-action button or link was clicked, if one exists TODO
+- `"actionclick"`: the toast's call-to-action button or link was clicked, if one exists.
+    - TODO: flesh out exactly how the action works and how this event is linked.
 
 ### `showToast(message, options)`
 
