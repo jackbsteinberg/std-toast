@@ -123,7 +123,8 @@ named `"std:elements/toast"`.
 The default (if the attribute is omitted or set to an invalid value) is `"bottom-right"`.
     - TODO: this seems stylistic; should it be controlled via CSS instead?
     - TODO: these are physical positions; should we use [logical ones](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties/Basic_concepts) instead?
-- `closebutton`: a boolean attribute, determining whether an explicit close button is shown. By default toasts do not have a close button. TODO
+- `closebutton`: a boolean attribute, determining whether an explicit close button is shown. 
+By default toasts do not have a close button. TODO
 
 All attributes will be reflected as properties on the element's JavaScript interface.
 For example:
