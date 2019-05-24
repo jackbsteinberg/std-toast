@@ -23,6 +23,7 @@ If there are any mistakes, please open an issue to get them corrected.
 | [Timeout](#properties)                                | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ |
 | [Close Button](#properties)                           | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ |
 | [Call To Action](#properties)                         | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ |
+| [Dismiss](#properties)                                | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ |
 | [Callbacks](#properties)                              | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ |
 | [Events](#properties)                                 | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ | ✅ | ❌ | ❌ |
 | [Icon](#properties)                                   | ❌ | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ |
@@ -69,6 +70,8 @@ is typically what sets toasts apart from other solutions like alerts and dialogs
 - Close Button: dedicated button that closes the toast when clicked.
 
 - Call To Action: button(s) displayed on the toast prompting user engagement.
+
+- Dismiss: function to programatically dismiss the toast.
 
 - Callbacks: functions triggered when the toast enters or exits certain states.
 
