@@ -7,15 +7,12 @@ This document assembles examples of toast demos from currently available librari
 - [react-toastify](#react-toastify)
 - [Blueprint](#Blueprint)
 - [ngx-toastr](#ngx-toastr)
-- [Bootstrap](#Bootstrap)
 - [Sweet Alert2](#Sweet-Alert2)
 - [Material UI Snackbar](#Material-UI-Snackbar)
 - [Ionic](#Ionic)
-- [Salesforce Lightning Design](#Salesforce-Lightning-Design)
 - [Notyf](#Notyf)
 - [Polymer paper-toast](#Polymer-paper-toast)
 - [Android Snackbar](#Android-Snackbar)
-- [Android Toast](#Android-Toast)
 
 ### [react-toastify](https://www.npmjs.com/package/react-toastify)
 
