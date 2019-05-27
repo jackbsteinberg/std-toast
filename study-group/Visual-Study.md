@@ -49,6 +49,12 @@ This document assembles examples of toast visual design from currently available
 
 ![salesforce design](images/salesforce-design.png)
 
+![salesforce success design](images/salesforce-success-design.png)
+
+![salesforce warning design](images/salesforce-warning-design.png)
+
+![salesforce error design](images/salesforce-error-design.png)
+
 ### [Notyf](https://github.com/caroso1222/notyf)
 
 ![notyf design](images/notyf-design.png)
