@@ -51,3 +51,5 @@ This document assembles examples of toast visual design from currently available
 
 
 ### [Android Toast](https://developer.android.com/reference/android/widget/Toast)
+
+![android-toast design](images/android-toast-design.png)

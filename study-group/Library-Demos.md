@@ -1,6 +1,6 @@
 # Toast Library Demos
 
-*TODO: Write this heading*
+This document assembles examples of toast demos from currently available libraries.
 
 ## Libraries
 
@@ -27,29 +27,29 @@
 
 ### [ngx-toastr](https://www.npmjs.com/package/ngx-toastr)
 
-
-### [Bootstrap](https://getbootstrap.com/docs/4.3/components/toasts/)
-
+![ngx-toastr demo](images/ngx-toastr-demo.gif)
 
 ### [Sweet Alert2](https://sweetalert2.github.io/)
 
+![sweet-alert2 demo](images/sweet-alert2-demo.gif)
 
 ### [Material UI Snackbar](https://material-ui.com/api/snackbar/)
 
+![material-ui-snackbar demo](images/material-ui-snackbar-demo.gif)
 
 ### [Ionic](https://ionicframework.com/docs/api/toast)
 
-
-### [Salesforce Lightning Design](https://lightningdesignsystem.com/components/toast/)
-
+![ionic demo](images/ionic-demo.gif)
 
 ### [Notyf](https://github.com/caroso1222/notyf)
 
+![notyf demo](images/notyf-demo.gif)
 
 ### [Polymer paper-toast](https://www.webcomponents.org/element/@polymer/paper-toast)
 
+![polymer-paper-toast demo](images/polymer-paper-toast-demo.gif)
 
 ### [Android Snackbar](https://developer.android.com/reference/com/google/android/material/snackbar/Snackbar)
 
+![android-snackbar demo](images/android-snackbar-demo.gif)
 
-### [Android Toast](https://developer.android.com/reference/android/widget/Toast)
