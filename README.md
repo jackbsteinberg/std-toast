@@ -129,11 +129,6 @@ named `"std:elements/toast"`.
     - TODO: decide on list of themes to natively support and create and style them.
 - `position`: one of `"top-left"`, `"top-center"`, `"top-right"`, `"middle-left"`, `"middle-center"`, `"middle-right"`, `"bottom-left"`, `"bottom-center"`, or `"bottom-right"`.
 The default (if the attribute is omitted or set to an invalid value) is ???.
-    - TODO: this seems stylistic; should it be controlled via CSS instead?
-    - TODO: these are physical positions; 
-      should we use [logical ones](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties/Basic_concepts) instead?
-    - TODO: should there be a system default for positions 
-      (e.g. should Android toasts show up in a different location from macOS toasts)?
 - `closebutton`: a boolean attribute, determining whether an explicit close button is shown. 
 By default toasts do not have a close button.
     - TODO: where should the `closebutton` show up relative to toast content,
@@ -232,10 +227,10 @@ or changing the `open=""` attribute to `state` if given.
 
 A `<std-toast>` element can fire the following events:
 
-- `"open"`: the toast was shown
-- `"close"`: the toast was closed, either explicitly by the user, or via the timeout.
+- `"show"`: the toast was shown
+- `"hide"`: the toast was hiddne, either explicitly by the user, or via the timeout.
   (Note: if animations were applied, the toast may not be entirely invisible at the time this event fires)
-    - TODO: should we consider separate events for the start and end of any close animation?
+    - TODO: should we consider separate events for the start and end of any hide animation?
       This seems hard to do correctly if the user customizes the animation, though.
 - `"actionclick"`: the toast's call-to-action button or link was clicked, if one exists.
     - TODO: flesh out exactly how the action works and how this event is linked.
@@ -258,8 +253,6 @@ allowing further manipulation by script.
 `message` is a string that will be inserted as a text node
 (TODO: or as a `<p>` element?) into the created `<std-toast>`.
 
-TODO: can `message` contain HTML?
-
 `options` allows configuring both the attributes of the `<std-toast>`,
 and the options for this particular showing of the toast.
 Thus, the possible options are:
@@ -270,11 +263,6 @@ Thus, the possible options are:
 - `duration`, like the `show()` option
 - `multiple`, like the `show()` option
 - `newestOnTop`, like the `show()` option
-
-TODO: how do we deal with actions with this API? Ideas:
-- Provide an element
-- Provide a HTML string
-- Provide a URL (to create a link) or a function (to create a button)
 
 ### Default styles
 
