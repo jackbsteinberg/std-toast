@@ -136,7 +136,8 @@ The default (if the attribute is omitted or set to an invalid value) is ???.
       (e.g. should Android toasts show up in a different location from macOS toasts)?
 - `closebutton`: a boolean attribute, determining whether an explicit close button is shown. 
 By default toasts do not have a close button.
-TODO: where should the `closebutton` show up relative to toast content and how customizable should that be?
+    - TODO: where should the `closebutton` show up relative to toast content,
+    and how customizable should it be?
 
 All attributes will be reflected as properties on the element's JavaScript interface.
 For example:
@@ -209,18 +210,23 @@ TODO: when we have a prototype, link to/show an example of this in action.
 
 #### Methods
 
-The `.show(options)` function shows a toast element,
+- `.show(options)`: shows the toast element,
 by toggling its `open=""` attribute to true.
 The `options` include:
-
-- `duration`: how long to show the toast, in milliseconds. Defaults to ???
-- `multiple`: ???
-- `newestOnTop`: ???
+    - `duration`: how long to show the toast, in milliseconds. Defaults to ???
+    - `multiple`: ???
+    - `newestOnTop`: ???
 
 TODO: how do `multiple` and `newestOnTop` work?
 Should those be a global setting?
 Per container?
 How do we deal with different toasts having different values?
+
+- `.hide()`: hides the toast element,
+by toggling its `open=""` attribute to false.
+- `.toggle([state])`: toggles the toast element,
+by hiding it if it's being shown and showing it if it's being hidden,
+or changing the `open=""` attribute to `state` if given.
 
 #### Events
 
@@ -248,9 +254,6 @@ to make the toast visible.
 Finally,
 it returns the created `<std-toast>` element,
 allowing further manipulation by script.
-
-TODO: will `showToast()` support putting the toast into a specified container,
-or only into `body`?
 
 `message` is a string that will be inserted as a text node
 (TODO: or as a `<p>` element?) into the created `<std-toast>`.
