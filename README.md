@@ -176,6 +176,8 @@ Thus, the following would all work well out of the box:
 </std-toast>
 ```
 
+TODO([#21](https://github.com/jackbsteinberg/std-toast/issues/21)): How will this pattern support work well?
+
 These can equivalently be created via JavaScript: ([#12](https://github.com/jackbsteinberg/std-toast/issues/12))
 
 ```js
