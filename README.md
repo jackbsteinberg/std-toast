@@ -219,7 +219,7 @@ TODO([#19](https://github.com/jackbsteinberg/std-toast/issues/19)): how do `mult
 by toggling its `open=""` attribute to false.
 - `.toggle([state])`: toggles the toast element,
 by hiding it if it's being shown and showing it if it's being hidden,
-or changing the `open=""` attribute to `state` if given.
+or alternately adding/removing the `open=""` attribute per `state` if `state` given.
 
 #### Events
 
