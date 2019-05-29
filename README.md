@@ -226,7 +226,7 @@ or alternately adding/removing the `open=""` attribute per `state` if `state` gi
 A `<std-toast>` element can fire the following events:
 
 - `"show"`: the toast was shown
-- `"hide"`: the toast was hiddne, either explicitly by the user, or via the timeout.
+- `"hide"`: the toast was hidden, either explicitly by the user, or via the timeout.
   (Note: if animations were applied, the toast may not be entirely invisible at the time this event fires)
     - TODO: should we consider separate events for the start and end of any hide animation?
       This seems hard to do correctly if the user customizes the animation, though.
