@@ -112,7 +112,7 @@ so library implementations can focus on providing more specific styling, better 
 The intent is that any developer looking to use a toast in their work will use a standard toast,
 or a library which provides a wrapper on top of standard toast.
 
-TODO: create an example of this layering and link to it here.
+TODO(#14): create an example of this layering and link to it here.
 
 ## Proposed API
 
@@ -129,6 +129,7 @@ named `"std:elements/toast"`.
     - TODO: decide on list of themes to natively support and create and style them.
 - `position`: one of `"top-left"`, `"top-center"`, `"top-right"`, `"middle-left"`, `"middle-center"`, `"middle-right"`, `"bottom-left"`, `"bottom-center"`, or `"bottom-right"`.
 The default (if the attribute is omitted or set to an invalid value) is ???.
+    - TODO(#13): should this positioning be an attribute or a style
 - `closebutton`: a boolean attribute, determining whether an explicit close button is shown. 
 By default toasts do not have a close button.
     - TODO: where should the `closebutton` show up relative to toast content,
@@ -175,7 +176,7 @@ Thus, the following would all work well out of the box:
 </std-toast>
 ```
 
-These can equivalently be created via JavaScript:
+These can equivalently be created via JavaScript: (#12)
 
 ```js
 // TODO: write this once we figure out the JS API for supplying HTML messages,
@@ -263,6 +264,8 @@ Thus, the possible options are:
 - `duration`, like the `show()` option
 - `multiple`, like the `show()` option
 - `newestOnTop`, like the `show()` option
+
+TODO(#11): How should actions be handled?
 
 ### Default styles
 
