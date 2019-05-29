@@ -281,7 +281,7 @@ Additionally figure out default styles for themes.
 
 ### Appearance customization
 
-TODO: explain any API for appearance customization,
+TODO([#20](https://github.com/jackbsteinberg/std-toast/issues/20)): explain any API for appearance customization,
 beyond just normal CSS.
 For example,
 a CSS shadow part for the close button,
