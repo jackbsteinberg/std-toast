@@ -219,14 +219,14 @@ TODO([#19](https://github.com/jackbsteinberg/std-toast/issues/19)): how do `mult
 by toggling its `open=""` attribute to false.
 - `.toggle([state])`: toggles the toast element,
 by hiding it if it's being shown and showing it if it's being hidden,
-or changing the `open=""` attribute to `state` if given.
+or alternately adding/removing the `open=""` attribute per `state` if `state` given.
 
 #### Events
 
 A `<std-toast>` element can fire the following events:
 
 - `"show"`: the toast was shown
-- `"hide"`: the toast was hiddne, either explicitly by the user, or via the timeout.
+- `"hide"`: the toast was hidden, either explicitly by the user, or via the timeout.
   (Note: if animations were applied, the toast may not be entirely invisible at the time this event fires)
     - TODO: should we consider separate events for the start and end of any hide animation?
       This seems hard to do correctly if the user customizes the animation, though.
