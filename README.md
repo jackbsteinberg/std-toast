@@ -112,7 +112,7 @@ so library implementations can focus on providing more specific styling, better 
 The intent is that any developer looking to use a toast in their work will use a standard toast,
 or a library which provides a wrapper on top of standard toast.
 
-TODO(#14): create an example of this layering and link to it here.
+TODO([#14](https://github.com/jackbsteinberg/std-toast/issues/14)): create an example of this layering and link to it here.
 
 ## Proposed API
 
@@ -126,10 +126,10 @@ named `"std:elements/toast"`.
 - [Global attributes](https://html.spec.whatwg.org/multipage/dom.html#global-attributes)
 - `open`: a boolean attribute, determining whether the toast is visible or not (according to the default styles). By default toasts are not shown.
 - `theme`: one of `"default"`, ???, or ???, conveying the semantic priority of the toast, and influencing its styling (both default and user-provided)
-    - TODO: decide on list of themes to natively support and create and style them.
+    - TODO([#18](https://github.com/jackbsteinberg/std-toast/issues/18)): decide on list of themes to natively support and create and style them.
 - `position`: one of `"top-left"`, `"top-center"`, `"top-right"`, `"middle-left"`, `"middle-center"`, `"middle-right"`, `"bottom-left"`, `"bottom-center"`, or `"bottom-right"`.
 The default (if the attribute is omitted or set to an invalid value) is ???.
-    - TODO(#13): should this positioning be an attribute or a style
+    - TODO([#13](https://github.com/jackbsteinberg/std-toast/issues/13)): should this positioning be an attribute or a style
 - `closebutton`: a boolean attribute, determining whether an explicit close button is shown. 
 By default toasts do not have a close button.
     - TODO: where should the `closebutton` show up relative to toast content,
@@ -156,7 +156,7 @@ but will work best (in terms of default styling and events) if the developer con
   which can be either an `<a>` or a `<button>`,
   provides a call to action.
 
-TODO: what about title or icon? They should potentially also be accomodated, in a similar fashion.
+TODO([#17](https://github.com/jackbsteinberg/std-toast/issues/17)): what about title or icon? They should potentially also be accomodated, in a similar fashion.
 
 Thus, the following would all work well out of the box:
 
@@ -176,7 +176,7 @@ Thus, the following would all work well out of the box:
 </std-toast>
 ```
 
-These can equivalently be created via JavaScript: (#12)
+These can equivalently be created via JavaScript: ([#12](https://github.com/jackbsteinberg/std-toast/issues/12))
 
 ```js
 // TODO: write this once we figure out the JS API for supplying HTML messages,
@@ -213,10 +213,7 @@ The `options` include:
     - `multiple`: ???
     - `newestOnTop`: ???
 
-TODO: how do `multiple` and `newestOnTop` work?
-Should those be a global setting?
-Per container?
-How do we deal with different toasts having different values?
+TODO([#19](https://github.com/jackbsteinberg/std-toast/issues/19)): how do `multiple` and `newestOnTop` work?
 
 - `.hide()`: hides the toast element,
 by toggling its `open=""` attribute to false.
@@ -234,7 +231,7 @@ A `<std-toast>` element can fire the following events:
     - TODO: should we consider separate events for the start and end of any hide animation?
       This seems hard to do correctly if the user customizes the animation, though.
 - `"actionclick"`: the toast's call-to-action button or link was clicked, if one exists.
-    - TODO: flesh out exactly how the action works and how this event is linked.
+    - TODO([#11](https://github.com/jackbsteinberg/std-toast/issues/11)): flesh out exactly how the action works and how this event is linked.
 
 ### `showToast(message, options)`
 
@@ -265,7 +262,7 @@ Thus, the possible options are:
 - `multiple`, like the `show()` option
 - `newestOnTop`, like the `show()` option
 
-TODO(#11): How should actions be handled?
+TODO([#11](https://github.com/jackbsteinberg/std-toast/issues/11)): How should actions be handled?
 
 ### Default styles
 
