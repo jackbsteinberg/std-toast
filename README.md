@@ -12,7 +12,7 @@ A toast...
 
 Furthermore, Ben Brocka has a nice, concise definition, in his [ux.stackexchange.com response](https://ux.stackexchange.com/a/12000), _"A Toast is a non modal, unobtrusive window element used to display brief, auto-expiring windows of information to a user."_, which adds the distinguishing detail of a toast's being **auto-expiring**.
 
-In the absence of browser-intrinsic toasts, the current state of affairs is that libraries like Bootstrap include [toast features like this one](https://getbootstrap.com/docs/4.2/components/toasts/).  Additionally, here is a [list of 10 libraries](https://www.cssscript.com/best-toast-notification-libraries/) that provide toast functionality.
+In the absence of browser-intrinsic toasts, the current state of affairs is that libraries like Bootstrap include [toast features like this one](https://getbootstrap.com/docs/4.2/components/toasts/).  Additionally, here is the Toast Study Group's [list of 3rd party libraries](https://github.com/jackbsteinberg/std-toast/tree/master/study-group) that includes an awesome table of comparison.
 
 
 ## Why?
