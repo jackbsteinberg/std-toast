@@ -14,7 +14,7 @@ Furthermore, Ben Brocka has a nice, concise definition, in his [ux.stackexchange
 
 In the absence of browser-intrinsic toasts, the current state of affairs is that libraries like Bootstrap include [toast features like this one](https://getbootstrap.com/docs/4.2/components/toasts/).  Additionally, here is the Toast Study Group's [list of 3rd party libraries](https://github.com/jackbsteinberg/std-toast/tree/master/study-group) that includes a table of comparison.
 
-Below is a demo of what a typical toast pop-up might look like...
+Below is a demo of what a typical toast pop-up might look like.  Credits to Alex Kvazos for his [VanillaToasts library](https://github.com/AlexKvazos/VanillaToasts/) and to [CSS Script](https://www.cssscript.com) for [their demo](https://www.cssscript.com/demo/toast-style-web-notifications-in-vanilla-javascript-vanillatoasts/) of Alex's library.
 
 <img src="./demo-toast-pop-up.gif" />
 
