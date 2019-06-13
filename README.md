@@ -1,6 +1,20 @@
 # std-toast
 This document scopes out a web platform API for a 'toast' pop-up notification.
 
+## What is a "Toast" Pop-Up Notification?
+
+_"Toasts are pretty common in UX design; refers to popup notifications which typically appear at the bottom of the screen (like a piece of toast in a toaster)."_ (credit: [Kyle Decker](https://twitter.com/kybradeck/status/1139006173762531328))
+
+Sneha Munot provides a nice definition in her [uxplanet.org article](https://uxplanet.org/toast-notification-or-dialog-box-ae32ad53106d), where she compares toasts to dialog boxes.
+
+A toast...
+> ...is a small message that shows up in a box at the bottom of the screen and disappears on its own after few seconds. It is a simple feedback about an operation in which current activity remains visible and interactive. It basically is to inform the user of something that is not critical and that does not require specific attention and does not prevent the user from using the app device.  For example; on gmail when a mail is send you receive a feedback of “Sending message…” written in the form of toast message.
+
+Furthermore, Ben Brocka has a nice, concise definition, in his [ux.stackexchange.com response](https://ux.stackexchange.com/a/12000), _"A Toast is a non modal, unobtrusive window element used to display brief, auto-expiring windows of information to a user."_, which adds the distinguishing detail of a toast's being **auto-expiring**.
+
+In the absence of browser-intrinsic toasts, the current state of affairs is that libraries like Bootstrap include [toast features like this one](https://getbootstrap.com/docs/4.2/components/toasts/).  Additionally, here is a [list of 10 libraries](https://www.cssscript.com/best-toast-notification-libraries/) that provide toast functionality.
+
+
 ## Why?
 
 Modern web applications allow users to complete lots of actions per page,
