@@ -18,34 +18,34 @@ If there are any mistakes, please open an issue to get them corrected.
 
 | [Feature](#features) |[react-toastify](https://www.npmjs.com/package/react-toastify)|[Blueprint](https://blueprintjs.com/docs/#core/components/toast)|[ngx-toastr](https://www.npmjs.com/package/ngx-toastr)|[Bootstrap](https://getbootstrap.com/docs/4.3/components/toasts/)|[Sweet Alert2](https://sweetalert2.github.io/)|[Material UI Snackbar](https://material-ui.com/api/snackbar/)|[Ionic](https://ionicframework.com/docs/api/toast)|[Salesforce Lightning Design](https://lightningdesignsystem.com/components/toast/)|[Notyf](https://github.com/caroso1222/notyf)|[Polymer paper-toast](https://www.webcomponents.org/element/@polymer/paper-toast)|[Android Snackbar](https://developer.android.com/reference/com/google/android/material/snackbar/Snackbar)|[Android Toast](https://developer.android.com/reference/android/widget/Toast)|
 |--|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-| [Title](#properties)                                  | no | no | yes | yes | yes | no | yes | yes | no | no | no | no |
+| [Title](#properties)                                  |     |     | yes | yes | yes |     | yes | yes |     |     |     |     |
 | [Message](#properties)                                | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes | yes |
-| [Timeout](#properties)                                | yes | yes | yes | yes | yes | yes | yes | no | yes | yes | yes | yes |
-| [Close Button](#properties)                           | yes | yes | yes | yes | yes | yes | yes | yes | no | yes | no | no |
-| [Call To Action](#properties)                         | yes | yes | no | yes | yes | yes | yes | yes | no | yes | yes | no |
-| [Dismiss](#properties)                                | yes | yes | no | yes | yes | no | yes | no | no | yes | yes | yes |
-| [Callbacks](#properties)                              | yes | yes | no | yes | yes | yes | yes | no | no | no | yes | no |
-| [Events](#properties)                                 | no | no | yes | yes | no | no | yes | no | no | yes | no | no |
-| [Icon](#properties)                                   | no | yes | yes | yes | yes | no | no | yes | yes | no | no | no |
-| [Progress Bar](#properties)                           | yes | no | yes | no | no | no | no | no | no | no | no | no |
-| [Theme Support](#built-in-support)                    | yes | yes | yes | no | yes | no | yes | yes | yes | no | no | no |
-| [Global Custom Configuration](#built-in-support)      | yes | yes | yes | no | no | no | no | no | yes | no | no | no |
-| [Configured / Created in JS](#built-in-support)       | yes | yes | yes | no | yes | yes | yes | no | yes | no | no | no |
-| [Explicit Component Pattern](#built-in-support)       | yes | yes | no | yes | no | yes | no | yes | no | yes | no | no |
-| [Permits Custom HTML](#built-in-support)              | yes | no | yes | yes | yes | yes | no | yes | no | yes | yes | yes |
-| [Display in Container](#built-in-support)             | no | yes | yes | yes | yes | yes | no | yes | no | yes | no | no |
-| [CSS Classes Field](#built-in-support)                | yes | yes | yes | yes | yes | yes | yes | yes | yes | no | no | no |
-| [Explicit Animation Support](#built-in-support)       | yes | no | yes | no | yes | yes | yes | no | no | no | yes | no |
-| [Swipe / Drag](#built-in-support)                     | yes | no | no | no | no | no | no | no | no | no | yes | no |
-| [Intuitive Positioning](#built-in-support)            | yes | yes | yes | no | yes | yes | yes | no | no | yes | no | yes |
-| [User Interaction Trigger](#built-in-support)         | yes | no | no | no | no | yes | yes | no | no | no | no | no |
-| [Mentions Accessibility](#policies)                   | no | yes | no | yes | yes | yes | no | yes | yes | no | no | no |
-| [Default Times Out](#policies)                        | yes | yes | yes | no | no | no | no | no | yes | yes | yes | yes |
-| [Allows Multiple](#policies)                          | yes | yes | yes | yes | no | no | yes | yes | yes | no | no | no |
-| [Allows Duplicates](#policies)                        | yes | yes | yes | no | no | no | yes | no | yes | no | no | no |
-| [Configurable Stacking](#policies)                    | yes | yes | yes | yes | no | no | no | no | no | no | no | no |
-| [Close Button Default](#policies)                     | yes | yes | no | no | no | no | no | no | no | no | no | no |
-| [Translucent](#policies)                              | no | no | no | yes | no | no | yes | no | no | no | no | no |                                                   
+| [Timeout](#properties)                                | yes | yes | yes | yes | yes | yes | yes |     | yes | yes | yes | yes |
+| [Close Button](#properties)                           | yes | yes | yes | yes | yes | yes | yes | yes |     | yes |     |     |
+| [Call To Action](#properties)                         | yes | yes |     | yes | yes | yes | yes | yes |     | yes | yes |     |
+| [Dismiss](#properties)                                | yes | yes |     | yes | yes |     | yes |     |     | yes | yes | yes |
+| [Callbacks](#properties)                              | yes | yes |     | yes | yes | yes | yes |     |     |     | yes |     |
+| [Events](#properties)                                 |     |     | yes | yes |     |     | yes |     |     | yes |     |     |
+| [Icon](#properties)                                   |     | yes | yes | yes | yes |     |     | yes | yes |     |     |     |
+| [Progress Bar](#properties)                           | yes |     | yes |     |     |     |     |     |     |     |     |     |
+| [Theme Support](#built-in-support)                    | yes | yes | yes |     | yes |     | yes | yes | yes |     |     |     |
+| [Global Custom Configuration](#built-in-support)      | yes | yes | yes |     |     |     |     |     | yes |     |     |     |
+| [Configured / Created in JS](#built-in-support)       | yes | yes | yes |     | yes | yes | yes |     | yes |     |     |     |
+| [Explicit Component Pattern](#built-in-support)       | yes | yes |     | yes |     | yes |     | yes |     | yes |     |     |
+| [Permits Custom HTML](#built-in-support)              | yes |     | yes | yes | yes | yes |     | yes |     | yes | yes | yes |
+| [Display in Container](#built-in-support)             |     | yes | yes | yes | yes | yes |     | yes |     | yes |     |     |
+| [CSS Classes Field](#built-in-support)                | yes | yes | yes | yes | yes | yes | yes | yes | yes |     |     |     |
+| [Explicit Animation Support](#built-in-support)       | yes |     | yes |     | yes | yes | yes |     |     |     | yes |     |
+| [Swipe / Drag](#built-in-support)                     | yes |     |     |     |     |     |     |     |     |     | yes |     |
+| [Intuitive Positioning](#built-in-support)            | yes | yes | yes |     | yes | yes | yes |     |     | yes |     | yes |
+| [User Interaction Trigger](#built-in-support)         | yes |     |     |     |     | yes | yes |     |     |     |     |     |
+| [Mentions Accessibility](#policies)                   |     | yes |     | yes | yes | yes |     | yes | yes |     |     |     |
+| [Default Times Out](#policies)                        | yes | yes | yes |     |     |     |     |     | yes | yes | yes | yes |
+| [Allows Multiple](#policies)                          | yes | yes | yes | yes |     |     | yes | yes | yes |     |     |     |
+| [Allows Duplicates](#policies)                        | yes | yes | yes |     |     |     | yes |     | yes |     |     |     |
+| [Configurable Stacking](#policies)                    | yes | yes | yes | yes |     |     |     |     |     |     |     |     |
+| [Close Button Default](#policies)                     | yes | yes |     |     |     |     |     |     |     |     |     |     |
+| [Translucent](#policies)                              |     |     |     | yes |     |     | yes |     |     |     |     |     |                                                   
 
 ## Features
 The list of features used in the Table of Comparison comes from the major recurring patterns 
