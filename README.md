@@ -1,22 +1,36 @@
 # std-toast
 This document scopes out a web platform API for a 'toast' pop-up notification.
 
-## What is a "Toast" Pop-Up Notification?
+## What is a "toast" pop-up notification?
 
-_"Toasts are pretty common in UX design; refers to popup notifications which typically appear at the bottom of the screen (like a piece of toast in a toaster)."_ (credit: [Kyle Decker](https://twitter.com/kybradeck/status/1139006173762531328))
+> "Toasts are pretty common in UX design; refers to popup notifications which typically appear at the bottom of the screen (like a piece of toast in a toaster)."
 
-Sneha Munot provides a nice definition in her [uxplanet.org article](https://uxplanet.org/toast-notification-or-dialog-box-ae32ad53106d), where she compares toasts to dialog boxes.
+— [Kyle Decker](https://twitter.com/kybradeck/status/1139006173762531328)
 
-A toast...
-> ...is a small message that shows up in a box at the bottom of the screen and disappears on its own after few seconds. It is a simple feedback about an operation in which current activity remains visible and interactive. It basically is to inform the user of something that is not critical and that does not require specific attention and does not prevent the user from using the app device.  For example; on gmail when a mail is send you receive a feedback of “Sending message…” written in the form of toast message.
+Sneha Munot provides a nice definition in her [uxplanet.org article](https://uxplanet.org/toast-notification-or-dialog-box-ae32ad53106d),
+where she compares toasts to dialog boxes.
 
-Furthermore, Ben Brocka has a nice, concise definition, in his [ux.stackexchange.com response](https://ux.stackexchange.com/a/12000), _"A Toast is a non modal, unobtrusive window element used to display brief, auto-expiring windows of information to a user."_, which adds the distinguishing detail of a toast's being **auto-expiring**.
+> [A toast] is a small message that shows up in a box at the bottom of the screen and disappears on its own after few seconds.
+> It is a simple feedback about an operation in which current activity remains visible and interactive.
+> It basically is to inform the user of something that is not critical and that does not require specific attention and does not prevent the user from using the app device.
+>
+> For example; on gmail when a mail is send you receive a feedback of “Sending message…” written in the form of toast message.
 
-In the absence of browser-intrinsic toasts, the current state of affairs is that libraries like Bootstrap include [toast features like this one](https://getbootstrap.com/docs/4.2/components/toasts/).  Additionally, here is the Toast Study Group's [list of 3rd party libraries](https://github.com/jackbsteinberg/std-toast/tree/master/study-group) that includes a table of comparison.
+Another concise definition is found in Ben Brocka's [ux.stackexchange.com response](https://ux.stackexchange.com/a/12000):
 
-Below is a demo of what a typical toast pop-up might look like.  Credits to Alex Kvazos for his [VanillaToasts library](https://github.com/AlexKvazos/VanillaToasts/) and to [CSS Script](https://www.cssscript.com) for [their demo](https://www.cssscript.com/demo/toast-style-web-notifications-in-vanilla-javascript-vanillatoasts/) of Alex's library.
+> A Toast is a non modal, unobtrusive window element used to display brief, auto-expiring windows of information to a user.
 
-<img src="./demo-toast-pop-up.gif" />
+This adds which adds the distinguishing detail of a toast being **auto-expiring**.
+
+In the absence of browser-intrinsic toasts,
+the current state of affairs is that many libraries and design systems include toast features.
+This repository contains a [study group](https://github.com/jackbsteinberg/std-toast/tree/master/study-group) which surveys and compares toast implementations across the web and other platforms.
+
+Below is an animated image displaying some typical toast behaviors,
+drawn from the [Blueprint](https://blueprintjs.com/docs/#core/components/toast) design component library.
+The study group contains [a variety of such examples](study-group/Library-Demos.md).
+
+![An animated demo showing several toasts in action, including close buttons, action buttons like "Retry", and multiple toasts stacking on top of, or replacing each other](study-group/images/blueprint-demo.gif)
 
 
 ## Why?
