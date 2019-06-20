@@ -392,7 +392,7 @@ See [TAG Security / Privacy Self Review](/security-privacy-self-review.md).
 ### Extending the Notification API
 Toasts are intended to be ephemeral, context-specific messages,
 and collecting them in a user's notifications tray doesn't reflect the spirit of the pattern.
-[kenchris]() put this well in [this comment]() on the TAG Design Review:
+[kenchris](https://github.com/kenchris) put this well in [this comment](https://github.com/w3ctag/design-reviews/issues/385#issuecomment-502070938) on the TAG Design Review:
 
 > the difference is that this is a temporary notification / infobar, 
 > like you see for PWAs ("new version available, press reload to refresh") 
