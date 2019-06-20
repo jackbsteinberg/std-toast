@@ -422,4 +422,4 @@ See [here](https://github.com/tkent-google/std-switch#leaving-this-up-to-librari
 See [here](https://github.com/tkent-google/std-switch#faqs) for std-switch FAQs,
 and [here](https://github.com/whatwg/html/issues/4696)
 and [here](https://github.com/whatwg/html/issues/4697)
-for relevant open issues on WHATWG/html.
+for relevant open issues on the HTML Standard regarding potential patterns for new built-in elements (including this one).
