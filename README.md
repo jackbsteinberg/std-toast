@@ -252,7 +252,7 @@ TODO: when we have a prototype, link to/show an example of this in action.
 
 - `.show(options)`: shows the toast element,
 by toggling its `open=""` attribute to true.
-it will also start or reset the timeout of the toast,
+It will also start or reset the timeout of the toast,
 to show for the provided `duration`,
 or a default `duration` of `2000`ms.
 The `options` include:
