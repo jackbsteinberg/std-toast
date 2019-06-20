@@ -146,7 +146,7 @@ TODO([#14](https://github.com/jackbsteinberg/std-toast/issues/14)): create an ex
 
 The element is provided as a [built-in module](https://github.com/tc39/proposal-javascript-standard-library/blob/master/README.md),
 named `"std:elements/toast"`.
-Read more about "pay-for-what-you-use" HTML elements [here](https://github.com/whatwg/html/issues/4697).
+See [whatwg/html#4697](https://github.com/whatwg/html/issues/4697) for more discussion on "pay-for-what-you-use" elements available via module imports.
 
 ### The `<std-toast>` element
 
