@@ -35,7 +35,7 @@ The study group contains [a variety of such examples](study-group/Library-Demos.
 
 ## Why?
 
-Modern web applications allow users to complete lots of actions per page,
+Modern web applications allow users to complete many actions per page,
 which necessitates providing clear feedback for each action.
 Toast notifications are commonly used to unobtrusively provide this feedback.
 
@@ -97,7 +97,7 @@ The second imports the `showToast()` function from the `"std:elements/toast"` mo
 which takes in a message and some configurations and creates and shows a toast in the DOM.
 This is more convenient for one-off toasts,
 or for JavaScript-driven situations,
-similar to how `alert()` is currently used.
+similar to how the `alert()` function can be used show alerts.
 
 ```js
 import { showToast } from 'std:elements/toast';
@@ -121,10 +121,6 @@ which the standard toast aims to accomplish natively.
   and a goal of the standard toast is to make it as easy as possible for developers
   to build and style toasts that conform to those common shapes.
 
-    - Toasts almost always support a message, action, and close button.
-
-    - Toasts often support an icon and a title.
-
 - The positioning of the toast must be intuitive,
   so the standard toast will come with built-in support for common positions,
   as well as a sensible default.
@@ -138,9 +134,9 @@ which the standard toast aims to accomplish natively.
   either by stacking them in the view,
   or queueing them and displaying sequentially.
 
-A broader goal of the standard toast is to provide a base for more opinionated or featureful toast libraries to layer on top of.
+A broad goal of the standard toast API is to provide a base for more opinionated or featureful toast libraries to layer on top of.
 It will be designed and built highly extensible, 
-so library implementations can focus on providing more specific styling, better framework support, or more opinionated default.
+so library implementations can focus on providing more specific styling, better framework support, or more opinionated defaults.
 The intent is that any developer looking to use a toast in their work will use a standard toast,
 or a library which provides a wrapper on top of standard toast.
 
@@ -150,16 +146,30 @@ TODO([#14](https://github.com/jackbsteinberg/std-toast/issues/14)): create an ex
 
 The element is provided as a [built-in module](https://github.com/tc39/proposal-javascript-standard-library/blob/master/README.md),
 named `"std:elements/toast"`.
+Read more about "pay-for-what-you-use" HTML elements [here](https://github.com/whatwg/html/issues/4697).
 
 ### The `<std-toast>` element
 
 #### Attributes
 
 - [Global attributes](https://html.spec.whatwg.org/multipage/dom.html#global-attributes)
-- `open`: a boolean attribute, determining whether the toast is visible or not (according to the default styles). By default toasts are not shown.
+- `open`: a boolean attribute, determining whether the toast is visible or not (according to the default styles).
+By default toasts are not shown.
 - `theme`: one of `"default"`, ???, or ???, conveying the semantic priority of the toast, and influencing its styling (both default and user-provided)
     - TODO([#18](https://github.com/jackbsteinberg/std-toast/issues/18)): decide on list of themes to natively support and create and style them.
-- `position`: one of `"top-left"`, `"top-center"`, `"top-right"`, `"middle-left"`, `"middle-center"`, `"middle-right"`, `"bottom-left"`, `"bottom-center"`, or `"bottom-right"`.
+- `position`: default position will be ???
+    - Options for position:
+        - `"top-left"`
+        - `"top-center"`
+        - `"top-right"`
+        - `"middle-left"`
+        - `"middle-center"`
+        - `"middle-right"`
+        - `"bottom-left"`
+        - `"bottom-center"`
+        - `"bottom-right"`
+    - Additionally values `"top-stretch"` and `"bottom-stretch"` will be provided to allow for toasts that span the screen width,
+    and will be treated as the default for `"top-"` and `"bottom-"` toasts on mobile.
 The default (if the attribute is omitted or set to an invalid value) is ???.
     - TODO([#13](https://github.com/jackbsteinberg/std-toast/issues/13)): should this positioning be an attribute or a style
 - `closebutton`: a boolean attribute, determining whether an explicit close button is shown. 
@@ -242,8 +252,11 @@ TODO: when we have a prototype, link to/show an example of this in action.
 
 - `.show(options)`: shows the toast element,
 by toggling its `open=""` attribute to true.
+it will also start or reset the timeout of the toast,
+to show fo the provided `duration`,
+or a default `duration` of `2000`ms.
 The `options` include:
-    - `duration`: how long to show the toast, in milliseconds. Defaults to ???
+    - `duration`: how long to show the toast, in milliseconds. Defaults to `2000`.
     - `multiple`: ???
     - `newestOnTop`: ???
 
@@ -267,6 +280,8 @@ A `<std-toast>` element can fire the following events:
 - `"actionclick"`: the toast's call-to-action button or link was clicked, if one exists.
     - TODO([#11](https://github.com/jackbsteinberg/std-toast/issues/11)): flesh out exactly how the action works and how this event is linked.
 
+TODO([#35](https://github.com/jackbsteinberg/std-toast/issues/35)): split `"show"` and `"hide"` into `"will/didShow"` and `"will/didHide"`.
+
 ### `showToast(message, options)`
 
 The `"std:elements/toast"` module also exports a convenience function,
@@ -282,8 +297,7 @@ Finally,
 it returns the created `<std-toast>` element,
 allowing further manipulation by script.
 
-`message` is a string that will be inserted as a text node
-(TODO: or as a `<p>` element?) into the created `<std-toast>`.
+`message` is a string that will be inserted as a text node into the created `<std-toast>`.
 
 `options` allows configuring both the attributes of the `<std-toast>`,
 and the options for this particular showing of the toast.
@@ -368,5 +382,44 @@ const toast2 = showToast("number 2", configs);
 ```
 
 ### Styling the toast
-
 TODO
+
+## Security and Privacy Considerations
+See [TAG Security / Privacy Self Review](/security-privacy-self-review.md).
+
+## Considered Alternatives
+
+### Extending the Notification API
+Toasts are intended to be ephemeral, context-specific messages,
+and collecting them in a user's notifications tray doesn't reflect the spirit of the pattern.
+[kenchris]() put this well in [this comment]() on the TAG Design Review:
+
+> the difference is that this is a temporary notification / infobar, 
+> like you see for PWAs ("new version available, press reload to refresh") 
+> or like in GMail ("Chat is currently unavailable") etc. 
+> These are not things you want an actual system notification for... 
+> They really depend on the surrounding content/situation unlike regular notifications.
+
+Toasts also often contain some sort of action the user can take which affects the state of the page 
+(e.g. un-sending an email on Gmail).
+To provide this kind of behavior accessibly the element should live wholly in the page / DOM.
+This will have the added benefit of preventing pages in the background from using toasts to fight for user attention.
+
+### Extending the `<dialog>` element
+This approach was considered, but we decided to go a different route for a few reasons.
+First and foremost, we felt the accessibility considerations for a toast and a dialog are fundamentally opposed,
+as the dialog engages in the kind of flow-breaking behavior we want toasts to avoid.
+Additionally, the popular pattern of adding a call to action button on a toast with a baked-in time limit
+necessitates replacing tab-trapping with a less intrusive, easily restored alternative.
+
+### As a new global element (instead of a built-in module)
+See [here](https://github.com/tkent-google/std-switch#as-a-new-global-element-instead-of-a-built-in-module).
+
+### Leaving this up to libraries
+See [here](https://github.com/tkent-google/std-switch#leaving-this-up-to-libraries).
+
+## Extra Resources
+See [here](https://github.com/tkent-google/std-switch#faqs) for std-switch FAQs,
+and [here](https://github.com/whatwg/html/issues/4696)
+and [here](https://github.com/whatwg/html/issues/4697)
+for relevant open issues on WHATWG/html.
