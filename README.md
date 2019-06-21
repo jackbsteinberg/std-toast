@@ -134,8 +134,8 @@ which the standard toast aims to accomplish natively.
   either by stacking them in the view,
   or queueing them and displaying sequentially.
 
-A broad goal of the standard toast API is to provide a base for more opinionated or featureful toast libraries to layer on top of.
-It will be designed and built highly extensible, 
+The standard toast API hopes to provide a base for more opinionated or featureful toast libraries to layer on top of.
+It will be designed and built highly extensible,
 so library implementations can focus on providing more specific styling, better framework support, or more opinionated defaults.
 The intent is that any developer looking to use a toast in their work will use a standard toast,
 or a library which provides a wrapper on top of standard toast.
@@ -399,17 +399,21 @@ and collecting them in a user's notifications tray doesn't reflect the spirit of
 > These are not things you want an actual system notification for... 
 > They really depend on the surrounding content/situation unlike regular notifications.
 
-Toasts also often contain some sort of action the user can take which affects the state of the page 
-(e.g. un-sending an email on Gmail).
-To provide this kind of behavior accessibly the element should live wholly in the page / DOM.
-This will have the added benefit of preventing pages in the background from using toasts to fight for user attention.
+The toast is intended to be a completely in-page element,
+not a system-level notification the way Notifications and Android toasts are.
+Because of this page-level role, toasts do not require any user-granted permissions.
 
 ### Extending the `<dialog>` element
-This approach was considered, but we decided to go a different route for a few reasons.
-First and foremost, we felt the accessibility considerations for a toast and a dialog are fundamentally opposed,
-as the dialog engages in the kind of flow-breaking behavior we want toasts to avoid.
+This approach was considered, and is still an open area of exploration,
+but our current thoughts are to go a different route for a few reasons.
+First and foremost, we felt the accessibility considerations for a toast and a dialog differ,
+as the dialog typically engages in the kind of flow-breaking behavior we want toasts to avoid.
 Additionally, the popular pattern of adding a call to action button on a toast with a baked-in time limit
 necessitates replacing tab-trapping with a less intrusive, easily restored alternative.
+The line between the elements becomes blurrier from a functional perspective,
+with action-button-containing toasts and non-modal dialogs,
+but the intent and semantics are sufficiently different,
+similar to `<blockquote>` and `<q>` and `<meter>` and `<progress>`.
 
 ### As a new global element (instead of a built-in module)
 See [here](https://github.com/whatwg/html/issues/4697).
