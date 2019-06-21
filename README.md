@@ -266,6 +266,9 @@ The `options` include:
     - `multiple`: ???
     - `newestOnTop`: ???
 
+TODO([#37](https://github.com/jackbsteinberg/std-toast/issues/37)): should `2000` be the default?
+Should it be longer for accessibility reasons? Should it change dependent on the amount of text in the toast?
+
 TODO([#19](https://github.com/jackbsteinberg/std-toast/issues/19)): how do `multiple` and `newestOnTop` work?
 
 - `.hide()`: hides the toast element,
@@ -345,6 +348,10 @@ a CSS shadow part for the close button,
 or some CSS variables.
 
 ## Accessibility
+
+TODO: determine proper accessibility roles / semantics.
+See issues [#25](https://github.com/jackbsteinberg/std-toast/issues/25) and 
+[#29](https://github.com/jackbsteinberg/std-toast/issues/29) for ongoing initial discussions.
 
 ## Common Patterns
 
