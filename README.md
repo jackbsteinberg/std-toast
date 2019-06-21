@@ -1,5 +1,14 @@
-# std-toast
-This document scopes out a web platform API for a 'toast' pop-up notification.
+# A Standard 'Toast' UI Element
+
+# Introduction
+
+This document proposes a new HTML element for a "toast" pop-up notification.
+It is provided as a [built-in module](https://github.com/tc39/proposal-javascript-standard-library/).
+
+This proposal is intended to incubate in the WICG once it gets interest on 
+[its Discourse thread](https://discourse.wicg.io/t/proposal-toast-ui-element/3634).
+After incubation, if it gains multi-implementer interest, 
+it will graduate to the [HTML Standard](https://html.spec.whatwg.org/multipage/) as a new standard HTML element.
 
 ## What is a "toast" pop-up notification?
 
