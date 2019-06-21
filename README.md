@@ -407,7 +407,8 @@ See [TAG Security / Privacy Self Review](/security-privacy-self-review.md).
 ### Extending the Notification API
 Toasts are intended to be ephemeral, context-specific messages,
 and collecting them in a user's notifications tray doesn't reflect the spirit of the pattern.
-[kenchris](https://github.com/kenchris) put this well in [this comment](https://github.com/w3ctag/design-reviews/issues/385#issuecomment-502070938) on the TAG Design Review:
+[kenchris](https://github.com/kenchris) put this well in [this comment](https://github.com/w3ctag/design-reviews/issues/385#issuecomment-502070938) 
+on the TAG Design Review:
 
 > the difference is that this is a temporary notification / infobar, 
 > like you see for PWAs ("new version available, press reload to refresh") 
@@ -417,7 +418,7 @@ and collecting them in a user's notifications tray doesn't reflect the spirit of
 
 The toast is intended to be a completely in-page element,
 not a system-level notification the way Notifications and Android toasts are.
-Because of this page-level role, toasts do not require any user-granted permissions.
+Because of this page-level role, toasts do not require any user-granted permissions the way Notifications do.
 
 ### Extending the `<dialog>` element
 This approach was considered, and is still an open area of exploration,
@@ -432,17 +433,18 @@ but the intent and semantics are sufficiently different,
 similar to `<blockquote>` and `<q>`, or `<meter>` and `<progress>`.
 
 ### As a new global element (instead of a built-in module)
-See [here](https://github.com/whatwg/html/issues/4697).
+The idea of creating new polyfillable HTML elements is being explored in 
+[this issue](https://github.com/whatwg/html/issues/4696) on the HTML standard,
+and the idea of creating new pay-for-what-you-use HTML elements is being explored in 
+[this issue](https://github.com/whatwg/html/issues/467) on the HTML standard.
 
 ### Leaving this up to libraries
-See [here](https://github.com/tkent-google/std-switch#leaving-this-up-to-libraries).
+The rationale discussed for `std-switch` in [this explanation](https://github.com/tkent-google/std-switch#leaving-this-up-to-libraries)
+in the Considered Alternatives section of [tkent's std-switch explainer](https://github.com/tkent-google/std-switch#considered-alternatives)
+applies to `std-toast` as well.
 
 ## Extra Resources
 This proposal comes in parallel with the [proposal for a standard switch element](https://github.com/tkent-google/std-switch),
 which has a good [FAQs section](https://github.com/tkent-google/std-switch#faqs), many of which apply to this proposal as well.
-Additionally, the idea of creating new polyfillable HTML elements is being explored in 
-[this issue](https://github.com/whatwg/html/issues/4696) on the HTML standard, 
-and the idea of creating new pay-for-what-you-use HTML elements if being explored in 
-[this issue](https://github.com/whatwg/html/issues/467) on the HTML standard.
 There is also currently an [open discussion](https://discourse.wicg.io/t/proposal-toast-ui-element/3634)
 on the WICG discourse page to gauge and solicit community interest in moving the explainer to incubate in a WICG repo.
