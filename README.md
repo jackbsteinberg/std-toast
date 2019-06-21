@@ -429,7 +429,7 @@ necessitates replacing tab-trapping with a less intrusive, easily restored alter
 The line between the elements becomes blurrier from a functional perspective,
 with action-button-containing toasts and non-modal dialogs,
 but the intent and semantics are sufficiently different,
-similar to `<blockquote>` and `<q>` and `<meter>` and `<progress>`.
+similar to `<blockquote>` and `<q>`, or `<meter>` and `<progress>`.
 
 ### As a new global element (instead of a built-in module)
 See [here](https://github.com/whatwg/html/issues/4697).
