@@ -428,4 +428,4 @@ Additionally, the idea of creating new polyfillable HTML elements is being explo
 and the idea of creating new pay-for-what-you-use HTML elements if being explored in 
 [this issue](https://github.com/whatwg/html/issues/467) on the HTML standard.
 There is also currently an [open discussion](https://discourse.wicg.io/t/proposal-toast-ui-element/3634)
-on the WICG discourse page about gauging interest in moving the explainer to incubate in a WICG repo.
+on the WICG discourse page to gauge and solicit community interest in moving the explainer to incubate in a WICG repo.
