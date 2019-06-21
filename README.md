@@ -415,7 +415,7 @@ Additionally, the popular pattern of adding a call to action button on a toast w
 necessitates replacing tab-trapping with a less intrusive, easily restored alternative.
 
 ### As a new global element (instead of a built-in module)
-See [here](https://github.com/tkent-google/std-switch#as-a-new-global-element-instead-of-a-built-in-module).
+See [here](https://github.com/whatwg/html/issues/4697).
 
 ### Leaving this up to libraries
 See [here](https://github.com/tkent-google/std-switch#leaving-this-up-to-libraries).
