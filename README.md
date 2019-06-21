@@ -162,14 +162,11 @@ By default toasts are not shown.
         - `"top-left"`
         - `"top-center"`
         - `"top-right"`
-        - `"middle-left"`
-        - `"middle-center"`
-        - `"middle-right"`
+        - `"center"`
         - `"bottom-left"`
         - `"bottom-center"`
         - `"bottom-right"`
-    - Additionally values `"top-stretch"` and `"bottom-stretch"` will be provided to allow for toasts that span the screen width,
-    and will be treated as the default for `"top-"` and `"bottom-"` toasts on mobile.
+    - TODO([#39](https://github.com/jackbsteinberg/std-toast/issues/39)): Do we need values `"top-stretch"`, `"center-stretch"`, and `"bottom-stretch"` as well? Should this stretching be done automatically on mobile?
 The default (if the attribute is omitted or set to an invalid value) is ???.
     - TODO([#13](https://github.com/jackbsteinberg/std-toast/issues/13)): should this positioning be an attribute or a style
 - `closebutton`: a boolean attribute, determining whether an explicit close button is shown. 
