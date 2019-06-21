@@ -338,6 +338,8 @@ For example,
 a CSS shadow part for the close button,
 or some CSS variables.
 
+## Accessibility
+
 ## Common Patterns
 
 ### Show existing toast
@@ -419,7 +421,11 @@ See [here](https://github.com/tkent-google/std-switch#as-a-new-global-element-in
 See [here](https://github.com/tkent-google/std-switch#leaving-this-up-to-libraries).
 
 ## Extra Resources
-See [here](https://github.com/tkent-google/std-switch#faqs) for std-switch FAQs,
-and [here](https://github.com/whatwg/html/issues/4696)
-and [here](https://github.com/whatwg/html/issues/4697)
-for relevant open issues on the HTML Standard regarding potential patterns for new built-in elements (including this one).
+This proposal comes in parallel with the [proposal for a standard switch element](https://github.com/tkent-google/std-switch),
+which has a good [FAQs section](https://github.com/tkent-google/std-switch#faqs), many of which apply to this proposal as well.
+Additionally, the idea of creating new polyfillable HTML elements is being explored in 
+[this issue](https://github.com/whatwg/html/issues/4696) on the HTML standard, 
+and the idea of creating new pay-for-what-you-use HTML elements if being explored in 
+[this issue](https://github.com/whatwg/html/issues/467) on the HTML standard.
+There is also currently an [open discussion](https://discourse.wicg.io/t/proposal-toast-ui-element/3634)
+on the WICG discourse page about gauging interest in moving the explainer to incubate in a WICG repo.
