@@ -334,7 +334,7 @@ which developers will be able to change to customize look and feel.
 - `display: none`: this will keep the toast hidden from view and searching
 when the `open` attribute is not present.
 
-#### `std-toast([open])`
+#### `std-toast[open]`
 
 TODO: figure out some default styles, and state them here.
 Additionally figure out default styles for themes.
