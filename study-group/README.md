@@ -28,7 +28,7 @@ If there are any mistakes, please open an issue to get them corrected.
 | [Events](#properties)                                 |     |     | yes | yes |     |     | yes |     |     | yes |     |     |
 | [Icon](#properties)                                   |     | yes | yes | yes | yes |     |     | yes | yes |     |     |     |
 | [Progress Bar](#properties)                           | yes |     | yes |     |     |     |     |     |     |     |     |     |
-| [Type Support](#built-in-support)                    | yes | yes | yes |     | yes |     | yes | yes | yes |     |     |     |
+| [Type Support](#built-in-support)                     | yes | yes | yes |     | yes |     | yes | yes | yes |     |     |     |
 | [Global Custom Configuration](#built-in-support)      | yes | yes | yes |     |     |     |     |     | yes |     |     |     |
 | [Configured / Created in JS](#built-in-support)       | yes | yes | yes |     | yes | yes | yes |     | yes |     |     |     |
 | [Explicit Component Pattern](#built-in-support)       | yes | yes |     | yes |     | yes |     | yes |     | yes |     |     |
