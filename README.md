@@ -161,15 +161,15 @@ See [whatwg/html#4697](https://github.com/whatwg/html/issues/4697) for more disc
 
 #### Behavior
 
-The `<std-toast>` element provides a subtle, non-interruptive notification to the user at a time of the developer's choosing.
-The toast will appear in a developer-supplied position on the screen, 
+The `<std-toast>` element provides a subtle, non-interruptive notification to the user.
+The toast will appear at a customized time and position on the screen, 
 and will typically contain a message and optionally action and dismiss buttons
 (though other markup in the element is supported).
 The contents will be announced to a screen reader
-(politely or assertively depending on `type` [see [#18](https://github.com/jackbsteinberg/std-toast/issues/18)]),
+(politely or assertively depending on `type` [see [attributes](####attributes)]),
 and the optional action / dismiss buttons will appear next in the tabbing order.
 After a certain duration, the toast will timeout and hide itself,
-but this timeout will be suspended while the toast has focus or `mousehover`.
+though this timeout will be suspended while the toast has focus or `mousehover`.
 
 #### Attributes
 
