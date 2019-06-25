@@ -167,7 +167,7 @@ and will typically contain a message and optionally action and dismiss buttons
 (though arbitrary markup in the element is supported).
 The contents will be announced to a screen reader
 (politely or assertively depending on `type` [see [attributes](#attributes)]),
-and the optional action / dismiss buttons will appear next in the tabbing order.
+and the focusable contents of the toast, if any, will appear next in the tabbing order.
 After a certain duration, the toast will timeout and hide itself,
 though this timeout will be suspended while the toast has focus or `mousehover`.
 
