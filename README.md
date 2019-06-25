@@ -164,7 +164,7 @@ See [whatwg/html#4697](https://github.com/whatwg/html/issues/4697) for more disc
 - [Global attributes](https://html.spec.whatwg.org/multipage/dom.html#global-attributes)
 - `open`: a boolean attribute, determining whether the toast is visible or not (according to the default styles).
 By default toasts are not shown.
-- `type`: category of toast, conveying the semantic priority of the toast, and influencing its styling (both default and user-provided). This will correspond closely with certain [WAI-ARIA roles](https://www.w3.org/TR/aria-in-html/#aria-roles) 
+- `type`: category of toast, conveying the semantic priority of the toast, and influencing its styling (both default and user-provided). This will correspond closely with certain [WAI-ARIA roles](https://w3c.github.io/using-aria/#aria-roles) 
 (more discussion in [#18](https://github.com/jackbsteinberg/std-toast/issues/18)).
     - TODO([#18](https://github.com/jackbsteinberg/std-toast/issues/18)): decide on list of WAI-ARIA Roles to use, and decide on types to natively support, create, and style.
 - `position`: default position will be ???
