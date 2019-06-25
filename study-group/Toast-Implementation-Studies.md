@@ -236,7 +236,7 @@ but the documentation recommends the [notistack](https://github.com/iamhosseindh
 ### Takeaways
 - Material-UI Snackbar ships with a many properties allowing for high control.
 - Customization is supported, but sometimes complicated 
-  (e.g. custom styles and [theme support using SnackbarContent](https://material-ui.com/demos/snackbars/#customized-snackbars))
+  (e.g. custom styles and [type support using SnackbarContent](https://material-ui.com/demos/snackbars/#customized-snackbars))
 - The library supports callbacks for `close`, `enter`, and `exit`, 
   for before during and after each event.
 - Allows control of the transition direction.
@@ -373,7 +373,7 @@ class App extends Component {
 }
 ```
 
-react-toastify supports built-in themes for toasts, 
+react-toastify supports built-in types for toasts, 
 such as `success`, `info`, and `warning`, among others.
 It also provides intuitive positioning, 
 that can be set from the toast or configured on the `ToastContainer`.

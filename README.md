@@ -91,7 +91,7 @@ and then show them inside the application logic.
 import 'std:elements/toast';
 </script>
 
-<std-toast id="sample-toast" theme="info">
+<std-toast id="sample-toast" type="info">
     Hello World!
 </std-toast>
 ```
@@ -112,7 +112,7 @@ similar to how the `alert()` function can be used show alerts.
 import { showToast } from 'std:elements/toast';
 
 const toast = showToast("Hello World!", {
-    theme: "info",
+    type: "info",
     duration: 3000
 });
 ```
@@ -164,8 +164,9 @@ See [whatwg/html#4697](https://github.com/whatwg/html/issues/4697) for more disc
 - [Global attributes](https://html.spec.whatwg.org/multipage/dom.html#global-attributes)
 - `open`: a boolean attribute, determining whether the toast is visible or not (according to the default styles).
 By default toasts are not shown.
-- `theme`: one of `"default"`, ???, or ???, conveying the semantic priority of the toast, and influencing its styling (both default and user-provided)
-    - TODO([#18](https://github.com/jackbsteinberg/std-toast/issues/18)): decide on list of themes to natively support and create and style them.
+- `type`: one of `"default"`, ???, or ???, conveying the semantic priority of the toast, and influencing its styling (both default and user-provided). This will correspond closely with certain [WAI-ARIA roles](https://www.w3.org/TR/aria-in-html/#aria-roles) 
+(more discussion in [#18](https://github.com/jackbsteinberg/std-toast/issues/18)).
+    - TODO([#18](https://github.com/jackbsteinberg/std-toast/issues/18)): decide on list of WAI-ARIA Roles to use, and decide on types to natively support, create, and style.
 - `position`: default position will be ???
     - Options for position:
         - `"top-left"`
@@ -312,7 +313,7 @@ allowing further manipulation by script.
 and the options for this particular showing of the toast.
 Thus, the possible options are:
 
-- `theme`, like the attribute
+- `type`, like the attribute
 - `position`, like the attribute
 - `closeButton`, like the attribute
 - `duration`, like the `show()` option
@@ -334,10 +335,10 @@ which developers will be able to change to customize look and feel.
 - `display: none`: this will keep the toast hidden from view and searching
 when the `open` attribute is not present.
 
-#### `std-toast[open]`
+#### `std-toast([open])`
 
 TODO: figure out some default styles, and state them here.
-Additionally figure out default styles for themes.
+Additionally figure out default styles for types.
 
 ### Appearance customization
 
@@ -369,7 +370,7 @@ document.querySelector('#sample-toast').show();
 ### Create and show new toast with options
 ```js
 const toast = showToast("Hello World!", {
-    theme: "info",
+    type: "info",
     duration: 3000
 });
 ```
@@ -388,7 +389,7 @@ document.querySelector("#container").append(toast);
 
 ```js
 const configs = {
-    theme: 'info',
+    type: 'info',
     duration: 3000
 }
 
