@@ -260,13 +260,13 @@ TODO: when we have a prototype, link to/show an example of this in action.
 by toggling its `open=""` attribute to true.
 It will also start or reset the timeout of the toast,
 to show for the provided `duration`,
-or a default `duration` of `2000`ms.
+or a default `duration` of `3000`ms.
 The `options` include:
-    - `duration`: how long to show the toast, in milliseconds. Defaults to `2000`.
+    - `duration`: how long to show the toast, in milliseconds. Defaults to `3000`.
     - `multiple`: ???
     - `newestOnTop`: ???
 
-TODO([#37](https://github.com/jackbsteinberg/std-toast/issues/37)): should `2000` be the default?
+TODO([#37](https://github.com/jackbsteinberg/std-toast/issues/37)): should `3000` be the default?
 Should it be longer for accessibility reasons? Should it change dependent on the amount of text in the toast?
 
 TODO([#19](https://github.com/jackbsteinberg/std-toast/issues/19)): how do `multiple` and `newestOnTop` work?
