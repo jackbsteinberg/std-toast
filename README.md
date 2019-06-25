@@ -164,7 +164,7 @@ See [whatwg/html#4697](https://github.com/whatwg/html/issues/4697) for more disc
 The `<std-toast>` element provides a subtle, non-interruptive notification to the user.
 The toast will appear at a customized time and position on the screen, 
 and will typically contain a message and optionally action and dismiss buttons
-(though other markup in the element is supported).
+(though arbitrary markup in the element is supported).
 The contents will be announced to a screen reader
 (politely or assertively depending on `type` [see [attributes](####attributes)]),
 and the optional action / dismiss buttons will appear next in the tabbing order.
