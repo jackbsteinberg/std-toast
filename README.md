@@ -169,7 +169,7 @@ The contents will be announced to a screen reader
 (politely or assertively depending on `type` [see [attributes](#attributes)]),
 and the focusable contents of the toast, if any, will appear next in the tabbing order.
 After a certain duration, the toast will timeout and hide itself,
-though this timeout will be suspended while the toast has focus or `mousehover`.
+though this timeout will be suspended while the toast has focus or the mouse is hovering over it.
 
 #### Attributes
 
