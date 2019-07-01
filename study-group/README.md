@@ -28,7 +28,7 @@ If there are any mistakes, please open an issue to get them corrected.
 | [Events](#properties)                                 |     |     | yes | yes |     |     | yes |     |     | yes |     |     |
 | [Icon](#properties)                                   |     | yes | yes | yes | yes |     |     | yes | yes |     |     |     |
 | [Progress Bar](#properties)                           | yes |     | yes |     |     |     |     |     |     |     |     |     |
-| [Theme Support](#built-in-support)                    | yes | yes | yes |     | yes |     | yes | yes | yes |     |     |     |
+| [Type Support](#built-in-support)                     | yes | yes | yes |     | yes |     | yes | yes | yes |     |     |     |
 | [Global Custom Configuration](#built-in-support)      | yes | yes | yes |     |     |     |     |     | yes |     |     |     |
 | [Configured / Created in JS](#built-in-support)       | yes | yes | yes |     | yes | yes | yes |     | yes |     |     |     |
 | [Explicit Component Pattern](#built-in-support)       | yes | yes |     | yes |     | yes |     | yes |     | yes |     |     |
@@ -87,9 +87,9 @@ as well as what it's allowed to be used with.
 It consists of a collection of implementation details, patterns, and technologies 
 that are supported by popular libraries.
 
-- Theme Support: offers built-in theming options, such as `success`, `info`, or `error`.
+- Type Support: offers built-in typing options, such as `success`, `info`, or `error`.
 
-- Global Custom Configuration: support for global config objects defining custom themes / patterns, which can be applied to individual toasts.
+- Global Custom Configuration: support for global config objects defining custom types / patterns, which can be applied to individual toasts.
 
 - Configured / Created in JS: the toast object is set up and called to display using JavaScript.
     - Upon display this creates a new DOM element or injects the settings into an existing HTML element.
