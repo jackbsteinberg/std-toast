@@ -210,16 +210,16 @@ There will additionally be an `action` property,
 which returns or allows setting an element that provides the toast's action.
 In detail:
 
-- The getter returns the first `button` or `a` element descendant with the `slot="action"` attribute set.
+- The getter returns the first descendant element with the `slot="action"` attribute set.
   If no such element exists,
   it returns null.
-- The setter accepts a `button` or `a` element,
+- The setter accepts an element,
   appends it to the toast element,
   and sets the `slot="action"` attribute on it.
   If any existing such elements exist,
   the first one (i.e. the one that would be returned by the getter) is replaced.
-  If the provided value is not a `HTMLButtonElement` or `HTMLAnchorElement`,
-  a `TypeError` is thrown.
+  (If the provided value is not an `Element`,
+  a `TypeError` is thrown.)
 
 To see examples of the `action` getter and setter in use,
 read on to the next section.
@@ -236,7 +236,12 @@ steer the developer in to the following content model:
   These children provide the toast's message.
 - There may be zero or one actions,
   which are either `<a>` or `<button>` elements,
+  or autonomous custom elements,
   decorated with the `slot="action"` attribute.
+  TODO: is this the right restriction on what can be an action?
+  What about `<div tabindex="0" class="synthetic-button">`?
+  But allowing all interactive content is weird.
+  (Note that it is for HTML validators/authors and does not impact the API.)
 
 TODO([#17](https://github.com/jackbsteinberg/std-toast/issues/17)): what about title or icon?
 They could potentially also be accomodated, in a similar fashion.
@@ -310,7 +315,7 @@ as they are stepping outside of the supported use case:
 
 Such an unusual toast would still integrate with other toasts in terms of stacking and positioning behavior,
 and some of the default styles that are inherited may be useful.
-But the `action` property will not provide a pointer to the action,
+But the `action` property will only provide a pointer to the `<textarea>`,
 and the page author will need to add additional styling to handle the extra contents.
 
 TODO: when we have a prototype, link to/show an example of this in action.
