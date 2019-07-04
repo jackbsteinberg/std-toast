@@ -196,6 +196,8 @@ By default toasts do not have a close button.
     - TODO: where should the `closebutton` show up relative to toast content,
     and how customizable should it be?
 
+#### Properties
+
 All attributes will be reflected as properties on the element's JavaScript interface.
 For example:
 
@@ -204,66 +206,116 @@ const toast = document.createElement('std-toast');
 console.log(toast.open); // false
 ```
 
+There will additionally be an `action` property,
+which returns or allows setting an element that provides the toast's action.
+In detail:
+
+- The getter returns the first descendant element with the `slot="action"` attribute set.
+  If no such element exists,
+  it returns null.
+- The setter accepts an element,
+  appends it to the toast element,
+  and sets the `slot="action"` attribute on it.
+  If any existing such elements exist,
+  the first one (i.e. the one that would be returned by the getter) is replaced.
+  (If the provided value is not an `Element`,
+  a `TypeError` is thrown.)
+
+To see examples of the `action` getter and setter in use,
+read on to the next section.
+
 #### Contents
 
-The `<std-toast>` element can be used as a generic container,
-but will work best (in terms of default styling and events) if the developer conforms to the following content model:
+At a technical level, the `<std-toast>` element can be used as a generic container.
+However, the authoring conformance requirements,
+as well as the API,
+steer the developer in to the following content model:
 
-- The first child node,
-  typically either a text node or a container like `<p>`,
-  provides a message.
-- If more than one child node is present,
-  then the last child element,
-  which can be either an `<a>` or a `<button>`,
-  provides a call to action.
+- All children except an action need to be [phrasing content](https://html.spec.whatwg.org/#phrasing-content-2),
+  that is not [interactive content](https://html.spec.whatwg.org/#interactive-content-2).
+  These children provide the toast's message.
+- There may be zero or one actions,
+  which are either `<a>` or `<button>` elements,
+  or autonomous custom elements,
+  decorated with the `slot="action"` attribute.
+  TODO: is this the right restriction on what can be an action?
+  What about `<div tabindex="0" class="synthetic-button">`?
+  But allowing all interactive content is weird.
+  (Note that it is for HTML validators/authors and does not impact the API.)
 
-TODO([#17](https://github.com/jackbsteinberg/std-toast/issues/17)): what about title or icon? They should potentially also be accomodated, in a similar fashion.
+TODO([#17](https://github.com/jackbsteinberg/std-toast/issues/17)): what about title or icon?
+They could potentially also be accomodated, in a similar fashion.
 
-Thus, the following would all work well out of the box:
+Thus,
+the following would all work well out of the box,
+and be comformant to the content model:
 
 ```html
 <std-toast>Hello world!</std-toast>
 
-<std-toast><p>Hello world!</p></std-toast>
+<std-toast><p>Hello <strong>world</strong>!</p></std-toast>
 
-<std-toast>
-  <p>Hello world!</p>
-  <button>Click me!</button>
+<std-toast id="toast3">
+  Hello world!
+  <button slot="action" class="fancy-button">Click me!</button>
 </std-toast>
+<script type="module">
+document.querySelector("#toast3").action.onclick = e => { /*...*/ };
+</script>
 
 <std-toast>
-  <p>Hello world!</p>
-  <a href="https://example.com/" target="_blank">Click me!</button>
+  Hello world!
+  <a slot="action" href="https://example.com/" target="_blank">Click me!</button>
 </std-toast>
 ```
 
-TODO([#21](https://github.com/jackbsteinberg/std-toast/issues/21)): How will this pattern support work well?
-
-These can equivalently be created via JavaScript: ([#12](https://github.com/jackbsteinberg/std-toast/issues/12))
+These can equivalently be created via JavaScript:
 
 ```js
-// TODO: write this once we figure out the JS API for supplying HTML messages,
-// and for supplying customizable actions
+const toast1 = showToast("Hello world!");
+
+const toast2 = showToast();
+toast2.innerHTML = `<p>Hello <strong>world</strong>!</p>`;
+
+const toast3 = showToast("Hello world!", { action: "Click me!" });
+toast3.action.className = "fancy-button";
+toast3.action.onclick = e => { /*...*/ };
+
+const toast4 = showToast("Hello world!", { action: document.createElement("a") });
+Object.assign(toast4.action,
+  href: "https://example.com",
+  target: "_blank",
+  textContent: "Click me!"
+});
+
+const toast4SetterDemo = showToast("Hello world!");
+toast4SetterDemo.action = document.createElement("a");
+Object.assign(toast4SetterDemo.action, /* as before */);
 ```
+
+(Note: because frames are only painted after JavaScript runs to completion,
+the setup code in the lines immediately after `showToast()` will be applied before the toast is ever shown to the user.)
 
 More complex toasts,
 that don't fit the above content model,
-would require more custom handling on the part of the developer:
+would require custom handling on the part of the developer,
+as they are stepping outside of the supported use case:
 
 ```html
+<!-- Invalid HTML, but will still "work" -->
 <std-toast>
   <p>Hello world!</p>
-  <p>A second paragraph?!</p>
 
-  <button>Action 1</button>
+  <textarea slot="action">Action 1</textarea>
   <button>Action 2</button>
+  <button slot="action">Action 3</button>
 </std-toast>
 ```
 
 Such an unusual toast would still integrate with other toasts in terms of stacking and positioning behavior,
 and some of the default styles that are inherited may be useful.
-But the page author will need to handle the action clicks themselves (instead of using the `"actionclick"` event),
-and will need to add additional styling to handle the extra contents.
+But the `action` property will only provide a pointer to the `<textarea>`,
+and the page author will need to add additional styling to handle the extra contents.
 
 TODO: when we have a prototype, link to/show an example of this in action.
 
@@ -299,10 +351,7 @@ A `<std-toast>` element can fire the following events:
   (Note: if animations were applied, the toast may not be entirely invisible at the time this event fires)
     - TODO: should we consider separate events for the start and end of any hide animation?
       This seems hard to do correctly if the user customizes the animation, though.
-- `"actionclick"`: the toast's call-to-action button or link was clicked, if one exists.
-    - TODO([#11](https://github.com/jackbsteinberg/std-toast/issues/11)): flesh out exactly how the action works and how this event is linked.
-
-TODO([#35](https://github.com/jackbsteinberg/std-toast/issues/35)): split `"show"` and `"hide"` into `"will/didShow"` and `"will/didHide"`.
+      TODO([#35](https://github.com/jackbsteinberg/std-toast/issues/35)): split `"show"` and `"hide"` into `"will/didShow"` and `"will/didHide"`.
 
 ### `showToast(message, options)`
 
@@ -321,8 +370,8 @@ allowing further manipulation by script.
 
 `message` is a string that will be inserted as a text node into the created `<std-toast>`.
 
-`options` allows configuring both the attributes of the `<std-toast>`,
-and the options for this particular showing of the toast.
+`options` allows configuring both the attributes and contents of the `<std-toast>`,
+as well as the options for this particular showing of the toast.
 Thus, the possible options are:
 
 - `type`, like the attribute
@@ -331,8 +380,11 @@ Thus, the possible options are:
 - `duration`, like the `show()` option
 - `multiple`, like the `show()` option
 - `newestOnTop`, like the `show()` option
-
-TODO([#11](https://github.com/jackbsteinberg/std-toast/issues/11)): How should actions be handled?
+- `action`, a string or `Element`.
+  An `Element` is treated the same as the `action` property setter.
+  Otherwise,
+  the result is converted to a string,
+  which gives a shortcut for creating a `<button slot="action">` with the string value as its `textContent`.
 
 TODO([#15](https://github.com/jackbsteinberg/std-toast/issues/15)): Should a toast generated by `showToast()`
 get removed from the DOM, and if so should there be cases where it remains?
