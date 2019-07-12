@@ -393,16 +393,33 @@ get removed from the DOM, and if so should there be cases where it remains?
 
 The standard toast will come with these default styles,
 which developers will be able to change to customize look and feel.
+They are similar to [the default styles for `<dialog>`](https://html.spec.whatwg.org/multipage/rendering.html#flow-content-3),
+which are very minimal.
 
-#### `std-toast:not([open])`
+```css
+std-toast {
+    position: fixed;
+    offset-block-end: 1em;
+    offset-inline-end: 1em;
+    border: solid;
+    padding: 1em;
+    background: white;
+    color: black;
+    z-index: 1;
+}
 
-- `display: none`: this will keep the toast hidden from view and searching
-when the `open` attribute is not present.
+std-toast:not([open]) {
+    display: none;
+}
+```
 
-#### `std-toast[open]`
+TODO: we may want additional default styles for the different `type=""` values.
 
-TODO: figure out some default styles, and state them here.
-Additionally figure out default styles for types.
+TODO: the choice of block/inline-end positioning
+(lower-right in left-to-right, horizontal writing modes)
+is not final and will likely be changed.
+It also interacts with the desire for easier positioning discussed in the attributes section.
+Discuss in [#13](https://github.com/jackbsteinberg/std-toast/issues/13) and [#39](https://github.com/jackbsteinberg/std-toast/issues/39).
 
 ### Appearance customization
 
