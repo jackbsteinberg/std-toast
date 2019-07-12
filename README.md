@@ -423,11 +423,40 @@ Discuss in [#13](https://github.com/jackbsteinberg/std-toast/issues/13) and [#39
 
 ### Appearance customization
 
-TODO([#20](https://github.com/jackbsteinberg/std-toast/issues/20)): explain any API for appearance customization,
-beyond just normal CSS.
-For example,
-a CSS shadow part for the close button,
-or some CSS variables.
+Appearance can be customized using normal CSS.
+For example, to change the colors, you could do
+
+```css
+std-toast {
+    border-color: blue;
+    background-color: yellow;
+    color: red;
+}
+```
+
+To completely remove all default styling (useful for library authors),
+use
+
+```css
+std-toast {
+    all: unset;
+}
+```
+
+To style an action button (if present),
+use the `[slot="action"]` selector:
+
+```css
+std-toast [slot="action"] {
+    color: blue;
+    text-transform: uppercase;
+}
+```
+
+(Note: we could offer an alternate syntax of `std-toast::part(action) { ... }`.
+Discuss in [#20](https://github.com/jackbsteinberg/std-toast/issues/20).)
+
+TODO: link to demos.
 
 ## Accessibility
 
@@ -477,9 +506,6 @@ const configs = {
 const toast1 = showToast("number 1", configs);
 const toast2 = showToast("number 2", configs);
 ```
-
-### Styling the toast
-TODO
 
 ## Security and Privacy Considerations
 See [TAG Security / Privacy Self Review](/security-privacy-self-review.md).
