@@ -1,0 +1,151 @@
+/* CSS files add styling rules to your content */
+
+body {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+}
+
+h1 {
+  color: #373fff;
+}
+
+.code-area {
+  width: 100%;
+  min-height: 15em;
+  border: solid 1px;
+  padding: 5px;
+  box-shadow: 1px 4px 2px -1px rgba(200, 200, 250, 0.7); 
+  font-size: 14px;
+  resize: none;
+  font-family: monospace;
+}
+
+.code-area:focus {
+  outline: none;
+}
+
+.column-container {
+  display: flex;
+}
+
+.column {
+  width: 40%;
+}
+
+std-toast {
+  font-size: 36px;
+}
+
+#toast-1 {
+  color: blue;
+  background: rgba(220, 210, 40, 0.80);
+  border-color: cyan;
+}
+
+#toast-2 {
+  background: black;
+  color: white;
+  border-color: cyan;
+  border-radius: 5px;
+  border-style: dotted;
+  border-width: 10px;
+  box-shadow: 5px 5px rgba(50, 50, 50, 0.25);
+}
+
+#toast-3 {
+  margin-right: 50px;
+  padding-bottom: 25px;
+  min-width: 500px;
+  width: 70%;
+  height: 80%;
+  max-height: 500px;
+}
+
+#toast-4 {
+  margin-inline-end: 50px;
+  padding-block-end: 25px;
+  min-inline-size: 500px;
+  inline-size: 70%;
+  block-size: 80%;
+  max-block-size: 500px;
+}
+
+#toast-5 {
+  color: white;
+  background-color: navy;
+}
+
+#toast-5 [slot="action"] {
+  font-size: 48px;
+  background: cyan;
+}
+
+#toast-6 {
+  font-family: "Roboto";
+  font-size: 20px;
+  border: none;
+  background: rgb(50, 50, 50);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 4px;
+  line-height: 44px;
+}
+
+#toast-6 [slot="action"] {
+  font-size: 20px;
+  margin-left: 96px;
+  background: none;
+  border: none;
+  color: rgb(220, 0, 78);
+  padding: 8px;
+  border-radius: 4px;
+}
+
+#toast-6 [slot="action"]:hover {
+  background: rgba(220, 0, 78, 0.2);
+}
+
+#toast-6 [slot="action"]:focus {
+  outline: 0;
+}
+
+#toast-7 {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 20px;
+  max-width: 400px;
+  width: 50%;
+  background: #04844b;
+  color: white;
+  padding: .75rem 3rem .75rem 1.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  line-height: 1.5;
+}
+
+#toast-7 a {
+  color: inherit;
+}
+
+#toast-8 {
+  background: #137cbd;
+  color: white;
+  border: none;
+  padding: 11px;
+  font-size: 14px;
+  font-family: -apple-system, sans-serif;
+  border-radius: 3px;
+}
+
+#toast-8 [slot="action"] {
+  font-size: 14px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 8px;
+  border-radius: 2px;
+  margin-left: 96px;
+}
+
+#toast-8 [slot="action"]:hover {
+  background: rgba(255, 255, 255, 0.1);
+}

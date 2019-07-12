@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>std-toast Styling Demos</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    <script type="module">
+      import 'std:elements/toast';
+    </script>
+    
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+  </head>  
+  <body>
+    <style type="text/css" id="toast-styler">       
+    </style>
+    <h1>
+      Toast Styling Demos
+    </h1>
+
+    <h2>
+      Introduction
+    </h2>
+
+    <p>
+      This page demos the custom styling behavior for <code>std-toast</code><br>
+      <a href="https://github.com/jackbsteinberg/std-toast" target="_blank">Link to <code>std-toast</code> explainer</a>
+    </p>
+    
+    <h2>
+      Sandbox
+    </h2>
+    <p>
+      These styles are applied to all <code>&lt;std-toast&gt;</code> elements on the page.<br>
+      The sandbox styles are also editable! Try for yourself!
+    </p>
+    <div>
+      <button onclick="document.querySelector('#sandbox-toast').toggle();">
+        Show Sandbox Toast
+      </button>
+      <std-toast id="sandbox-toast">
+        Sandbox Toast
+      </std-toast>
+    </div>
+    <br>
+    <textarea id="toast-sandbox" class="code-area">std-toast {
+  font-size: 36px;
+}</textarea>
+
+<!--    DEMO #1: Color -->
+    <div class="demo">
+        <demo-content number="1">
+          <h2 slot="header">
+            Demo #1: Color
+          </h2>
+          <p slot="description">
+            The color of the toast and its components can be naively set using native CSS color properties:
+          </p>
+          <textarea id="demo-css-1" slot="css" class="code-area">
+std-toast {
+  color: yellow;
+  background-color: rgba(120, 140, 40, 0.80);
+  border-color: cyan;
+}</textarea>
+        </demo-content>
+        <std-toast id="toast-1">
+          Demo #1
+        </std-toast>
+      </div>
+  
+<!--    DEMO #2: Border -->
+    <div class="demo">
+      <demo-content number="2">
+        <h2 slot="header">
+          Demo #2: Border
+        </h2>
+        <p slot="description">
+          The border to the toast can be styled using native CSS border properties:
+        </p>
+        <textarea id="demo-css-2" slot="css" class="code-area">
+std-toast {
+  background: black;
+  color: white;
+  border-color: cyan;
+  border-radius: 5px;
+  border-style: dotted;
+  border-width: 10px;
+  box-shadow: 5px 5px rgba(50, 50, 50, 0.25);
+}</textarea>
+      </demo-content>
+      <std-toast id="toast-2">
+        Demo #2
+      </std-toast>
+    </div>
+  
+  <!--    DEMO #3: Dimensions -->
+    <div class="demo">
+      <demo-content number="3">
+        <h2 slot="header">
+          Demo #3: Dimensions
+        </h2>
+        <p slot="description">
+          The dimensions of the toast (height, width, margins, padding) can be styled using native CSS:<br>
+          (Hint: resize the screen for to see min/max in action)
+        </p>
+        <textarea id="demo-css-3" slot="css" class="code-area">
+std-toast {
+  margin-right: 50px;
+  padding-bottom: 25px;
+  min-width: 400px;
+  width: 70%;
+  height: 80%;
+  max-height: 500px;
+}</textarea>
+      </demo-content>
+      <std-toast id="toast-3">
+        Demo #3
+      </std-toast>
+    </div>
+    
+  <!--    DEMO #4: Dimensions (Logical Properties) -->
+  <div class="demo">
+    <demo-content number="4">
+      <h2 slot="header">
+        Demo #4: Dimensions (Logical Properties)
+      </h2>
+      <p slot="description">
+        The dimensions of the toast (height, width, margins, padding) can be styled using native CSS <em>with logical properties!</em>:<br>
+          (Hint: resize the screen for to see min/max in action)
+      </p>
+      <textarea id="demo-css-4" slot="css" class="code-area">
+std-toast {
+    margin-inline-end: 50px;
+    padding-block-end: 25px;
+    min-inline-size: 500px;
+    inline-size: 70%;
+    block-size: 80%;
+    max-block-size: 500px;
+}</textarea>
+    </demo-content>
+    <std-toast id="toast-4">
+      Demo #4
+    </std-toast>
+  </div>
+
+    <!--    DEMO #5: Action Styling -->
+  
+    <div class="demo">
+      <demo-content number="5">
+        <h2 slot="header">
+          Demo #5: Action Styling
+        </h2>
+        <p slot="description">
+          The action button on the toast can be styled using a selector for the slot attribute:
+        </p>
+        <textarea id="demo-css-5" slot="css" class="code-area">
+std-toast [slot="action"] {
+  font-size: 48px;
+  background: cyan;
+}</textarea>
+      </demo-content>
+      <std-toast id="toast-5">
+        Demo #5
+        <button slot="action">
+          Action
+        </button>
+      </std-toast>
+    </div>
+    
+    <h2>
+      Coming Soon:
+    </h2>
+    <ul>
+      <li>Position</li>
+      <li>Stretch</li>
+      <li>Close Button</li>
+    </ul>
+    
+    <div class="libraries">
+      <h2>
+        Library Styling Demos
+      </h2>
+      <div class="library-demos">
+        <p>
+          The <code>&lt;std-toast&gt;</code> element can be styled with native CSS to emulate the styles of popular toast frameworks:
+        </p>
+<!--         MATERIAL -->
+        <demo-content number="6">
+          <h3 slot="header">
+            Material Snackbar
+          </h3>
+          <textarea id="demo-css-6" slot="css" class="code-area">
+std-toast {
+  font-family: "Roboto";
+  font-size: 20px;
+  border: none;
+  background: rgb(50, 50, 50);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 4px;
+  line-height: 44px;
+}
+
+std-toast [slot="action"] {
+  font-size: 20px;
+  margin-left: 96px;
+  background: none;
+  border: none;
+  color: rgb(220, 0, 78);
+  padding: 8px;
+  border-radius: 4px;
+}
+
+std-toast [slot="action"]:hover {
+  background: rgba(220, 0, 78, 0.2);
+}</textarea>
+        </demo-content>
+        <std-toast id="toast-6">
+          Material Snackbar
+          <button slot="action">
+            action
+          </button>
+        </std-toast>
+<!--         SALESFORCE -->
+        <demo-content number="7">
+          <h3 slot="header">
+            Salesforce Lightning Toast
+          </h3>
+          <textarea id="demo-css-7" slot="css" class="code-area">
+std-toast {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 20px;
+  max-width: 400px;
+  width: 50%;
+  background: #04844b;
+  color: white;
+  padding: .75rem 3rem .75rem 1.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  line-height: 1.5;
+}
+
+std-toast a {
+  color: inherit;
+}</textarea>
+        </demo-content>
+        <std-toast id="toast-7">
+          &#10003 Salesforce <a href="https://lightningdesignsystem.com/components/toast/" target="_blank">Lightning Toast</a>
+        </std-toast>
+<!--         BLUEPRINT -->
+        <demo-content number="8">
+          <h3 slot="header">
+            Blueprint Toast
+          </h3>
+          <textarea id="demo-css-8" slot="css" class="code-area">
+std-toast {
+  background: #137cbd;
+  color: white;
+  border: none;
+  padding: 11px;
+  font-size: 14px;
+  font-family: -apple-system, sans-serif;
+  border-radius: 3px;
+}
+
+std-toast [slot="action"] {
+  font-size: 14px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 8px;
+  border-radius: 2px;
+  margin-left: 96px;
+}
+
+std-toast [slot="action"]:hover {
+  background: rgba(255, 255, 255, 0.1);
+}</textarea>
+        </demo-content>
+        <std-toast id="toast-8">
+          Blueprint Toast
+          <button slot="action">
+            Action
+          </button>
+        </std-toast>
+      </div>
+    </div>
+  </body>
+</html>
