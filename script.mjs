@@ -1,21 +1,21 @@
 const toastSandbox = document.querySelector('#toast-sandbox');
-updateStyles('#toast-sandbox', undefined, '#toast-styler');
+updateStyles(toastSandbox, undefined, '#toast-styler');
 
 function replaceIDs (text, number) {
   return text.split(`#toast-${number}`).join('std-toast');
 }
 
-function updateStyles(selector, number, target) {
-  let replacementContent = document.querySelector(selector).value;
+function updateStyles(cssText, number, target) {
+  let replacementContent = cssText.value;
   if (target == '#toast-styler') {
     // replace ids with std-toast
-    replacementContent = replaceIDs(document.querySelector(selector).value, number);
+    replacementContent = replaceIDs(cssText.value, number);
     toastSandbox.value = replacementContent;
   }
   document.querySelector(target).innerHTML = replacementContent; 
 }
 
-toastSandbox.addEventListener('input', () => {updateStyles('#toast-sandbox', undefined, '#toast-styler');});
+toastSandbox.addEventListener('input', () => {updateStyles(toastSandbox, undefined, '#toast-styler');});
 
 // Resize textareas
 const updateTextareaSize = (area) => {
@@ -31,6 +31,8 @@ textareaList.forEach((area) => {
 
 // DEMO CUSTOM ELEMENT
 class DemoContentElement extends HTMLElement {
+  #cssTextarea;
+
   constructor() {
     super();
     const shadowRoot = this.attachShadow({mode: 'closed'});
@@ -53,16 +55,17 @@ class DemoContentElement extends HTMLElement {
         </div>
       `;
     
+    this.#cssTextarea = this.querySelector(`#demo-css-${this.number}`);
+
     shadowRoot.querySelector('#set-style').addEventListener('click', () => {
-      updateStyles(`#demo-css-${this.number}`, this.number, '#toast-styler');
+      updateStyles(this.#cssTextarea, this.number, '#toast-styler');
       updateTextareaSize(toastSandbox);
     });
     
-    updateStyles(`#demo-css-${this.number}`, this.number, `#toast-styler-${this.number}`);
+    updateStyles(this.#cssTextarea, this.number, `#toast-styler-${this.number}`);
     
-    const textarea = shadowRoot.querySelector('slot[name="css"]').assignedNodes()[0];
-    textarea.addEventListener('input', () => {
-      updateStyles(`#demo-css-${this.number}`, this.number, `#toast-styler-${this.number}`);
+    this.#cssTextarea.addEventListener('input', () => {
+      updateStyles(this.#cssTextarea, this.number, `#toast-styler-${this.number}`);
     });
   }
 
