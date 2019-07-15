@@ -1,0 +1,18 @@
+body {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+}
+
+h1 {
+  color: #373fff;
+}
+
+.code-area {
+  width: 100%;
+  border: solid 1px;
+  padding: 5px;
+  box-shadow: 1px 4px 2px -1px rgba(200, 200, 250, 0.7); 
+  font-size: 14px;
+  resize: none;
+  font-family: monospace;
+}
