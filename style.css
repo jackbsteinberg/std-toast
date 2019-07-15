@@ -9,7 +9,6 @@ h1 {
 
 .code-area {
   width: 100%;
-  min-height: 15em;
   border: solid 1px;
   padding: 5px;
   box-shadow: 1px 4px 2px -1px rgba(200, 200, 250, 0.7); 

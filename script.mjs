@@ -1,25 +1,26 @@
 const toastSandbox = document.querySelector('#toast-sandbox');
 updateStyles('#toast-sandbox', undefined, '#toast-styler');
 
-
-function updateStyles(selector, number, target) {
-  if (target == '#toast-styler') {
-    // replace ids with std-toast
-    const generalizedStyles = document.querySelector(selector).textContent
-      .split(`#toast-${number}`).join('std-toast');
-    toastSandbox.textContent = generalizedStyles;
-    document.querySelector(target).innerHTML = toastSandbox.value;
-  } else {
-    document.querySelector(target).innerHTML = document.querySelector(selector).value; 
-  }
+function replaceIDs (text, number) {
+  return text.split(`#toast-${number}`).join('std-toast');
 }
 
-toastSandbox.addEventListener('input', () => {updateStyles('#toast-sandbox');});
+function updateStyles(selector, number, target) {
+  let replacementContent = document.querySelector(selector).value;
+  if (target == '#toast-styler') {
+    // replace ids with std-toast
+    replacementContent = replaceIDs(document.querySelector(selector).value, number);
+    toastSandbox.value = replacementContent;
+  }
+  document.querySelector(target).innerHTML = replacementContent; 
+}
+
+toastSandbox.addEventListener('input', () => {updateStyles('#toast-sandbox', undefined, '#toast-styler');});
 
 // Resize textareas
 const updateTextareaSize = (area) => {
   const numLines = area.value.split('\n').length;
-  area.style.minHeight = `${numLines*(1.15)}em`;
+  area.rows = numLines;
 }
 
 const textareaList = document.querySelectorAll('textarea');
