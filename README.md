@@ -193,8 +193,7 @@ The default (if the attribute is omitted or set to an invalid value) is ???.
     - TODO([#13](https://github.com/jackbsteinberg/std-toast/issues/13)): should this positioning be an attribute or a style
 - `closebutton`: a boolean attribute, determining whether an explicit close button is shown. 
 By default toasts do not have a close button.
-    - TODO: where should the `closebutton` show up relative to toast content,
-    and how customizable should it be?
+See ["Contents"](#contents) and ["Appearance customization"](#appearance-customization) sections for how to customize the close button when it's shown.
 
 #### Properties
 
@@ -243,6 +242,10 @@ steer the developer in to the following content model:
   But allowing all interactive content is weird.
   (Note that it is for HTML validators/authors and does not impact the API.)
 
+Additionally,
+elements decorated with `slot="closebutton"` will show up inside the close button,
+replacing the default user-agent-provided close button UI.
+
 TODO([#17](https://github.com/jackbsteinberg/std-toast/issues/17)): what about title or icon?
 They could potentially also be accomodated, in a similar fashion.
 
@@ -266,6 +269,15 @@ document.querySelector("#toast3").action.onclick = e => { /*...*/ };
 <std-toast>
   Hello world!
   <a slot="action" href="https://example.com/" target="_blank">Click me!</button>
+</std-toast>
+
+<std-toast closebutton>
+  Hello world!
+</std-toast>
+
+<std-toast closebutton>
+  Hello world!
+  <span slot="closebutton">Dismiss</span>
 </std-toast>
 ```
 
@@ -291,6 +303,10 @@ Object.assign(toast4.action,
 const toast4SetterDemo = showToast("Hello world!");
 toast4SetterDemo.action = document.createElement("a");
 Object.assign(toast4SetterDemo.action, /* as before */);
+
+const toast5 = showToast("Hello world!", { closeButton: true });
+
+const toast6 = showToast("Hello world!", { closeButton: "Dismiss" });
 ```
 
 (Note: because frames are only painted after JavaScript runs to completion,
@@ -376,11 +392,14 @@ Thus, the possible options are:
 
 - `type`, like the attribute
 - `position`, like the attribute
-- `closeButton`, like the attribute
 - `duration`, like the `show()` option
 - `multiple`, like the `show()` option
 - `newestOnTop`, like the `show()` option
-- `action`, a string or `Element`.
+- `closeButton`, a boolean or string.
+  A boolean is treated the same as the `closeButton` property setter.
+  Otherwise, the result is converted to a string,
+  which gives a shortcut for creating a `<span slot="closebutton">` with the string value as its `textContent`.
+- `action`, an `Element` or string.
   An `Element` is treated the same as the `action` property setter.
   Otherwise,
   the result is converted to a string,
@@ -423,6 +442,8 @@ Discuss in [#13](https://github.com/jackbsteinberg/std-toast/issues/13) and [#39
 
 ### Appearance customization
 
+TODO: link to demos.
+
 Appearance can be customized using normal CSS.
 For example, to change the colors, you could do
 
@@ -443,6 +464,8 @@ std-toast {
 }
 ```
 
+#### Action button
+
 To style an action button (if present),
 use the `[slot="action"]` selector:
 
@@ -456,7 +479,19 @@ std-toast [slot="action"] {
 (Note: we could offer an alternate syntax of `std-toast::part(action) { ... }`.
 Discuss in [#20](https://github.com/jackbsteinberg/std-toast/issues/20).)
 
-TODO: link to demos.
+#### Close button
+
+To style the close button (if present),
+use the `::part(closebutton)` selector:
+
+```css
+std-toast::part(closebutton) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+}
+```
 
 ## Accessibility
 
