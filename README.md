@@ -191,11 +191,15 @@ By default toasts are not shown.
     - TODO([#39](https://github.com/jackbsteinberg/std-toast/issues/39)): Do we need values `"top-stretch"`, `"center-stretch"`, and `"bottom-stretch"` as well? Should this stretching be done automatically on mobile?
 The default (if the attribute is omitted or set to an invalid value) is ???.
     - TODO([#13](https://github.com/jackbsteinberg/std-toast/issues/13)): should this positioning be an attribute or a style
-- `closebutton`: a boolean attribute, determining whether an explicit close button is shown. 
-By default toasts do not have a close button.
-See ["Contents"](#contents) and ["Appearance customization"](#appearance-customization) sections for how to customize the close button when it's shown.
+- `closebutton`: allows setting the toast's close button content (e.g. `<std-toast closebutton="Dismiss">`),
+or leaving it up to the user agent (e.g. `<std-toast closebutton>`).
+If this attribute is left absent,
+the toast does not have a close button.
+See the ["Appearance customization"](#appearance-customization) section for how to customize the close button when it's present.
 
 #### Properties
+
+##### Reflected properties
 
 All attributes will be reflected as properties on the element's JavaScript interface.
 For example:
@@ -204,6 +208,33 @@ For example:
 const toast = document.createElement('std-toast');
 console.log(toast.open); // false
 ```
+
+##### `closeButton` property
+
+The `closeButton` property allows controlling the element's `closebutton=""` attribute.
+It is similar to the reflected properties,
+but slightly more complicated to allow both a boolean usage model
+(for using the default close button content)
+and a string usage model
+(for customizing the close button content).
+In detail:
+
+- The getter returns `false` if the attribute is absent,
+  `true` if the attribute is present with the empty string as its value,
+  and the attribute's value otherwise.
+- The setter,
+  if given true,
+  sets the value of the attribute to the empty string.
+  If given false,
+  it removes the attribute.
+  Otherwise,
+  it converts the given value to a string,
+  and sets the attribute's value to that string.
+
+To see examples of the `closeButton` setter in use,
+read on to the next section.
+
+##### `action` property
 
 There will additionally be an `action` property,
 which returns or allows setting an element that provides the toast's action.
@@ -242,10 +273,6 @@ steer the developer in to the following content model:
   But allowing all interactive content is weird.
   (Note that it is for HTML validators/authors and does not impact the API.)
 
-Additionally,
-elements decorated with `slot="closebutton"` will show up inside the close button,
-replacing the default user-agent-provided close button UI.
-
 TODO([#17](https://github.com/jackbsteinberg/std-toast/issues/17)): what about title or icon?
 They could potentially also be accomodated, in a similar fashion.
 
@@ -275,9 +302,8 @@ document.querySelector("#toast3").action.onclick = e => { /*...*/ };
   Hello world!
 </std-toast>
 
-<std-toast closebutton>
+<std-toast closebutton="Dismiss">
   Hello world!
-  <span slot="closebutton">Dismiss</span>
 </std-toast>
 ```
 
@@ -390,15 +416,12 @@ allowing further manipulation by script.
 as well as the options for this particular showing of the toast.
 Thus, the possible options are:
 
-- `type`, like the attribute
-- `position`, like the attribute
+- `type`, like the property that reflects the `type=""` attribute
+- `position`, like the property that reflects the `position=""` attribute
+- `closeButton`, like the property that reflects the `closebutton=""` attribute
 - `duration`, like the `show()` option
 - `multiple`, like the `show()` option
 - `newestOnTop`, like the `show()` option
-- `closeButton`, a boolean or string.
-  A boolean is treated the same as the `closeButton` property setter.
-  Otherwise, the result is converted to a string,
-  which gives a shortcut for creating a `<span slot="closebutton">` with the string value as its `textContent`.
 - `action`, an `Element` or string.
   An `Element` is treated the same as the `action` property setter.
   Otherwise,
@@ -464,9 +487,9 @@ std-toast {
 }
 ```
 
-#### Action button
+#### Action
 
-To style an action button (if present),
+To style an action (if present),
 use the `[slot="action"]` selector:
 
 ```css
@@ -481,7 +504,7 @@ Discuss in [#20](https://github.com/jackbsteinberg/std-toast/issues/20).)
 
 #### Close button
 
-To style the close button (if present),
+To style the close button (if present via the `closebutton=""` attribute),
 use the `::part(closebutton)` selector:
 
 ```css
