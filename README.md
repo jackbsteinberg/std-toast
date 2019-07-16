@@ -191,9 +191,9 @@ By default toasts are not shown.
     - TODO([#39](https://github.com/jackbsteinberg/std-toast/issues/39)): Do we need values `"top-stretch"`, `"center-stretch"`, and `"bottom-stretch"` as well? Should this stretching be done automatically on mobile?
 The default (if the attribute is omitted or set to an invalid value) is ???.
     - TODO([#13](https://github.com/jackbsteinberg/std-toast/issues/13)): should this positioning be an attribute or a style
-- `closebutton`: allows setting the toast's close button content (e.g. `<std-toast closebutton="Dismiss">`),
-or leaving it up to the user agent (e.g. `<std-toast closebutton>`).
-If this attribute is left absent,
+- `closebutton`: allows setting the toast's close button content (using `<std-toast closebutton="Dismiss">`),
+or leaving it up to the user agent's default (using `<std-toast closebutton>`).
+If this attribute is not present,
 the toast does not have a close button.
 See the ["Appearance customization"](#appearance-customization) section for how to customize the close button when it's present.
 
@@ -214,7 +214,7 @@ console.log(toast.open); // false
 The `closeButton` property allows controlling the element's `closebutton=""` attribute.
 It is similar to the reflected properties,
 but slightly more complicated to allow both a boolean usage model
-(for using the default close button content)
+(for using the user agent's default close button content)
 and a string usage model
 (for customizing the close button content).
 In detail:
