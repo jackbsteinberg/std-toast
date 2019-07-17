@@ -91,8 +91,8 @@ and then show them inside the application logic.
 import 'std:elements/toast';
 </script>
 
-<std-toast id="sample-toast" type="info">
-    Hello World!
+<std-toast id="sample-toast" type="success">
+    Email sent!
 </std-toast>
 ```
 
@@ -111,8 +111,8 @@ similar to how the `alert()` function can be used show alerts.
 ```js
 import { showToast } from 'std:elements/toast';
 
-const toast = showToast("Hello World!", {
-    type: "info",
+const toast = showToast("Email sent!", {
+    type: "success",
     duration: 3000
 });
 ```
@@ -176,9 +176,21 @@ though this timeout will be suspended while the toast has focus or the mouse is 
 - [Global attributes](https://html.spec.whatwg.org/multipage/dom.html#global-attributes)
 - `open`: a boolean attribute, determining whether the toast is visible or not (according to the default styles).
 By default toasts are not shown.
-- `type`: category of toast, conveying the semantic priority of the toast, and influencing its styling (both default and user-provided). This will correspond closely with certain [WAI-ARIA roles](https://w3c.github.io/using-aria/#aria-roles) 
-(more discussion in [#18](https://github.com/jackbsteinberg/std-toast/issues/18)).
-    - TODO([#18](https://github.com/jackbsteinberg/std-toast/issues/18)): decide on list of WAI-ARIA Roles to use, and decide on types to natively support, create, and style.
+- `type`: an [enumerated attribute](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#enumerated-attribute) giving the type of toast:
+  one of `"info"`, `"success"`, `"warning"`, or `"error"`.
+  This is used to convey the [semantics](https://html.spec.whatwg.org/multipage/dom.html#represents) of the toast,
+  similar to the distinctions between e.g. `<ol>` / `<ul>` / `<menu>` or `<strong>` / `<em>` / `<small>`.
+  - Like other semantic distinctions,
+    authors may want to style based on the distinction.
+    The [default styles](#default-styles) only change the border color of the toast,
+    but can be overridden by a page or design system to give any desired appearance.
+  - The default type is `"info"`.
+  - By default, `"error"` toasts will be treated as having the ARIA role semantics of [alert](https://rawgit.com/w3c/aria/master/#alert),
+    while the other toasts will be treated as having the ARIA role semantics of a [status](https://rawgit.com/w3c/aria/master/#status).
+    As with all HTML elements,
+    explicitly-specified ARIA attributes can take precedence for exceptional cases,
+    e.g. `<std-toast type="success" aria-live="assertive">` could be used to immediately notify the user of a time-sensitive success.
+  - TODO: action-containing toasts may also need to be assertive.
 - `position`: default position will be ???
     - Options for position:
         - `"top-left"`
@@ -208,6 +220,9 @@ For example:
 const toast = document.createElement('std-toast');
 console.log(toast.open); // false
 ```
+
+The `type` enumerated attribute is reflected [limited to only known values](https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#limited-to-only-known-values),
+with an invalid value default and missing value default of `"info"`.
 
 ##### `closeButton` property
 
@@ -457,9 +472,19 @@ std-toast {
 std-toast:not([open]) {
     display: none;
 }
-```
 
-TODO: we may want additional default styles for the different `type=""` values.
+std-toast[type=success i] {
+    border-color: green;
+}
+
+std-toast[type=warning i] {
+    border-color: orange;
+}
+
+std-toast[type=error i] {
+    border-color: red;
+}
+```
 
 TODO: the choice of block/inline-end positioning
 (lower-right in left-to-right, horizontal writing modes)
@@ -494,10 +519,10 @@ std-toast {
 #### Action
 
 To style an action (if present),
-use the `[slot="action"]` selector:
+use the `[slot=action]` selector:
 
 ```css
-std-toast [slot="action"] {
+std-toast [slot=action] {
     color: blue;
     text-transform: uppercase;
 }
@@ -517,6 +542,24 @@ std-toast::part(closebutton) {
     top: 0;
     right: 0;
     background: none;
+}
+```
+
+#### Types
+
+To give custom styling to the different types of toasts,
+use the `[type]` selector.
+Remember to use the `i` modifier so that your styling works even if someone does
+`<std-toast type="ERROR">`.
+
+```css
+std-toast[type=error i] {
+    background: #c23934;
+    color: white;
+}
+
+std-toast[type=error i]::before {
+    content: "⛔" / "";
 }
 ```
 
