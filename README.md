@@ -383,14 +383,15 @@ TODO: when we have a prototype, link to/show an example of this in action.
 - `.show(options)`: shows the toast element,
 by toggling its `open=""` attribute to true.
 It will also start or reset the timeout of the toast,
-to show for the provided `duration`,
-or a default `duration` of `3000`ms.
+to show for the provided `duration`.
 The `options` include:
     - `duration`: how long to show the toast,
       in milliseconds.
-      Defaults to `3000`.
       Can be set to `Infinity` to show the toast indefinitely,
       but values ≤ 0 will cause a `RangeError` to be thrown.
+      If not provided,
+      the default will be `Infinity` for `type="warning"` or `type="error"` toasts,
+      and `3000` otherwise.
     - `multiple`: ???
     - `newestOnTop`: ???
 
@@ -437,12 +438,14 @@ allowing further manipulation by script.
 as well as the options for this particular showing of the toast.
 Thus, the possible options are:
 
-- `type`, like the property that reflects the `type=""` attribute
-- `position`, like the property that reflects the `position=""` attribute
-- `closeButton`, like the property that reflects the `closebutton=""` attribute
-- `duration`, like the `show()` option
-- `multiple`, like the `show()` option
-- `newestOnTop`, like the `show()` option
+- `type`, like the property that reflects the `type=""` attribute.
+- `position`, like the property that reflects the `position=""` attribute.
+- `closeButton`, like the property that reflects the `closebutton=""` attribute.
+  Defaults to `true` if `duration` is `Infinity`,
+  including if it defaults to infinity by setting `type` to `"warning"` or `"error"`.
+- `duration`, like the `show()` option.
+- `multiple`, like the `show()` option.
+- `newestOnTop`, like the `show()` option.
 - `action`, an `Element` or string.
   An `Element` is treated the same as the `action` property setter.
   Otherwise,
