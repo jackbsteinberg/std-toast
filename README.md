@@ -369,7 +369,11 @@ It will also start or reset the timeout of the toast,
 to show for the provided `duration`,
 or a default `duration` of `3000`ms.
 The `options` include:
-    - `duration`: how long to show the toast, in milliseconds. Defaults to `3000`.
+    - `duration`: how long to show the toast,
+      in milliseconds.
+      Defaults to `3000`.
+      Can be set to `Infinity` to show the toast indefinitely,
+      but values ≤ 0 will cause a `RangeError` to be thrown.
     - `multiple`: ???
     - `newestOnTop`: ???
 
