@@ -372,7 +372,7 @@ The `options` include:
     - `duration`: how long to show the toast,
       in milliseconds.
       Defaults to `3000`.
-      `Infinity` is a possible value,
+      Can be set to `Infinity` to show the toast indefinitely,
       but values ≤0 will cause a `RangeError` to be thrown.
     - `multiple`: ???
     - `newestOnTop`: ???
