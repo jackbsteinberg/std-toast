@@ -373,7 +373,7 @@ The `options` include:
       in milliseconds.
       Defaults to `3000`.
       Can be set to `Infinity` to show the toast indefinitely,
-      but values ≤0 will cause a `RangeError` to be thrown.
+      but values ≤ 0 will cause a `RangeError` to be thrown.
     - `multiple`: ???
     - `newestOnTop`: ???
 
