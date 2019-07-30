@@ -5,9 +5,9 @@
 This document proposes a new HTML element for a "toast" pop-up notification.
 It is provided as a [built-in module](https://github.com/tc39/proposal-javascript-standard-library/).
 
-This proposal is intended to incubate in the WICG once it gets interest on 
+This proposal is intended to incubate in the WICG once it gets interest on
 [its Discourse thread](https://discourse.wicg.io/t/proposal-toast-ui-element/3634).
-After incubation, if it gains multi-implementer interest, 
+After incubation, if it gains multi-implementer interest,
 it will graduate to the [HTML Standard](https://html.spec.whatwg.org/multipage/) as a new standard HTML element.
 
 ## What is a "toast" pop-up notification?
@@ -91,8 +91,8 @@ and then show them inside the application logic.
 import 'std:elements/toast';
 </script>
 
-<std-toast id="sample-toast" type="info">
-    Hello World!
+<std-toast id="sample-toast" type="success">
+    Email sent!
 </std-toast>
 ```
 
@@ -111,8 +111,8 @@ similar to how the `alert()` function can be used show alerts.
 ```js
 import { showToast } from 'std:elements/toast';
 
-const toast = showToast("Hello World!", {
-    type: "info",
+const toast = showToast("Email sent!", {
+    type: "success",
     duration: 3000
 });
 ```
@@ -162,7 +162,7 @@ See [whatwg/html#4697](https://github.com/whatwg/html/issues/4697) for more disc
 #### Behavior
 
 The `<std-toast>` element provides a subtle, non-interruptive notification to the user.
-The toast will appear at a customized time and position on the screen, 
+The toast will appear at a customized time and position on the screen,
 and will typically contain a message and optionally action and dismiss buttons
 (though arbitrary markup in the element is supported).
 The contents will be announced to a screen reader
@@ -176,9 +176,21 @@ though this timeout will be suspended while the toast has focus or the mouse is 
 - [Global attributes](https://html.spec.whatwg.org/multipage/dom.html#global-attributes)
 - `open`: a boolean attribute, determining whether the toast is visible or not (according to the default styles).
 By default toasts are not shown.
-- `type`: category of toast, conveying the semantic priority of the toast, and influencing its styling (both default and user-provided). This will correspond closely with certain [WAI-ARIA roles](https://w3c.github.io/using-aria/#aria-roles) 
-(more discussion in [#18](https://github.com/jackbsteinberg/std-toast/issues/18)).
-    - TODO([#18](https://github.com/jackbsteinberg/std-toast/issues/18)): decide on list of WAI-ARIA Roles to use, and decide on types to natively support, create, and style.
+- `type`: an [enumerated attribute](https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#enumerated-attribute) indicating whether the toast is of a special type:
+  one of `"success"`, `"warning"`, or `"error"`.
+  This is used to convey special [semantics](https://html.spec.whatwg.org/multipage/dom.html#represents) for the toast,
+  similar to the distinctions between e.g. `<ol>` / `<ul>` / `<menu>` or `<strong>` / `<em>` / `<small>`.
+  - Toasts with no `type=""` set (or `type=""` set to an invalid value) have no special semantics distinction.
+  - Like other semantic distinctions,
+    authors may want to style based on the distinction.
+    The [default styles](#default-styles) only change the border color of the toast,
+    but can be overridden by a page or design system to give any desired appearance.
+  - By default, `"error"` toasts will be treated as having the ARIA role semantics of [alert](https://rawgit.com/w3c/aria/master/#alert),
+    while the other toasts will be treated as having the ARIA role semantics of a [status](https://rawgit.com/w3c/aria/master/#status).
+    As with all HTML elements,
+    explicitly-specified ARIA attributes can take precedence for exceptional cases,
+    e.g. `<std-toast type="success" aria-live="assertive">` could be used to immediately notify the user of a time-sensitive success.
+  - TODO: action-containing toasts may also need to be assertive.
 - `position`: default position will be ???
     - Options for position:
         - `"top-left"`
@@ -208,6 +220,11 @@ For example:
 const toast = document.createElement('std-toast');
 console.log(toast.open); // false
 ```
+
+The `type` enumerated attribute is reflected [limited to only known values](https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#limited-to-only-known-values),
+with an invalid value default and missing value default of the default state. The default state does not have a corresponding keyword.
+
+_This means that `toast.type` will return the empty string, if the `type=""` attribute's value is missing, or not a case-insensitive match for `"warning"`, `"error"`, or `"success"`. Otherwise it will return those values, in their canonical lowercase._
 
 ##### `closeButton` property
 
@@ -366,14 +383,15 @@ TODO: when we have a prototype, link to/show an example of this in action.
 - `.show(options)`: shows the toast element,
 by toggling its `open=""` attribute to true.
 It will also start or reset the timeout of the toast,
-to show for the provided `duration`,
-or a default `duration` of `3000`ms.
+to show for the provided `duration`.
 The `options` include:
     - `duration`: how long to show the toast,
       in milliseconds.
-      Defaults to `3000`.
       Can be set to `Infinity` to show the toast indefinitely,
       but values ≤ 0 will cause a `RangeError` to be thrown.
+      If not provided,
+      the default will be `Infinity` for `type="warning"` or `type="error"` toasts,
+      and `3000` otherwise.
     - `multiple`: ???
     - `newestOnTop`: ???
 
@@ -420,12 +438,14 @@ allowing further manipulation by script.
 as well as the options for this particular showing of the toast.
 Thus, the possible options are:
 
-- `type`, like the property that reflects the `type=""` attribute
-- `position`, like the property that reflects the `position=""` attribute
-- `closeButton`, like the property that reflects the `closebutton=""` attribute
-- `duration`, like the `show()` option
-- `multiple`, like the `show()` option
-- `newestOnTop`, like the `show()` option
+- `type`, like the property that reflects the `type=""` attribute.
+- `position`, like the property that reflects the `position=""` attribute.
+- `closeButton`, like the property that reflects the `closebutton=""` attribute.
+  Defaults to `true` if `duration` is `Infinity`,
+  including if it defaults to infinity by setting `type` to `"warning"` or `"error"`.
+- `duration`, like the `show()` option.
+- `multiple`, like the `show()` option.
+- `newestOnTop`, like the `show()` option.
 - `action`, an `Element` or string.
   An `Element` is treated the same as the `action` property setter.
   Otherwise,
@@ -457,9 +477,19 @@ std-toast {
 std-toast:not([open]) {
     display: none;
 }
-```
 
-TODO: we may want additional default styles for the different `type=""` values.
+std-toast[type=success i] {
+    border-color: green;
+}
+
+std-toast[type=warning i] {
+    border-color: orange;
+}
+
+std-toast[type=error i] {
+    border-color: red;
+}
+```
 
 TODO: the choice of block/inline-end positioning
 (lower-right in left-to-right, horizontal writing modes)
@@ -494,10 +524,10 @@ std-toast {
 #### Action
 
 To style an action (if present),
-use the `[slot="action"]` selector:
+use the `[slot=action]` selector:
 
 ```css
-std-toast [slot="action"] {
+std-toast [slot=action] {
     color: blue;
     text-transform: uppercase;
 }
@@ -520,10 +550,28 @@ std-toast::part(closebutton) {
 }
 ```
 
+#### Types
+
+To give custom styling to the different types of toasts,
+use the `[type]` selector.
+Remember to use the `i` modifier so that your styling works even if someone does
+`<std-toast type="ERROR">`.
+
+```css
+std-toast[type=error i] {
+    background: #c23934;
+    color: white;
+}
+
+std-toast[type=error i]::before {
+    content: "⛔" / "";
+}
+```
+
 ## Accessibility
 
 TODO: determine proper accessibility roles / semantics.
-See issues [#25](https://github.com/jackbsteinberg/std-toast/issues/25) and 
+See issues [#25](https://github.com/jackbsteinberg/std-toast/issues/25) and
 [#29](https://github.com/jackbsteinberg/std-toast/issues/29) for ongoing initial discussions.
 
 ## Common Patterns
@@ -577,13 +625,13 @@ See [TAG Security / Privacy Self Review](/security-privacy-self-review.md).
 ### Extending the Notification API
 Toasts are intended to be ephemeral, context-specific messages,
 and collecting them in a user's notifications tray doesn't reflect the spirit of the pattern.
-[kenchris](https://github.com/kenchris) put this well in [this comment](https://github.com/w3ctag/design-reviews/issues/385#issuecomment-502070938) 
+[kenchris](https://github.com/kenchris) put this well in [this comment](https://github.com/w3ctag/design-reviews/issues/385#issuecomment-502070938)
 on the TAG Design Review:
 
-> the difference is that this is a temporary notification / infobar, 
-> like you see for PWAs ("new version available, press reload to refresh") 
-> or like in GMail ("Chat is currently unavailable") etc. 
-> These are not things you want an actual system notification for... 
+> the difference is that this is a temporary notification / infobar,
+> like you see for PWAs ("new version available, press reload to refresh")
+> or like in GMail ("Chat is currently unavailable") etc.
+> These are not things you want an actual system notification for...
 > They really depend on the surrounding content/situation unlike regular notifications.
 
 The toast is intended to be a completely in-page element,
@@ -603,9 +651,9 @@ but the intent and semantics are sufficiently different,
 similar to `<blockquote>` and `<q>`, or `<meter>` and `<progress>`.
 
 ### As a new global element (instead of a built-in module)
-The idea of creating new polyfillable HTML elements is being explored in 
+The idea of creating new polyfillable HTML elements is being explored in
 [this issue](https://github.com/whatwg/html/issues/4696) on the HTML standard,
-and the idea of creating new pay-for-what-you-use HTML elements is being explored in 
+and the idea of creating new pay-for-what-you-use HTML elements is being explored in
 [this issue](https://github.com/whatwg/html/issues/467) on the HTML standard.
 
 ### Leaving this up to libraries
