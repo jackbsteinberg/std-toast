@@ -658,7 +658,7 @@ similar to `<blockquote>` and `<q>`, or `<meter>` and `<progress>`.
 The idea of creating new polyfillable HTML elements is being explored in
 [this issue](https://github.com/whatwg/html/issues/4696) on the HTML standard,
 and the idea of creating new pay-for-what-you-use HTML elements is being explored in
-[this issue](https://github.com/whatwg/html/issues/467) on the HTML standard.
+[this issue](https://github.com/whatwg/html/issues/4697) on the HTML standard.
 
 ### Leaving this up to libraries
 The rationale discussed for `std-switch` in [this explanation](https://github.com/tkent-google/std-switch#leaving-this-up-to-libraries)
